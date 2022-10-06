@@ -1,0 +1,20 @@
+@use '../styles/variables';
+@use '../styles/mixins';
+
+.logo {
+	width: 200px;
+	height: auto;
+	margin-bottom: 2rem;
+}
+.wordmark {
+	fill: variables.$color__blue;
+}
+.wordmark-white {
+	fill: white;
+}
+.block-s {
+	fill: variables.$color__orange;
+}
+.block-s-white {
+	fill: white;
+}

@@ -1,0 +1,35 @@
+@use '../styles/variables';
+
+.socialLinksList {
+	margin-top: .5rem;
+	display: flex;
+	justify-content: center;
+}
+
+.socialLinksListItem {
+	margin: 0.25rem;
+}
+
+.socialLinksAnchor {
+	width: 3rem;
+	height: 3rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	transition: all .5s;
+	
+	
+}
+.color-orange {
+	background-color: variables.$color__orange;
+	svg {
+		fill: white;
+	}
+	&:hover {
+		background-color: variables.$color__blue;
+		svg {
+			fill: variables.$color__orange;
+		}
+	}
+}

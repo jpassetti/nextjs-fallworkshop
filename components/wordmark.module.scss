@@ -1,0 +1,28 @@
+@use '../styles/variables';
+
+.wordmark {
+	font-family: variables.$font__sherman_sans;
+	font-weight: bold;
+	font-size: 2rem;
+	line-height: 0.95;
+	text-transform: uppercase;
+	color: variables.$color__blue;
+	text-align: center;
+	margin-bottom: 1rem;
+}
+.wordmarkContainer {
+	margin-bottom: 2rem;
+	position: relative;
+	padding-bottom: 2.5rem;
+	&:after {
+			content: '';
+			display: block;
+			position: absolute;
+			bottom: 0px;
+			left: 50%;
+			transform: translate(-50%, 0);
+			width: 5rem;
+			height: .5rem;
+			background-color: variables.$color__orange;
+		}
+}

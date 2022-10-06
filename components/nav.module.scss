@@ -1,0 +1,13 @@
+@use '../styles/variables';
+
+.navList {
+	display: flex;
+}
+.navItemAnchor {
+	font-weight: bold;
+	font-size: 1.25rem;
+	font-family: variables.$font__sherman_sans;
+	text-decoration: none;
+	padding: 1rem;
+	color: variables.$color__blue;
+}

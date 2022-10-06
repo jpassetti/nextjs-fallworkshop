@@ -1,0 +1,19 @@
+@use '../styles/mixins';
+
+.grid {
+	//background-color: orange;
+	display: flex;
+	flex-wrap: wrap;
+	/*display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 1rem;
+	@include mixins.breakpoint(sm) {
+		grid-template-columns: 1fr 1fr 1f;
+	}
+	@include mixins.breakpoint(md) {
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
+	@include mixins.breakpoint(lg) {
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	}*/
+}

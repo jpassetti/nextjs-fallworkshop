@@ -1,0 +1,10 @@
+@use '../styles/variables';
+@use '../styles/mixins';
+
+.footer {
+	background-color: variables.$color__blue;
+	color: white;
+	padding: 2rem 0;
+	text-align: center;
+	
+}

@@ -1,0 +1,9 @@
+@use '../styles/variables';
+@use '../styles/mixins';
+
+.firstName {
+	color: variables.$color__orange;
+}
+.lastName {
+	color: variables.$color__blue;
+}
