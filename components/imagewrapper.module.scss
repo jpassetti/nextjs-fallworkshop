@@ -1,0 +1,11 @@
+.imagewrapper {
+	margin: 32px auto;
+	box-sizing: content-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	& > span {
+		border: 1px solid #eaeaea !important;
+	}
+}

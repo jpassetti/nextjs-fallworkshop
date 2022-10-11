@@ -6,17 +6,33 @@ import styles from './socialmedialinks.module.scss'
 let cx = classNames.bind(styles);
 
 
-const SocialMediaLinks = ({links, color}) => {
+const SocialMediaLinks = ({linksInformation, color}) => {
+	const {linkedinUrl, instagramUrl, twitterUrl, websiteUrl, links} = linksInformation;
 	let socialLinksAnchorClasses = cx({
 		socialLinksAnchor: true,
 		[`color-${color}`] : color
 	});
+	const getCorrespondingUrl = (link) => {
+		switch (link) {
+			case 'linkedin':
+				return linkedinUrl;
+				break;
+			case 'instagram':
+				return instagramUrl;
+				break;
+			case 'twitter':
+				return twitterUrl;
+				break;
+			case 'website':
+				return websiteUrl;
+				break;
+			}
+	}
 	return <ul className={styles.socialLinksList}>
 		{links.map((link, index)=> {
-			const {type, url} = link;
 			return <li key={index} className={styles.socialLinksListItem}>
-				<a href={url} className={socialLinksAnchorClasses}>
-					<Icon icon={type} />
+				<a target="_blank" href={getCorrespondingUrl(link)} className={socialLinksAnchorClasses}>
+					<Icon icon={link} />
 				</a>
 			</li>
 		})}

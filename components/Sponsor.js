@@ -10,18 +10,18 @@ const Sponsor = ({sponsor, size="md"}) => {
 		[`sponsor`] : true,
 		[`size-${size}`] : size
 	});
-	const {title, url, logo} = sponsor;
-	return logo ? <div className={sponsorClasses}>
-		<a href={url} target="_blank">
+	const {title, featuredImage, sponsorInformation} = sponsor;
+	return featuredImage ? <div className={sponsorClasses}>
+		<a href={sponsorInformation.sponsorUrl} target="_blank">
 		<Image
-				src={`/sponsors/${logo}`}
-				alt={`${title} logo`}
-				width={200}
-				height={200}
+				src={featuredImage.node.sourceUrl}
+				alt={featuredImage.node.altText}
+				width={featuredImage.node.mediaDetails.width}
+				height={featuredImage.node.mediaDetails.height}
 				layout="responsive"
 		/>
 		</a>
 	</div> 
-	: <div style={{ height: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}><Paragraph textAlign="center"><a style={{color: "white"}} href={url} target="_blank">{title}</a></Paragraph></div>
+	: <div style={{ height: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}><Paragraph textAlign="center"><a style={{color: "white"}} href={sponsorInformation.sponsorUrl} target="_blank">{title}</a></Paragraph></div>
 }
 export default Sponsor
