@@ -25,7 +25,7 @@ const Home = ({people, sponsors}) => {
 	return <Layout>
 		<Head>
 			<title>The Fall Workshop | Newhouse School at Syracuse University</title>
-			<meta charset="UTF-8" />
+			<meta charSet="UTF-8" />
 			<meta property="og:type" content="website" />
         	<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			<meta property="og:title" content="The Fall Workshop | Newhouse School at Syracuse University" key="title" />
