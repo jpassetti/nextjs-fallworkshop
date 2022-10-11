@@ -7,7 +7,6 @@ import Span from './Span'
 import SocialMediaLinks from './SocialMediaLinks'
 
 const Person = ({person, role}) => {
-	console.log({person});
 	const {title, slug, featuredImage, personInformation} = person;
 	const {firstName, lastName, jobs, linksInformation, rolesPerYear} = personInformation;
 	return <article className={styles.person}>
