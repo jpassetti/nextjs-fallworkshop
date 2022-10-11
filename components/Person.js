@@ -33,7 +33,8 @@ const Person = ({person, role}) => {
 				.map((rolePerYear, index) => {
 					return <li key={index}><span className={styles.job}>{rolePerYear.title}</span></li>
 				})
-			: jobs.map((job, index) => {
+			: jobs.length > 0 ? 
+				jobs.map((job, index) => {
 				return <li key={index}>
 					{job.jobTitle ? <span className={styles.job}>{job.jobTitle}</span> : ''}
 					{(job.companyName && job.companyUrl) ? 
@@ -43,6 +44,7 @@ const Person = ({person, role}) => {
 					: ''}
 				</li>
 			})
+			: ''
 			}
 			</ul>
 			{linksInformation.links.length > 0 && 
