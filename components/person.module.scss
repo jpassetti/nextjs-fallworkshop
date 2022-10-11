@@ -10,4 +10,28 @@
 .personImage {
 
 }
+.metaInformation {
+	text-align: center;
+	color: variables.$color__blue;
+	li {
+		margin-bottom: 0.5rem;
+	}
+}
+.job {
+	font-family: variables.$font__sherman_sans;
+	font-size: 1rem;
+	display: block;
+}
+
+.company {
+	font-family: variables.$font__sherman_sans;
+	font-size: 0.9rem;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	display: block;
+
+	a {
+		color: variables.$color__blue;
+	}
+}
 
