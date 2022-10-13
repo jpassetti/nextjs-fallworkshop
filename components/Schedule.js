@@ -21,17 +21,31 @@ const formatTimeDuration = (date) => {
 	const startAMPM = startTimeSplit[1];
 	const startFormatted = startMinutes !== "00" ? `${startHour}:${startMinutes}` : `${startHour}`;
 
-	const endTimeSplit = endTime.split(" ");
-	const endHour = endTimeSplit[0].split(":")[0];
-	const endMinutes = endTimeSplit[0].split(":")[1];
-	const endAMPM = endTimeSplit[1];
-	const endFormatted = endMinutes !== "00" ? `${endHour}:${endMinutes}` : `${endHour}`;
+	const endTimeSplit = endTime ? endTime.split(" ") : null;
+	const endHour = endTime ? endTimeSplit[0].split(":")[0] : null;
+	const endMinutes = endTime ? endTimeSplit[0].split(":")[1] : null;
+	const endAMPM = endTime ? endTimeSplit[1] : null;
+	const endFormatted = endTime && endMinutes !== "00" ? `${endHour}:${endMinutes}` : endHour ? `${endHour}` : null;
 
-	const formattedDuration = startAMPM === "am" & endAMPM === "am" ?
-		`${startFormatted}-${endFormatted} a.m.`
-	: (startAMPM === "pm" & endAMPM === "pm") ?
-		`${startFormatted}-${endFormatted} p.m.`
-	: `${startFormatted} a.m.-${endFormatted} p.m.`;
+
+	let formattedDuration;
+	if(endTime) {
+		// yes endTime
+		if (startAMPM === "am" & endAMPM === "am") {
+			formattedDuration = `${startFormatted}-${endFormatted} a.m.`;
+		} else if (startAMPM === "pm" & endAMPM === "pm") {
+			formattedDuration = `${startFormatted}-${endFormatted} p.m.`;
+		} else {
+			formattedDuration = `${startFormatted} a.m.-${endFormatted} p.m.`;
+		}
+	} else {
+		// no endTime
+		if (startAMPM === "am") {
+			formattedDuration = `${startFormatted} a.m.`;
+		} else {
+			formattedDuration = `${startFormatted} p.m.`;
+		}
+	}
 
 	return formattedDuration;
 }
@@ -78,14 +92,16 @@ const Item = ({event}) => {
 	const formattedRoom = getFormattedLocation(location);
 	const {name, number, building} = formattedRoom;
 	const formattedTimeDuration = formatTimeDuration(date);
-	return <Row tr>
+	return <Row tr alignItems="center">
 		<Col textAlign="center" xs="12" sm="4" td>{formattedTimeDuration}</Col>
 		<Col textAlign="center" xs="12" sm="4" td>
-			<Heading level="4" textAlign="center" marginBottom="2" textTransform="uppercase" color="orange">{eventType}</Heading>
+			{eventType !== "none" ? 
+				<Heading level="4" textAlign="center" marginBottom="2" textTransform="uppercase" color="orange">{eventType}</Heading> 
+			: ''}
 			<Heading level="3" textAlign="center" marginBottom="1">{title}</Heading>
 			<span dangerouslySetInnerHTML={{__html: description}} /></Col>
-		<Col textAlign="center" xs="12" sm="4" td>{name}<br />
-		{number ? number : ''} {building}</Col>
+		<Col textAlign="center" xs="12" sm="4" td>{name ? name : ''}<br />
+		{number ? number : ''} {building ? building : ''}</Col>
 	</Row>
 		
 }
