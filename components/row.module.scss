@@ -1,3 +1,6 @@
+@use '../styles/mixins';
+@use '../styles/variables';
+
 .row {
 	display: flex;
 	flex-wrap: wrap;
@@ -16,4 +19,18 @@
 }
 .flex-direction-row {
 	flex-direction: row;
+}
+.table-header {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	border-bottom: 3px solid #eaeaea;
+	@include mixins.breakpoint(xs) {
+			display: none;
+		}
+}
+.table-row {
+	padding-top: 1.5rem;
+	padding-bottom: 1.5rem;
+	border-bottom: 1px solid #eaeaea;
+	margin-bottom: 0;
 }

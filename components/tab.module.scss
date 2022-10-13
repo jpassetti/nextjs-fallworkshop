@@ -1,0 +1,44 @@
+@use '../styles/variables';
+@use '../styles/mixins';
+
+.tab {
+	font-family: variables.$font__sherman_sans;
+	font-size: 1.75rem;
+	font-weight: bold;
+	//border-bottom: 5px solid white;
+	padding: 1rem 1rem 1.5rem 1rem;
+	color: gray;
+	cursor: pointer;
+	text-transform: uppercase;
+	line-height: 1;
+	text-align: center;
+	transition: all .2s;
+	position: relative;
+	overflow: hidden;
+	&::after {
+		content: '';
+		display: block;
+		position: absolute;
+		bottom: -.5rem;
+		left: 0;
+		width: 100%;
+		height: .5rem;
+		background-color: variables.$color__orange;
+		transition: all .3s;
+	}
+	&:hover, &:focus {
+		background-color: #eaeaea;
+		//border-bottom: 5px solid #eaeaea;
+		&::after {
+			bottom: 0;
+		}
+	}
+	&.active {
+		//border-bottom: 5px solid variables.$color__orange;
+		background-color: variables.$color__blue;
+		color: white;
+		&::after {
+			bottom: 0;
+		}
+	}
+}

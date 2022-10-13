@@ -1,4 +1,5 @@
 @use '../styles/mixins';
+@use '../styles/variables';
 
 $sizes: xs, sm, md, lg;
 
@@ -16,4 +17,22 @@ $sizes: xs, sm, md, lg;
 	}
 	// for each loop end
 	@include mixins.marginAndPadding();
+	@include mixins.textAlign();
+	@include mixins.fontSizes();
+	@include mixins.fontWeight();
+	&.table-header {
+		font-size: 1rem;
+		font-weight: bold;
+		text-transform: uppercase;
+		color: gray;
+		font-family: variables.$font__sherman_sans;
+		//margin-bottom: 0;
+		padding-top: 2rem;
+		
+	}
+	&.table-data-cell {
+		font-family: variables.$font__sherman_sans;
+		//margin-bottom: 0;
+		color: variables.$color__blue;
+	}
 }

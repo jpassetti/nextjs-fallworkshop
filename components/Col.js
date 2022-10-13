@@ -11,6 +11,8 @@ const Col = ({
 	md, 
 	lg, 
 	xl, 
+	fontSize,
+	fontWeight,
 	position, 
 	marginTop,
 	marginRight,
@@ -20,6 +22,9 @@ const Col = ({
 	paddingRight="1",
 	paddingBottom,
 	paddingLeft="1",
+	th,
+	td,
+	textAlign
 }) => {
 	
 	let colClasses = cx({
@@ -38,6 +43,11 @@ const Col = ({
 		[`padding-right-${paddingRight}`]: paddingRight,
 		[`padding-bottom-${paddingBottom}`]: paddingBottom,
 		[`padding-left-${paddingLeft}`]: paddingLeft,
+		[`table-header`] : th,
+		[`table-data-cell`] : td,
+		[`text-align-${textAlign}`] : textAlign,
+		[`font-size-${fontSize}`] : fontSize,
+		[`font-weight-${fontWeight}`] : fontWeight
 	});
 
 	return <div className={colClasses}>{children}</div>
