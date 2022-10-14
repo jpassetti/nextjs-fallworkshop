@@ -29,7 +29,7 @@
 .table-header {
 	padding-top: 1rem;
 	padding-bottom: 1rem;
-	border-bottom: 3px solid #eaeaea;
+	border-bottom: 2px solid variables.$color__blue;
 	@include mixins.breakpoint(xs) {
 			display: none;
 		}
@@ -37,6 +37,6 @@
 .table-row {
 	padding-top: 1.5rem;
 	padding-bottom: 1.5rem;
-	border-bottom: 1px solid #eaeaea;
+	border-bottom: 1px dotted variables.$color__blue;
 	margin-bottom: 0;
 }

@@ -24,7 +24,7 @@ $sizes: xs, sm, md, lg;
 		font-size: 1rem;
 		font-weight: bold;
 		text-transform: uppercase;
-		color: gray;
+		color: variables.$color__blue;
 		font-family: variables.$font__sherman_sans;
 		//margin-bottom: 0;
 		padding-top: 2rem;

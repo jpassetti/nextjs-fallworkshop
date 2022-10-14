@@ -54,7 +54,7 @@ const Schedule = ({schedule}) => {
 	const [activeTab, setActiveTab] = useState(0);
 	const {title, scheduleInformation} = schedule;
 	const {days} = scheduleInformation;
-	return <Section id="schedule" title="Schedule">
+	return <Section id="schedule" title="Schedule" backgroundColor="orange_10">
 			<Container>
 				<Tabs>
 				{days.map((day,index) => {
