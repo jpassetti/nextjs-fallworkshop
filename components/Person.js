@@ -28,12 +28,11 @@ const Person = ({person, role}) => {
 			</Heading>
 			<ul className={styles.metaInformation}>
 			{role === "staff" ? 
-				rolesPerYear
-				.filter((rolePerYear => rolePerYear.year === "2022"))
+				rolesPerYear?.filter((rolePerYear => rolePerYear.year === "2022"))
 				.map((rolePerYear, index) => {
 					return <li key={index}><span className={styles.job}>{rolePerYear.title}</span></li>
 				})
-			: jobs.length > 0 ? 
+			: jobs?.length > 0 ? 
 				jobs.map((job, index) => {
 				return <li key={index}>
 					{job.jobTitle ? <span className={styles.job}>{job.jobTitle}</span> : ''}

@@ -7,7 +7,7 @@ import Section from './Section'
 
 const PeopleByRole = ({role, plural, people}) => {
 	const hasRole = (roleToFilter) => roleToFilter.role === role;
-	const filteredPeople = people.filter(person => person.node.personInformation.rolesPerYear.some(hasRole));
+	const filteredPeople = people.filter(person => person.node.personInformation.rolesPerYear?.some(hasRole));
 	//const coaches = people.filter(person => person.peopleType === "coach")
 	return <Section id={plural.toLowerCase()} title={plural}>
 			<Container>
