@@ -20,6 +20,7 @@ $sizes: xs, sm, md, lg;
 	@include mixins.textAlign();
 	@include mixins.fontSizes();
 	@include mixins.fontWeight();
+	@include mixins.flexOrders();
 	&.table-header {
 		font-size: 1rem;
 		font-weight: bold;

@@ -2,8 +2,11 @@
 @use '../styles/mixins';
 
 .icon {
-	width: 1.6rem;
+	width: 1.1rem;
 	height: auto;
+	@include mixins.breakpoint(sm) {
+		width: 1.6rem;
+	}
 }
 .color-white {
 	fill: white;

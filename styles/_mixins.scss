@@ -140,6 +140,22 @@
 		}
 	}
 }
+@mixin flexOrders() {
+	$sizes: xs, sm, md, lg, xl;
+	
+	$values: 1, 2, 3, 4, 5, 6;
+
+	@each $size in $sizes {
+		@include breakpoint($size) {
+			@each $value in $values {
+				&.flex-order-#{$size}-#{$value} {
+					order: #{$value};
+				}
+			}
+		}
+	}
+	
+}
 
 @mixin textTransform() {
 	$values: uppercase,

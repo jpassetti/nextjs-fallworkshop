@@ -24,9 +24,17 @@ const Col = ({
 	paddingLeft="1",
 	th,
 	td,
-	textAlign
+	textAlign,
+	flexOrder
 }) => {
 	
+	const responsiveOrderArr = flexOrder ? flexOrder.split(" ") : null;
+	const responsiveOrderObj = {};
+	responsiveOrderArr?.forEach(string => {
+		const [key, value] = string.split(":");
+		responsiveOrderObj[key] = value;
+	});
+
 	let colClasses = cx({
 		col: true,
 		[`col__xs__${xs}`]: xs,
@@ -47,7 +55,12 @@ const Col = ({
 		[`table-data-cell`] : td,
 		[`text-align-${textAlign}`] : textAlign,
 		[`font-size-${fontSize}`] : fontSize,
-		[`font-weight-${fontWeight}`] : fontWeight
+		[`font-weight-${fontWeight}`] : fontWeight,
+		[`flex-order-xs-${responsiveOrderObj['xs']}`]: responsiveOrderObj.hasOwnProperty('xs'),
+		[`flex-order-sm-${responsiveOrderObj['sm']}`]: responsiveOrderObj.hasOwnProperty('sm'),
+		[`flex-order-md-${responsiveOrderObj['md']}`]: responsiveOrderObj.hasOwnProperty('md'),
+		[`flex-order-lg-${responsiveOrderObj['lg']}`]: responsiveOrderObj.hasOwnProperty('lg'),
+		[`flex-order-xl-${responsiveOrderObj['xl']}`]: responsiveOrderObj.hasOwnProperty('xl'),
 	});
 
 	return <div className={colClasses}>{children}</div>

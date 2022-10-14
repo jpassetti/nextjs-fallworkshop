@@ -95,8 +95,8 @@ const Item = ({event}) => {
 	const {name, number, building} = formattedRoom;
 	const formattedTimeDuration = formatTimeDuration(date);
 	return <Row tr alignItems="center">
-		<Col textAlign="center" xs="12" sm="4" td>{formattedTimeDuration}</Col>
-		<Col textAlign="center" xs="12" sm="4" td>
+		<Col textAlign="center" xs="12" sm="4" td flexOrder="xs:2 sm:1">{formattedTimeDuration}</Col>
+		<Col textAlign="center" xs="12" sm="4" td flexOrder="xs:1 sm:2">
 			{eventType !== "none" ? 
 				<Heading level="4" textAlign="center" marginBottom="2" textTransform="uppercase" color="orange">{eventType}</Heading> 
 			: ''}
@@ -131,7 +131,7 @@ const Item = ({event}) => {
 				</>
 			})}
 			</Col>
-		<Col textAlign="center" xs="12" sm="4" td>{name ? name : ''}<br />
+		<Col textAlign="center" xs="12" sm="4" td flexOrder="xs:3 sm:3">{name ? name : ''}<br />
 		{number ? number : ''} {building ? building : ''}</Col>
 	</Row>
 		
