@@ -13,7 +13,7 @@ const Sponsors = ({sponsors}) => {
 		<Container size="sm">
 			{/* NIKON 458.6 400 */ }
 			<Row justifyContent="center">
-				<Col xs="6" sm="6" md="5">
+				<Col xs="10" sm="8" md="5">
 					<div className={styles.sponsor}>
 					<a href="https://www.nikonusa.com/" target="_blank">
 						<Image
