@@ -104,7 +104,7 @@ const Item = ({event}) => {
 			<span dangerouslySetInnerHTML={{__html: description}} />
 			{speakers && speakers.map((speaker, index) => {
 				const {speakerCompany, speakerCompanyUrl, speakerImage, speakerJob, speakerName} = speaker;
-				return <>
+				return <div key={index}>
 					{speakerImage && 
 						<ImageWrapper size="thumbnail">
 							<Image 
@@ -128,7 +128,7 @@ const Item = ({event}) => {
 							{speakerCompany}
 						</Paragraph> 
 					}
-				</>
+				</div>
 			})}
 			</Col>
 		<Col textAlign="center" xs="12" sm="4" td flexOrder="xs:3 sm:3">{name ? name : ''}<br />
