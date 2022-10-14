@@ -46,4 +46,17 @@
 		padding-left: 0;
 		padding-right: 0;
 	}
+	&.size-sm {
+		@include mixins.breakpoint(md) {
+			width: 50em;
+		}
+	
+		@include mixins.breakpoint(lg) {
+			width: 55em;
+		}
+	
+		@include mixins.breakpoint(xl) {
+			width: 60em;
+		}
+	}
 }

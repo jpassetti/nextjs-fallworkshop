@@ -3,11 +3,12 @@ import * as styles from './container.module.scss';
 
 let cx = classNames.bind(styles)
 
-const Container = ({ type, children, content }) => {
+const Container = ({ type, children, content, size }) => {
 	let containerClasses = cx({
 		container: true,
 		full: type === "full",
-		content: content
+		content: content,
+		[`size-${size}`] : size
 	});
 	return <div className={containerClasses}>{children}</div>
 }

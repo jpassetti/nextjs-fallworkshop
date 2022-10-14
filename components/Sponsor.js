@@ -5,10 +5,9 @@ import styles from './sponsor.module.scss';
 
 let cx = classNames.bind(styles);
 
-const Sponsor = ({sponsor, size="md"}) => {
+const Sponsor = ({sponsor}) => {
 	let sponsorClasses = cx({
 		[`sponsor`] : true,
-		[`size-${size}`] : size
 	});
 	const {title, featuredImage, sponsorInformation} = sponsor;
 	return featuredImage ? <div className={sponsorClasses}>
@@ -22,6 +21,6 @@ const Sponsor = ({sponsor, size="md"}) => {
 		/>
 		</a>
 	</div> 
-	: <div style={{ height: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}><Paragraph textAlign="center"><a style={{color: "white"}} href={sponsorInformation.sponsorUrl} target="_blank">{title}</a></Paragraph></div>
+	: <div className={sponsorClasses}><Paragraph textAlign="center"><a href={sponsorInformation.sponsorUrl} target="_blank">{title}</a></Paragraph></div>
 }
 export default Sponsor

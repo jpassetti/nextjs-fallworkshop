@@ -1,12 +1,32 @@
-.sponsor {
+@use '../styles/variables';
 
-}
-.size-lg {
-	transform: scale(1.25);
-}
-.size-md {
-	transform: scale(1);
-}
-.size-sm {
-	transform: scale(.75);
+.sponsor {
+	height: 100%;
+	width: 100%;
+	padding: 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #fff;
+	border: 1px solid #eaeaea;
+	a {
+		display: block;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: variables.$color__blue;
+		font-weight: bold;
+		text-decoration: none;
+		span {
+			display: block !important;
+			width: 100% !important;
+		}
+		p {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
 }
