@@ -105,18 +105,29 @@ const Item = ({event}) => {
 			{speakers && speakers.map((speaker, index) => {
 				const {speakerCompany, speakerCompanyUrl, speakerImage, speakerJob, speakerName} = speaker;
 				return <>
-					<ImageWrapper size="thumbnail">
-						<Image 
-							src={speakerImage.sourceUrl}
-							alt={speakerImage.altText}
-							width={speakerImage.mediaDetails.width}
-							height={speakerImage.mediaDetails.height}
-						/>
-					</ImageWrapper>
-					<Heading level="3" textAlign="center" marginBottom="2" color="blue">{speakerName}</Heading>
-					<Paragraph>
-						{speakerJob}
-					</Paragraph> 
+					{speakerImage && 
+						<ImageWrapper size="thumbnail">
+							<Image 
+								src={speakerImage.sourceUrl}
+								alt={speakerImage.altText}
+								width={speakerImage.mediaDetails.width}
+								height={speakerImage.mediaDetails.height}
+							/>
+						</ImageWrapper>
+					}
+					{speakerName &&
+						<Heading level="3" textAlign="center" marginBottom="2" color="blue">{speakerName}</Heading>
+					}
+					{speakerJob &&
+						<Paragraph>
+							{speakerJob}
+						</Paragraph> 
+					}
+					{speakerCompany &&
+						<Paragraph>
+							{speakerCompany}
+						</Paragraph> 
+					}
 				</>
 			})}
 			</Col>
