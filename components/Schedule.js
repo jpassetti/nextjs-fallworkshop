@@ -5,6 +5,8 @@ import Button from './Button'
 import Col from './Col'
 import Container from './Container'
 import Heading from './Heading'
+import Image from 'next/image'
+import ImageWrapper from './ImageWrapper'
 import Paragraph from './Paragraph'
 import Row from './Row'
 import Section from './Section'
@@ -88,7 +90,7 @@ const Schedule = ({schedule}) => {
 export default Schedule;
 
 const Item = ({event}) => {
-	const {title, eventType, description, date, location} = event;
+	const {title, eventType, description, date, location, speakers} = event;
 	const formattedRoom = getFormattedLocation(location);
 	const {name, number, building} = formattedRoom;
 	const formattedTimeDuration = formatTimeDuration(date);
@@ -99,7 +101,25 @@ const Item = ({event}) => {
 				<Heading level="4" textAlign="center" marginBottom="2" textTransform="uppercase" color="orange">{eventType}</Heading> 
 			: ''}
 			<Heading level="3" textAlign="center" marginBottom="1">{title}</Heading>
-			<span dangerouslySetInnerHTML={{__html: description}} /></Col>
+			<span dangerouslySetInnerHTML={{__html: description}} />
+			{speakers && speakers.map((speaker, index) => {
+				const {speakerCompany, speakerCompanyUrl, speakerImage, speakerJob, speakerName} = speaker;
+				return <>
+					<ImageWrapper size="thumbnail">
+						<Image 
+							src={speakerImage.sourceUrl}
+							alt={speakerImage.altText}
+							width={speakerImage.mediaDetails.width}
+							height={speakerImage.mediaDetails.height}
+						/>
+					</ImageWrapper>
+					<Heading level="3" textAlign="center" marginBottom="2" color="blue">{speakerName}</Heading>
+					<Paragraph>
+						{speakerJob}
+					</Paragraph> 
+				</>
+			})}
+			</Col>
 		<Col textAlign="center" xs="12" sm="4" td>{name ? name : ''}<br />
 		{number ? number : ''} {building ? building : ''}</Col>
 	</Row>

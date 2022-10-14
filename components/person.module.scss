@@ -15,13 +15,14 @@
 	color: variables.$color__blue;
 	margin-bottom: 1rem;
 	li {
-		margin-bottom: 0.5rem;
+		margin-bottom: 1rem;
 	}
 }
 .job {
 	font-family: variables.$font__sherman_sans;
 	font-size: 1rem;
 	display: block;
+	margin-bottom: 0.5rem;
 }
 
 .company {
