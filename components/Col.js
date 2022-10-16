@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames/bind';
 import * as styles from './col.module.scss';
 
