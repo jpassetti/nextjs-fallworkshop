@@ -13,6 +13,8 @@ import Section from './Section'
 import Tab from './Tab'
 import Tabs from './Tabs'
 
+import styles from './schedule.module.scss'
+
 import { getFormattedLocation } from '../lib/api'
 
 const formatTimeDuration = (date) => {
@@ -65,6 +67,7 @@ const Schedule = ({schedule}) => {
 					const theMonth = moment(dayDate).format('MMM');
 					const theDayNum = moment(dayDate).format('DD');
 					return <Tab 
+						key={index}
 						activeTab={index === activeTab ? true : false} 
 						clickHandler={()=> {
 							setActiveTab(index)
@@ -96,15 +99,15 @@ const Item = ({event}) => {
 	const formattedTimeDuration = formatTimeDuration(date);
 	return <Row tr alignItems="center">
 		<Col textAlign="center" xs="12" sm="4" td flexOrder="xs:2 sm:1">{formattedTimeDuration}</Col>
-		<Col textAlign="center" xs="12" sm="4" td flexOrder="xs:1 sm:2">
+		<Col textAlign="center" xs="12" sm="4" td flexOrder="xs:1 sm:2" paddingTop="2">
 			{eventType !== "none" ? 
 				<Heading level="4" textAlign="center" marginBottom="2" textTransform="uppercase" color="orange">{eventType}</Heading> 
 			: ''}
-			<Heading level="3" textAlign="center" marginBottom="1">{title}</Heading>
+			{title && <Heading level="3" textAlign="center" marginBottom="1">{title}</Heading>}
 			<span dangerouslySetInnerHTML={{__html: description}} />
 			{speakers && speakers.map((speaker, index) => {
 				const {speakerCompany, speakerCompanyUrl, speakerImage, speakerJob, speakerName} = speaker;
-				return <div key={index}>
+				return <div className={styles.speaker_group} key={index}>
 					{speakerImage && 
 						<ImageWrapper size="thumbnail">
 							<Image 
@@ -116,7 +119,7 @@ const Item = ({event}) => {
 						</ImageWrapper>
 					}
 					{speakerName &&
-						<Heading level="3" textAlign="center" marginBottom="2" color="blue">{speakerName}</Heading>
+						<Heading level="3" textAlign="center" marginBottom="1" color="blue">{speakerName}</Heading>
 					}
 					{speakerJob &&
 						<Paragraph>
