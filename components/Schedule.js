@@ -55,7 +55,7 @@ const formatTimeDuration = (date) => {
 }
 
 const Schedule = ({schedule}) => {
-	const [activeTab, setActiveTab] = useState(0);
+	const [activeTab, setActiveTab] = useState(1);
 	const {title, scheduleInformation} = schedule;
 	const {days} = scheduleInformation;
 	return <Section id="schedule" title="Schedule" backgroundColor="orange_10">
