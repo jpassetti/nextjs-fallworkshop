@@ -34,7 +34,7 @@ const Home = ({people, sponsors, schedule, stories}) => {
 			<meta name="description" content="Founded by Visual Communications faculty in 1999, the workshop brings top professionals from around the world to join our professors as we push students to identify, observe and artfully communicate the core of who we are and the issues we face in everyday life." />
 		</Head>
 		<About />
-		{/*<Stories stories={stories} />*/}
+		<Stories stories={stories} />
 		<Schedule schedule={schedule} />
 		<PeopleByRole role="coach" plural="Coaches" people={people} />
 		<PeopleByRole role="staff" plural="Staff" people={people} />

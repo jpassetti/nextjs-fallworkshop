@@ -4,6 +4,8 @@ import * as styles from './col.module.scss';
 let cx = classNames.bind(styles);
 
 const Col = ({ 
+	backgroundColor,
+	borderLeft,
 	children, 
 	xs, 
 	sm, 
@@ -21,6 +23,7 @@ const Col = ({
 	paddingRight="1",
 	paddingBottom,
 	paddingLeft="1",
+	paddingAll,
 	th,
 	td,
 	textAlign,
@@ -50,6 +53,7 @@ const Col = ({
 		[`padding-right-${paddingRight}`]: paddingRight,
 		[`padding-bottom-${paddingBottom}`]: paddingBottom,
 		[`padding-left-${paddingLeft}`]: paddingLeft,
+		[`padding-all-${paddingAll}`] : paddingAll,
 		[`table-header`] : th,
 		[`table-data-cell`] : td,
 		[`text-align-${textAlign}`] : textAlign,
@@ -60,6 +64,8 @@ const Col = ({
 		[`flex-order-md-${responsiveOrderObj['md']}`]: responsiveOrderObj.hasOwnProperty('md'),
 		[`flex-order-lg-${responsiveOrderObj['lg']}`]: responsiveOrderObj.hasOwnProperty('lg'),
 		[`flex-order-xl-${responsiveOrderObj['xl']}`]: responsiveOrderObj.hasOwnProperty('xl'),
+		[`background-color-${backgroundColor}`] : backgroundColor,
+		[`border-left-${borderLeft}`] : borderLeft,
 	});
 
 	return <div className={colClasses}>{children}</div>

@@ -19,6 +19,7 @@ const Heading = ({
 	marginRight, 
 	textAlign = "left", 
 	textTransform,
+	size
 }) => {
 	const Tag = level > 6 ? 'h6' : `h${level}`
 
@@ -36,7 +37,8 @@ const Heading = ({
 		[`font-color-${color}`] : color,
 		[`font-style-${fontStyle}`] : fontStyle,
 		[`line-height-${lineHeight}`] : lineHeight,
-		[`font-family-${fontFamily}`] : fontFamily
+		[`font-family-${fontFamily}`] : fontFamily,
+		[`size-${size}`] : size
 	});
 
 	return <Tag className={`${headingClasses} ${className}`}>{children}</Tag>

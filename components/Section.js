@@ -11,7 +11,7 @@ const Section = ({children, id, title, backgroundColor}) => {
 		[`background-color-${backgroundColor}`] : backgroundColor
 	})
 	return <section id={id} className={sectionClasses}>
-		<Heading level="2" textAlign="center" marginBottom="4">{title}</Heading>
+		<Heading level="2" textAlign="center" marginBottom="4" color={backgroundColor === "blue" ? "white" : ''}>{title}</Heading>
 		{children}
 	</section>
 }

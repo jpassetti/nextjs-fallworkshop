@@ -4,7 +4,7 @@ import styles from './nav.module.scss'
 import { getNavLinks } from '../lib/api'
 const Nav = () => {
 	const navLinks = getNavLinks();
-	return <nav>
+	return <nav className={styles.nav}>
 		<ul className={styles.navList}>
 			{navLinks.map((navLink, index) => {
 				const { label, id} = navLink;

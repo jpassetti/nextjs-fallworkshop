@@ -1,0 +1,13 @@
+.group {
+	padding-top: .5rem;
+	padding-bottom: .5rem;
+	&.flex {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		& > div {
+			margin-left: 1rem;
+			margin-right: 1rem;
+		}
+	}
+}

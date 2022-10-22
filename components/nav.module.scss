@@ -1,5 +1,12 @@
 @use '../styles/variables';
+@use '../styles/mixins';
 
+.nav {
+	display: none;
+	@include mixins.breakpoint(md) {
+		display: block;
+	}
+}
 .navList {
 	display: flex;
 }

@@ -4,27 +4,11 @@
 .row {
 	display: flex;
 	flex-wrap: wrap;
-}
-.align-items-center {
-	align-items: center;
-}
-.align-items-flex-start {
-	align-items: flex-start;
-}
-.align-items-flex-end {
-	align-items: flex-end;
-}
-.justify-content-space-between {
-	justify-content: space-between;
-}
-.justify-content-center {
-	justify-content: center;
-}
-.flex-direction-column {
-	flex-direction: column;
-}
-.flex-direction-row {
-	flex-direction: row;
+	margin: 0 -.5rem;
+	@include mixins.marginAndPadding();
+	@include mixins.alignItems();
+	@include mixins.justifyContent();
+	@include mixins.flexDirection();
 }
 .table-header {
 	padding-top: 1rem;

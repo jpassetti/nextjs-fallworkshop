@@ -21,6 +21,7 @@ $sizes: xs, sm, md, lg;
 	@include mixins.fontSizes();
 	@include mixins.fontWeight();
 	@include mixins.flexOrders();
+	@include mixins.backgroundColors();
 	&.table-header {
 		font-size: 1rem;
 		font-weight: bold;
@@ -35,5 +36,10 @@ $sizes: xs, sm, md, lg;
 		font-family: variables.$font__sherman_sans;
 		//margin-bottom: 0;
 		color: variables.$color__blue;
+	}
+	&.border-left-1 {
+		@include mixins.breakpoint(md) {
+			border-left: 1px solid variables.$color__blue_10;
+		}
 	}
 }
