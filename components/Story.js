@@ -36,12 +36,6 @@ const Story = ({story}) => {
 				</a>
 			</Link>
 		</Heading>}
-		{excerpt && <Paragraph marginBottom="2" color="white">{excerpt}</Paragraph>}
-		{students && 
-			students.map((student, index) => {
-				return <Person person={student} teaser key={index} invert />
-			})
-		}
 	</article>
 }
 export default Story;
