@@ -1,6 +1,7 @@
 import Col from '../../../components/Col'
 import Container from '../../../components/Container'
 import Group from '../../../components/Group'
+import Head from 'next/head'
 import Heading from '../../../components/Heading'
 import Image from 'next/image'
 import ImageWrapper from '../../../components/ImageWrapper'
@@ -44,14 +45,21 @@ export async function getStaticProps({ params }) {
 }
 
 const SingleStory = ({storyData}) => {
-	const {title, storyInformation, content, featuredImage} = storyData;
+	const {title, storyInformation, content, excerpt, featuredImage} = storyData;
 	const {storyType, stillImages, photoGalleries, videos, students, coaches} = storyInformation;
 	return <Layout>
+		<Head>
+			<title>{title} | The Alexia Fall Workshop</title>
+			<meta charSet="UTF-8" />
+			<meta property="og:type" content="website" />
+        	<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+			<meta property="og:title" content={`${title} | The Alexia Fall Workshop`} key="title" />
+			<meta name="description" content={excerpt} />
+		</Head>
 		<Container>
 			{storyType === "still" ?
 				stillImages?.map((node, index) => {
-					return <ImageWrapper><Image 
-						key={index}
+					return <ImageWrapper key={index}><Image 
 						src={node.stillImage.sourceUrl}
 						alt={node.stillImage.altText}
 						width={node.stillImage.mediaDetails.width}

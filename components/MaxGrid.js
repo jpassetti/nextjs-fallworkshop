@@ -9,7 +9,7 @@ const MaxGrid = ({stories}) => {
 	const router = useRouter();
 	return <div className={styles.maxgrid}>
 		{stories.map((story, index) => {
-			const {slug} = story;
+			const {slug} = story.node;
 			return <MaxGrid.Item key={index} story={story} clickHandler={(e) => {
 				e.preventDefault()
 				router.push(`/2022/stories/${slug}`)
