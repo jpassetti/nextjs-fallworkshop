@@ -13,5 +13,6 @@
 		padding: 3rem 0;
 	}
 	@include mixins.backgroundColors();
+	@include mixins.marginAndPadding();
 }
 

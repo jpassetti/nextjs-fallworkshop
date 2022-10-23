@@ -8,7 +8,6 @@ import Person from './Person'
 
 const Story = ({story}) => {
 	
-
 	const {title, slug, excerpt, featuredImage, storyInformation} = story.node;
 	const {storyType, coaches, students} = storyInformation;
 
