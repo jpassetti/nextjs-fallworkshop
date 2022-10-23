@@ -8,14 +8,14 @@ import Wordmark from './Wordmark'
 
 import styles from './header.module.scss'
 
-const Header = () => {
+const Header = ({inside}) => {
 	return <header className={styles.header}>
 		<MobileNav />
 		<Container>
 			<Row alignItems="center" justifyContent="center" flexDirection="column">
 				<Logo />
 				<Wordmark />
-				<Nav />
+				<Nav inside />
 			</Row>
 		</Container>
 	</header>

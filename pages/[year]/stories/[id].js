@@ -47,7 +47,7 @@ export async function getStaticProps({ params }) {
 const SingleStory = ({storyData}) => {
 	const {title, storyInformation, content, excerpt, featuredImage} = storyData;
 	const {storyType, stillImages, photoGalleries, videos, students, coaches} = storyInformation;
-	return <Layout>
+	return <Layout inside>
 		<Head>
 			{title && <title>{title} | The Alexia Fall Workshop</title>}
 			{title && <meta property="og:title" content={`${title} | The Alexia Fall Workshop`} key="title" />}
