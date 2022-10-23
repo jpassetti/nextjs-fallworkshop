@@ -10,7 +10,7 @@ import styles from './header.module.scss'
 
 const Header = ({inside}) => {
 	return <header className={styles.header}>
-		<MobileNav />
+		<MobileNav inside />
 		<Container>
 			<Row alignItems="center" justifyContent="center" flexDirection="column">
 				<Logo />

@@ -3,8 +3,9 @@ import { scroller } from 'react-scroll'
 import ButtonUI from './ButtonUI'
 import styles from './mobilenav.module.scss'
 import { getNavLinks } from '../lib/api'
+import Link from 'next/link'
 
-const MobileNav = () => {
+const MobileNav = ({ inside }) => {
 	const [isMenuActive, setMenuActive] = useState(false);
 	const navLinks = getNavLinks();
 	return <>
@@ -23,7 +24,14 @@ const MobileNav = () => {
 				<ul>
 			{navLinks.map((navLink, index) => {
 				const { label, id} = navLink;
-				return <li key={index}>
+				return inside ? 
+					<li key={index}>
+						<Link href={`/#${id}`}>
+						<a>
+							{label}
+						</a>
+						</Link></li>
+				: <li key={index}>
 					<a 
 					href=""
 					onClick={(e) => {
