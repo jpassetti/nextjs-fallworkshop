@@ -1,3 +1,5 @@
+import {Fragment} from 'react'
+
 import Col from '../../../components/Col'
 import Container from '../../../components/Container'
 import Group from '../../../components/Group'
@@ -49,9 +51,22 @@ const SingleStory = ({storyData}) => {
 	const {storyType, stillImages, photoGalleries, videos, students, coaches} = storyInformation;
 	return <Layout inside>
 		<Head>
-			{title && <title>{title} | The Alexia Fall Workshop</title>}
-			{title && <meta property="og:title" content={`${title} | The Alexia Fall Workshop`} key="title" />}
-			{excerpt && <meta name="description" content={excerpt} />}
+			{title && <Fragment>
+				<title>{title} | The Alexia Fall Workshop</title>
+				<meta property="og:title" content={`${title} | The Alexia Fall Workshop`} key="title" />
+			</Fragment>}
+			{excerpt && <Fragment>
+				<meta name="description" content={excerpt} />
+				<meta property="og:description" content={excerpt} />
+			</Fragment>}
+			{featuredImage && <Fragment>
+				<meta
+					property="og:image"
+					content={featuredImage.node.sourceUrl}
+				/>
+				<meta property="og:image:width" content={featuredImage.node.mediaDetails.width} />
+				<meta property="og:image:height" content={featuredImage.node.mediaDetails.height} />
+			</Fragment>}
 		</Head>
 		<Container>
 			{storyType === "still" ?
