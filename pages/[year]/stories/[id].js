@@ -75,7 +75,7 @@ const SingleStory = ({storyData}) => {
 				
 			: storyType === "photo_gallery" ?
 				photoGalleries?.map((photoGallery, index) => {
-					return <PhotoGallery title={title} coverImage={featuredImage.node} photoGallery={photoGallery} key={index} />
+					return <PhotoGallery title={title} coverImage={featuredImage?.node} photoGallery={photoGallery} key={index} />
 				})
 			: ''}
 			<Row justifyContent="center" marginTop="6" marginBottom="4">
@@ -98,7 +98,7 @@ const SingleStory = ({storyData}) => {
 				</Col>
 				<Col md="3" textAlign="left" paddingLeft="3" borderLeft="1">
 					<Heading level="4" textTransform="uppercase" color="orange" marginBottom="1">Produced by</Heading>
-					{students && 
+					{(students && students.length > 0) &&
 					<Group>			
 						{students?.map((student, index) => {
 							return <Person person={student} teaser key={index} />
@@ -106,7 +106,7 @@ const SingleStory = ({storyData}) => {
 					</Group>	
 					}
 					<Heading level="4" textTransform="uppercase" color="orange" marginBottom="1" marginTop="2">Coached by</Heading>
-					{coaches && 
+					{(coaches && coaches.length > 0) &&
 					<Group>
 						{coaches?.map((coach, index) => {
 							return <Person person={coach} teaser key={index} />

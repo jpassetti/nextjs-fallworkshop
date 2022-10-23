@@ -57,12 +57,13 @@ const PhotoGallery = ({coverImage, photoGallery, title}) => {
 			}}
       	/>
 	 	<div className={styles.photoGalleryCover} onClick={() => setAdvancedExampleOpen(true)} >
-			<Image 
+			{coverImage && <Image 
 				src={coverImage.sourceUrl}
 				alt={coverImage.altText}
 				width={coverImage.mediaDetails.width}
 				height={coverImage.mediaDetails.height}
 			/>
+			}
 			<button className={styles.photoGalleryIcon} tabIndex="0"><Icon icon="images" color="white" /></button>
 		</div>
 	</div>
