@@ -25,24 +25,28 @@ const Item = ({story, clickHandler}) => {
 	const formattedStoryType = getFormattedStoryType(storyType);
 	return <article className={styles.maxgrid_item} onClick={clickHandler}>
 		<Link href={`/2022/stories/${slug}`}>
-			<a>
+			<a>{featuredImage &&
 				<Image 
 					src={featuredImage.node.sourceUrl}
 					alt={featuredImage.node.altText}
 					width={featuredImage.node.mediaDetails.width}
 					height={featuredImage.node.mediaDetails.height}
 				/>
+				}
 			</a>
 		</Link>
 		<div className={styles.maxgrid_text}>
 			{storyType && <Heading level="5" fontWeight="normal" textTransform="uppercase" marginBottom="2" color="white" textAlign="center">{formattedStoryType}</Heading>}
-			{title && <Heading level="3" marginBottom="2" color="white" textAlign="center">
-			<Link href={`/2022/stories/${slug}`}>
-				<a>
-					{title}
-				</a>
-			</Link>
-		</Heading>}
+			{
+			title && 
+				<Heading level="3" marginBottom="2" color="white" textAlign="center">
+					<Link href={`/2022/stories/${slug}`}>
+						<a>
+							{title}
+						</a>
+					</Link>
+				</Heading>
+			}
 		{students && 
 			students.map((student, index) => {
 				const {firstName, lastName} = student.personInformation;
