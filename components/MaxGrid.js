@@ -21,7 +21,7 @@ export default MaxGrid;
 const Item = ({story, clickHandler}) => {
 	 
 	const {title, featuredImage, slug, storyInformation} = story.node;
-	const {storyType} = storyInformation;
+	const {storyType, students} = storyInformation;
 	const formattedStoryType = getFormattedStoryType(storyType);
 	return <article className={styles.maxgrid_item} onClick={clickHandler}>
 		<Link href={`/2022/stories/${slug}`}>
