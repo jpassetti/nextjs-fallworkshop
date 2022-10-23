@@ -20,7 +20,7 @@ const MaxGrid = ({stories}) => {
 export default MaxGrid;
 const Item = ({story, clickHandler}) => {
 	 
-	const {title, featuredImage, slug, storyInformation} = story;
+	const {title, featuredImage, slug, storyInformation} = story.node;
 	const {storyType} = storyInformation;
 	const formattedStoryType = getFormattedStoryType(storyType);
 	return <article className={styles.maxgrid_item} onClick={clickHandler}>
