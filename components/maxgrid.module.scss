@@ -14,21 +14,21 @@
 	}
 }
 .maxgrid_item {
-	//background-color: orange;
+	background-color: variables.$color__blue;
 	width: 100%;
+	height: 300px;
 	position: relative;
-	overflow: hidden;
 	cursor: pointer;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
 	span {
 		position: static !important;
 	}
-	&::after {
+	&::before {
 		content: '';
 		width: 100%;
 		height: 100%;
-		position: absolute;
-		top: 0;
-		left: 0;
 		display: block;
 		background-color: rgba(0,0,0,.3);
 		transition: all .5s;
@@ -47,6 +47,10 @@
 		&::after {
 			background-color: rgba(0, 0, 0, .6);
 		}
+	}
+	&.height_2x {
+		height: 600px;
+		grid-row: span 2;
 	}
 }
 

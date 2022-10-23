@@ -1,9 +1,14 @@
+import classNames from 'classnames/bind';
+
+
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Heading from './Heading'
 import Link from 'next/link'
 import { getFormattedStoryType } from '../lib/utilities'
 import styles from './maxgrid.module.scss'
+
+let cx = classNames.bind(styles);
 
 const MaxGrid = ({stories}) => {
 	const router = useRouter();
@@ -23,18 +28,18 @@ const Item = ({story, clickHandler}) => {
 	const {title, featuredImage, slug, storyInformation} = story.node;
 	const {storyType, students} = storyInformation;
 	const formattedStoryType = getFormattedStoryType(storyType);
-	return <article className={styles.maxgrid_item} onClick={clickHandler}>
-		<Link href={`/2022/stories/${slug}`}>
-			<a>{featuredImage &&
-				<Image 
-					src={featuredImage.node.sourceUrl}
-					alt={featuredImage.node.altText}
-					width={featuredImage.node.mediaDetails.width}
-					height={featuredImage.node.mediaDetails.height}
-				/>
-				}
-			</a>
-		</Link>
+
+	let gridItemClasses = cx({
+		[`maxgrid_item`] : true,
+		[`height_2x`] : featuredImage && (featuredImage.node.mediaDetails.height > featuredImage.node.mediaDetails.width)
+	});
+	return <article 
+		className={gridItemClasses} 
+		onClick={clickHandler}
+		style={{
+			backgroundImage: `url(${featuredImage ? featuredImage.node.sourceUrl : ''})`
+		}}
+		>
 		<div className={styles.maxgrid_text}>
 			{storyType && <Heading level="5" fontWeight="normal" textTransform="uppercase" marginBottom="2" color="white" textAlign="center">{formattedStoryType}</Heading>}
 			{
