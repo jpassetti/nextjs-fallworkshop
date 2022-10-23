@@ -49,6 +49,10 @@ const Home = ({people, sponsors, schedule, stories}) => {
 			<meta name='robots' content='index,follow' />
 			<meta name='url' content='https://fallworkshop.newhouse.syr.edu' />
 			<meta name='og:url' content='https://fallworkshop.newhouse.syr.edu' />
+			<meta name='og:locality' content='Syracuse' />
+			<meta name='og:region' content='NY' />
+			<meta name='og:postal-code' content='13244' />
+			<meta name='og:country-name' content='USA' />
 		</Head>
 		<About />
 		{stories && 

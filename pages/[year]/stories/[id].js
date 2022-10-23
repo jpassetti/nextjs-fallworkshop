@@ -69,10 +69,7 @@ const SingleStory = ({storyData}) => {
 			</Fragment>}
 			<meta name='url' content={`https://fallworkshop.newhouse.syr.edu/2022/stories/${slug}`} />
 			<meta name='og:url' content={`https://fallworkshop.newhouse.syr.edu/2022/stories/${slug}`} />
-			<meta name='og:locality' content='Syracuse' />
-			<meta name='og:region' content='NY' />
-			<meta name='og:postal-code' content='13244' />
-			<meta name='og:country-name' content='USA' />
+			
 		</Head>
 		<Container>
 			{storyType === "still" ?
