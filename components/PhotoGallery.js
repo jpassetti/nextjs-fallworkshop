@@ -24,21 +24,30 @@ import "yet-another-react-lightbox/plugins/thumbnails.css";
 
 
 const PhotoGallery = ({coverImage, photoGallery, title}) => {
-	  const [basicExampleOpen, setBasicExampleOpen] = useState(false);
-  const [advancedExampleOpen, setAdvancedExampleOpen] = useState(false);
+	const [basicExampleOpen, setBasicExampleOpen] = useState(false);
+	const [advancedExampleOpen, setAdvancedExampleOpen] = useState(false);
 
+	
+	// filter out slides that are null by accident
+  	const filteredSlides = photoGallery.photoGallery.filter(slide => slide.image !== null);
 
- const slides = photoGallery.photoGallery.map((slide, index) => {
+ 	const slides = filteredSlides.map((slide, index) => {
 	const {image} = slide;
-	const {sourceUrl, altText, mediaDetails, description, caption} = image;
-	return {
-		key: index,
-		src: sourceUrl,
-		title: title,
-		width: mediaDetails.width,
-		height: mediaDetails.height,
-		description: caption
+	if (image) {
+		const {sourceUrl, altText, mediaDetails, description, caption} = image;
+		return {
+			key: index,
+			src: sourceUrl,
+			alt: altText,
+			title: title,
+			width: mediaDetails.width,
+			height: mediaDetails.height,
+			description: caption
+		}
+	} else {
+		return null;
 	}
+	
  });
 
 	return <div className={styles.photoGalleryContainer}>
