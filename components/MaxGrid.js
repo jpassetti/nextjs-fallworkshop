@@ -46,7 +46,7 @@ const Item = ({story, clickHandler}) => {
 		{students && 
 			students.map((student, index) => {
 				const {firstName, lastName} = student.personInformation;
-				return <Heading level="4" color="white" textAlign="center" fontWeight="normal">By {firstName} {lastName}</Heading> 
+				return <Heading key={index} level="4" color="white" textAlign="center" fontWeight="normal">By {firstName} {lastName}</Heading> 
 			})
 		}
 			
