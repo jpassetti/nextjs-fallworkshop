@@ -24,10 +24,8 @@ import "yet-another-react-lightbox/plugins/thumbnails.css";
 
 
 const PhotoGallery = ({coverImage, photoGallery, title}) => {
-	const [basicExampleOpen, setBasicExampleOpen] = useState(false);
 	const [advancedExampleOpen, setAdvancedExampleOpen] = useState(false);
 
-	
 	// filter out slides that are null by accident
   	const filteredSlides = photoGallery.photoGallery.filter(slide => slide.image !== null);
 
