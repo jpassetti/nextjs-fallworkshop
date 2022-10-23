@@ -98,7 +98,7 @@ const SingleStory = ({storyData}) => {
 					<Heading level="4" textTransform="uppercase" color="orange" marginBottom="1">Produced by</Heading>
 					{students && 
 					<Group>			
-						{students.map((student, index) => {
+						{students?.map((student, index) => {
 							return <Person person={student} teaser key={index} />
 						})}
 					</Group>	
@@ -106,7 +106,7 @@ const SingleStory = ({storyData}) => {
 					<Heading level="4" textTransform="uppercase" color="orange" marginBottom="1" marginTop="2">Coached by</Heading>
 					{coaches && 
 					<Group>
-						{coaches.map((coach, index) => {
+						{coaches?.map((coach, index) => {
 							return <Person person={coach} teaser key={index} />
 						})}
 					</Group>
