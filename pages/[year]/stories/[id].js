@@ -81,7 +81,7 @@ const SingleStory = ({storyData}) => {
 			<Row justifyContent="center" marginTop="6" marginBottom="4">
 				<Col md="6" textAlign="left">
 					<Heading level="4" textTransform="uppercase" color="orange" marginBottom="2">
-						<Link href={`/2022/stories`}>
+						<Link href={`/#stories`}>
 							<a>
 								&laquo; Back to Stories
 							</a>
