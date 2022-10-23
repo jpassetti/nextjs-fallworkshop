@@ -112,7 +112,7 @@ const sampleStories = [
 ];
 
 const Stories = ({stories}) => {
-	return <Section id="stories" title="Stories" backgroundColor="white" paddingBottom={stories.length > 0 ? 0 : 4}>
+	return <Section id="stories" title="Stories" backgroundColor="white" paddingBottom={stories.length > 0 ? "0" : "4"}>
 		{stories.length > 0 ? 
 			<MaxGrid stories={stories} />
 		: 
