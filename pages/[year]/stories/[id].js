@@ -49,22 +49,20 @@ const SingleStory = ({storyData}) => {
 	const {storyType, stillImages, photoGalleries, videos, students, coaches} = storyInformation;
 	return <Layout>
 		<Head>
-			<title>{title} | The Alexia Fall Workshop</title>
-			<meta charSet="UTF-8" />
-			<meta property="og:type" content="website" />
-        	<meta name="viewport" content="initial-scale=1.0, width=device-width" />
-			<meta property="og:title" content={`${title} | The Alexia Fall Workshop`} key="title" />
-			<meta name="description" content={excerpt} />
+			{title && <title>{title} | The Alexia Fall Workshop</title>}
+			{title && <meta property="og:title" content={`${title} | The Alexia Fall Workshop`} key="title" />}
+			{excerpt && <meta name="description" content={excerpt} />}
 		</Head>
 		<Container>
 			{storyType === "still" ?
 				stillImages?.map((node, index) => {
-					return <ImageWrapper key={index}><Image 
+					return <ImageWrapper key={index}>
+						<Image 
 						src={node.stillImage.sourceUrl}
 						alt={node.stillImage.altText}
 						width={node.stillImage.mediaDetails.width}
 						height={node.stillImage.mediaDetails.height}
-					/>
+						/>
 					{node.stillImage.caption &&
 						<Paragraph marginTop="1" marginBottom="2">{node.stillImage.caption}</Paragraph>
 					}
@@ -89,8 +87,12 @@ const SingleStory = ({storyData}) => {
 							</a>
 						</Link>
 						</Heading>
-					<Heading level="1" marginBottom="2" size="small">{title}</Heading>
-					<div style={{"marginBottom" : "1rem"}} dangerouslySetInnerHTML={{__html:content}}></div>
+					{title && 
+						<Heading level="1" marginBottom="2" size="small">{title}</Heading>
+					}
+					{content && 
+						<div style={{"marginBottom" : "1rem"}} dangerouslySetInnerHTML={{__html:content}}></div>
+					}
 					
 					
 				</Col>
