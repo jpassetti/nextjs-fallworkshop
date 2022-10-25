@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Heading from './Heading'
 import Link from 'next/link'
-import { getFormattedStoryType } from '../lib/utilities'
+import { getFormattedStoryType, formatArrayToStringWithCommas } from '../lib/utilities'
 import styles from './maxgrid.module.scss'
 
 let cx = classNames.bind(styles);
@@ -28,6 +28,15 @@ const Item = ({story, clickHandler}) => {
 	const {title, featuredImage, slug, storyInformation} = story.node;
 	const {storyType, students} = storyInformation;
 	const formattedStoryType = getFormattedStoryType(storyType);
+	console.log(students);
+
+	let formattedStudents;
+	if (students) {
+		formattedStudents = formatArrayToStringWithCommas(students);
+	} else {
+		formattedStudents = null;
+	}
+	 
 
 	let gridItemClasses = cx({
 		[`maxgrid_item`] : true,
@@ -42,8 +51,7 @@ const Item = ({story, clickHandler}) => {
 		>
 		<div className={styles.maxgrid_text}>
 			{storyType && <Heading level="5" fontWeight="normal" textTransform="uppercase" marginBottom="2" color="white" textAlign="center">{formattedStoryType}</Heading>}
-			{
-			title && 
+			{title && 
 				<Heading level="3" marginBottom="2" color="white" textAlign="center">
 					<Link href={`/2022/stories/${slug}`}>
 						<a>
@@ -52,12 +60,9 @@ const Item = ({story, clickHandler}) => {
 					</Link>
 				</Heading>
 			}
-		{students && 
-			students.map((student, index) => {
-				const {firstName, lastName} = student.personInformation;
-				return <Heading key={index} level="4" color="white" textAlign="center" fontWeight="normal">By {firstName} {lastName}</Heading> 
-			})
-		}
+			{students && 
+				<Heading level="4" color="white" textAlign="center" fontWeight="normal">By {formattedStudents}</Heading> 
+			}
 			
 		</div>
 	</article>

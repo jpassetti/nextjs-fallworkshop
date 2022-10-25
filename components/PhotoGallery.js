@@ -1,5 +1,5 @@
 import {useState} from 'react'
-
+import {decode} from 'html-entities';
 import Image from 'next/image'
 import ImageWrapper from './ImageWrapper'
 import Icon from './Icon'
@@ -40,7 +40,7 @@ const PhotoGallery = ({coverImage, photoGallery, title}) => {
 			title: title,
 			width: mediaDetails.width,
 			height: mediaDetails.height,
-			description: caption
+			description: decode(caption)
 		}
 	} else {
 		return null;
