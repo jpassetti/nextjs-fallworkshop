@@ -28,7 +28,7 @@ const Item = ({story, clickHandler}) => {
 	const {title, featuredImage, slug, storyInformation} = story.node;
 	const {storyType, students} = storyInformation;
 	const formattedStoryType = getFormattedStoryType(storyType);
-	console.log(students);
+	//console.log(students);
 
 	let formattedStudents;
 	if (students) {
