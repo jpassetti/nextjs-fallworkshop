@@ -12,7 +12,7 @@ const Footer = () => {
 			<Paragraph color="white" marginBottom="4">
 				<a style={{color: "white", margin: "1rem"}} target="_blank" href="https://www.syracuse.edu/life/accessibility-diversity/accessible-syracuse/">Accessibility</a> 
 				<a style={{color: "white", margin: "1rem"}} target="_blank" href="https://www.syracuse.edu/about/site/privacy-policy/">Privacy</a></Paragraph>
-			<Logo invert />
+			<a href="https://newhouse.syr.edu" target="_blank"><Logo invert /></a>
 		</Container>
 	</footer>
 }
