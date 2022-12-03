@@ -15,6 +15,7 @@ import PhotoGallery from '../../../components/PhotoGallery'
 import Row from '../../../components/Row'
 import Vimeo from '../../../components/Vimeo'
 import { getAllStorySlugs, getStoryBySlug } from '../../../lib/api'
+import SEO from '../../../components/SEO'
 
 
 export async function getStaticPaths() {
@@ -50,27 +51,17 @@ const SingleStory = ({storyData}) => {
 	const {title, slug, storyInformation, content, excerpt, featuredImage} = storyData;
 	const {storyType, stillImages, photoGalleries, videos, students, coaches} = storyInformation;
 	return <Layout inside>
-		<Head>
-			{title && <Fragment>
-				<title>{title} | The Alexia Fall Workshop</title>
-				<meta property="og:title" content={`${title} | The Alexia Fall Workshop`} key="title" />
-			</Fragment>}
-			{excerpt && <Fragment>
-				<meta name="description" content={excerpt} />
-				<meta property="og:description" content={excerpt} />
-			</Fragment>}
-			{featuredImage && <Fragment>
-				<meta
-					property="og:image"
-					content={featuredImage.node.sourceUrl}
-				/>
-				<meta property="og:image:width" content={featuredImage.node.mediaDetails.width} />
-				<meta property="og:image:height" content={featuredImage.node.mediaDetails.height} />
-			</Fragment>}
-			<meta name='url' content={`https://fallworkshop.newhouse.syr.edu/2022/stories/${slug}`} />
-			<meta name='og:url' content={`https://fallworkshop.newhouse.syr.edu/2022/stories/${slug}`} />
-			
-		</Head>
+		<SEO 
+			title={title ? title : null}
+			description={excerpt ? excerpt : null}
+			image={{
+				src: featuredImage ? featuredImage.node.sourceUrl : null,
+				alt: featuredImage ? featuredImage.node.altText : null,
+				width: featuredImage ? featuredImage.node.mediaDetails.width : null,
+				height: featuredImage ? featuredImage.node.mediaDetails.height : null,
+			}}
+			url={`https://fallworkshop.newhouse.syr.edu/2022/stories/${slug}`}
+		/>
 		<Container>
 			{storyType === "still" ?
 				stillImages?.map((node, index) => {
