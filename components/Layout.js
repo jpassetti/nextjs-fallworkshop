@@ -6,7 +6,7 @@ import Header from './Header'
 import Main from './Main'
 import SEO from './SEO'
 
-const Layout = ({children, inside}) => {
+const Layout = ({children, inside = false}) => {
 	return <Fragment>
 		<SEO
 			title="The Alexia Fall Workshop | Newhouse School at Syracuse University"
@@ -20,7 +20,7 @@ const Layout = ({children, inside}) => {
 			}}
 			url="https://fallworkshop.newhouse.syr.edu"
     />
-		<Header inside />
+		<Header inside={inside ? true : false} />
 		<Main>
 			{children}
 		</Main>

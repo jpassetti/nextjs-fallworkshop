@@ -13,7 +13,7 @@ const Person = ({person, role, teaser, invert}) => {
 	const {firstName, lastName, jobs, linksInformation, rolesPerYear} = personInformation;
 	return teaser ? 
 		<div className={styles.person_teaser_row}>
-			{featuredImage &&
+			{featuredImage ?
 				<Image 
 				src={featuredImage.node.sourceUrl}
 				alt={featuredImage.node.altText}
@@ -21,7 +21,7 @@ const Person = ({person, role, teaser, invert}) => {
 				height={featuredImage.node.mediaDetails.height}
 				className={styles.personImage}
 				/>
-			}
+			: <div className={styles.personImage} />}
 			<Heading level="4" color={invert ? "white" : ""}>
 				{firstName ? firstName : ''} {lastName ? lastName : ''}
 			</Heading>

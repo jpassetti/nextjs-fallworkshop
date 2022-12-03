@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { scroller } from 'react-scroll'
+import { scroller, Events } from 'react-scroll'
 import ButtonUI from './ButtonUI'
 import styles from './mobilenav.module.scss'
 import { getNavLinks } from '../lib/api'
 import Link from 'next/link'
 
-const MobileNav = ({ inside }) => {
+const MobileNav = ({ inside = false }) => {
 	const [isMenuActive, setMenuActive] = useState(false);
 	const navLinks = getNavLinks();
 	return <>
@@ -18,8 +18,8 @@ const MobileNav = ({ inside }) => {
 	{isMenuActive && 
 		<div className={styles.overlay}>
 			<ButtonUI icon="close" color="white" id="closeBtn" clickHandler={(e) => {
-			e.preventDefault();
-			setMenuActive(false)
+				e.preventDefault();
+				setMenuActive(false);
 			}}>Close</ButtonUI>
 				<ul>
 			{navLinks.map((navLink, index) => {
@@ -42,7 +42,10 @@ const MobileNav = ({ inside }) => {
 							delay: 0,
 							smooth: true,
 						});
-						setMenuActive(false)
+						Events.scrollEvent.register('end', function(to, element) {
+							//console.log('end', to, element);
+							setMenuActive(false);
+						});
 					}}
 					>
 					{label}
