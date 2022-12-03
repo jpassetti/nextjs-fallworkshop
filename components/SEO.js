@@ -46,6 +46,7 @@ const SEO = ({
             />
             <meta property="og:image:width" content={image.width} />
             <meta property="og:image:height" content={image.height} />
+            <meta name="og:image:alt" content={image.alt} />
             <meta name="twitter:image:alt" content={image.alt} />
         </Fragment>
     }
