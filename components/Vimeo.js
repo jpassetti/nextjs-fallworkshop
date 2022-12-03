@@ -4,7 +4,7 @@ import styles from './vimeo.module.scss';
 let cx = classNames.bind(styles);
 
 const Vimeo = ({src}) => {
-	console.log({src});
+	//console.log({src});
 	const vimeoClasses = cx({
 		[`embed-responsive`] : true,
 		[`embed-responsive-16by9`] : true
