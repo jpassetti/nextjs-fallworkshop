@@ -24,6 +24,7 @@ const MobileNav = ({ inside = false }) => {
 				<ul>
 			{navLinks.map((navLink, index) => {
 				const { label, id} = navLink;
+				console.log({inside});
 				return inside ? 
 					<li key={index}>
 						<Link href={`/#${id}`}>
@@ -37,7 +38,7 @@ const MobileNav = ({ inside = false }) => {
 					onClick={(e) => {
 						e.preventDefault();
 						//console.log("clicked");
-						scroller.scrollTo(id, {
+						scroller.scrollTo(`/#${id}`, {
 							duration: 800,
 							delay: 0,
 							smooth: true,

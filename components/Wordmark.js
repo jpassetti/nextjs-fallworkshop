@@ -12,7 +12,7 @@ const Wordmark = () => {
 				</a>
 			</Link>
 		</h1>
-		<Paragraph textAlign="center" fontWeight="bold">Oct. 20-23, 2022</Paragraph>
+		<Paragraph textAlign="center" fontWeight="bold">Oct. 12-15, 2023</Paragraph>
 	</div>
 }
 export default Wordmark;

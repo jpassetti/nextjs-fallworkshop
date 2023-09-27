@@ -12,10 +12,11 @@ import { getPeopleByYear, getSponsorsByYear, getScheduleDays, getStoriesByYear }
 
 export async function getStaticProps() {
   // Get external data from the file system, API, DB, etc.
-	const people = await getPeopleByYear("2022");
-	const sponsors = await getSponsorsByYear("2022");
-	const schedule = await getScheduleDays("2022");
-	const stories = await getStoriesByYear("2022");
+  	const activeYear = "2023";
+	const people = await getPeopleByYear(activeYear);
+	const sponsors = await getSponsorsByYear(activeYear);
+	const schedule = await getScheduleDays(activeYear);
+	const stories = await getStoriesByYear(activeYear);
   // The value of the `props` key will be
   //  passed to the `Home` component
   return {
