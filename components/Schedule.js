@@ -55,7 +55,7 @@ const formatTimeDuration = (date) => {
 }
 
 const Schedule = ({schedule}) => {
-	console.log({schedule});
+	//console.log({schedule});
 	const [activeTab, setActiveTab] = useState(0);
 	const {title, scheduleInformation} = schedule;
 	const {days} = scheduleInformation;
@@ -125,8 +125,8 @@ const Item = ({event}) => {
 	const formattedRoom = getFormattedLocation(location);
 	const {name, number, building} = formattedRoom;
 	const formattedTimeDuration = formatTimeDuration(date);
-	return <Row tr alignItems="center">
-		<Col textAlign="center" xs="12" sm="4" td flexOrder="xs:2 sm:1">{formattedTimeDuration}</Col>
+	return <Row tr alignItems="flex-start">
+		<Col textAlign="center" xs="12" sm="4" td flexOrder="xs:2 sm:1" paddingTop="2">{formattedTimeDuration}</Col>
 		<Col textAlign="center" xs="12" sm="4" td flexOrder="xs:1 sm:2" paddingTop="2">
 			{eventType !== "none" ? 
 				<Heading level="4" textAlign="center" marginBottom="2" textTransform="uppercase" color="orange">{eventType}</Heading> 
@@ -162,7 +162,7 @@ const Item = ({event}) => {
 				</div>
 			})}
 			</Col>
-		<Col textAlign="center" xs="12" sm="4" td flexOrder="xs:3 sm:3">{name ? name : ''}<br />
+		<Col textAlign="center" xs="12" sm="4" td flexOrder="xs:3 sm:3" paddingTop="2">{name ? name : ''}<br />
 		{number ? number : ''} {building ? building : ''}</Col>
 	</Row>
 		
