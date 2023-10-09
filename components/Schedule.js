@@ -1,5 +1,5 @@
 import * as moment from 'moment'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import Button from './Button'
 import Col from './Col'
@@ -55,9 +55,37 @@ const formatTimeDuration = (date) => {
 }
 
 const Schedule = ({schedule}) => {
+	console.log({schedule});
 	const [activeTab, setActiveTab] = useState(0);
 	const {title, scheduleInformation} = schedule;
 	const {days} = scheduleInformation;
+
+	const getCurrentDate = () => {
+		const today = new Date();
+		const year = today.getFullYear();
+		const month = String(today.getMonth() + 1).padStart(2, '0');
+		const day = String(today.getDate()).padStart(2, '0');
+		return `${year}${month}${day}`;
+	  };
+
+	useEffect(() => {
+		const currentDate = getCurrentDate();
+		const firstDate = days[0].dayDate;
+		const lastDate = days[days.length - 1].dayDate;
+	
+		if (currentDate <= firstDate) {
+		  setActiveTab(0);
+		} else if (currentDate >= lastDate) {
+		  setActiveTab(days.length - 1);
+		} else {
+		  const index = days.findIndex(day => day.dayDate === currentDate);
+		  if (index !== -1) {
+			setActiveTab(index);
+		  }
+		}
+	}, []);
+
+	
 	return <Section id="schedule" title="Schedule" backgroundColor="orange_10">
 			<Container>
 				<Tabs>
