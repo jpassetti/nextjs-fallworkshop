@@ -4,6 +4,7 @@ import styles from './row.module.scss'
 let cx = classNames.bind(styles)
 
 const Row = ({
+	borderBottom,
 	children, 
 	alignItems, 
 	justifyContent, 
@@ -34,6 +35,7 @@ const Row = ({
 		[`padding-bottom-${paddingBottom}`]: paddingBottom,
 		[`padding-left-${paddingLeft}`]: paddingLeft,
 		[`padding-all-${paddingAll}`] : paddingAll,
+		[`border-bottom-${borderBottom}`] : borderBottom,
 	});
 	return <div className={rowClasses}>{children}</div>
 }

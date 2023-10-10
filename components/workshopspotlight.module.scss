@@ -1,0 +1,12 @@
+@use '../styles/variables';
+@use '../styles/mixins';
+
+
+.workshop_spotlight {
+    background-color: variables.$color__blue;
+    color: white;
+}
+.speakerImage {
+    width: 100%;
+    height: auto;
+}

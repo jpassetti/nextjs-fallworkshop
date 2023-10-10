@@ -15,44 +15,8 @@ import Tabs from './Tabs'
 
 import styles from './schedule.module.scss'
 
-import { getFormattedLocation } from '../lib/api'
+import { formatTimeDuration, getFormattedLocation } from '../lib/utilities'
 
-const formatTimeDuration = (date) => {
-	const { startTime, endTime } = date;
-	const startTimeSplit = startTime.split(" ");
-	const startHour = startTimeSplit[0].split(":")[0];
-	const startMinutes = startTimeSplit[0].split(":")[1];
-	const startAMPM = startTimeSplit[1];
-	const startFormatted = startMinutes !== "00" ? `${startHour}:${startMinutes}` : `${startHour}`;
-
-	const endTimeSplit = endTime ? endTime.split(" ") : null;
-	const endHour = endTime ? endTimeSplit[0].split(":")[0] : null;
-	const endMinutes = endTime ? endTimeSplit[0].split(":")[1] : null;
-	const endAMPM = endTime ? endTimeSplit[1] : null;
-	const endFormatted = endTime && endMinutes !== "00" ? `${endHour}:${endMinutes}` : endHour ? `${endHour}` : null;
-
-
-	let formattedDuration;
-	if(endTime) {
-		// yes endTime
-		if (startAMPM === "am" & endAMPM === "am") {
-			formattedDuration = `${startFormatted}-${endFormatted} a.m.`;
-		} else if (startAMPM === "pm" & endAMPM === "pm") {
-			formattedDuration = `${startFormatted}-${endFormatted} p.m.`;
-		} else {
-			formattedDuration = `${startFormatted} a.m.-${endFormatted} p.m.`;
-		}
-	} else {
-		// no endTime
-		if (startAMPM === "am") {
-			formattedDuration = `${startFormatted} a.m.`;
-		} else {
-			formattedDuration = `${startFormatted} p.m.`;
-		}
-	}
-
-	return formattedDuration;
-}
 
 const Schedule = ({schedule}) => {
 	//console.log({schedule});
