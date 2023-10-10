@@ -13,7 +13,7 @@ import styles from './workshopspotlight.module.scss';
 import { formatTimeDuration, getFormattedLocation, getFormattedDate } from '../lib/utilities';
 
 const WorkshopSpotlight = ({ workshops }) => {
-    return <Section backgroundColor="blue" title="Workshops">
+    return <Section backgroundColor="blue" title="Workshops" id="workshops">
         <Container content>
         {workshops?.map((workshop, index)=> {
             const {workshop:workshopProp, dayDate} = workshop;
