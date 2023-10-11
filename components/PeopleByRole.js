@@ -19,7 +19,9 @@ const PeopleByRole = ({role, plural, people}) => {
 			<Row justifyContent="center">
 			{
 				alphabetizedPeople.map((person, index) => {
-					return <Col xs="6" sm="6" md="4" lg="3" key={index}><Person role={role} person={person.node} /></Col>
+					return <Col xs="6" sm="6" md="4" lg="3" key={index}>
+						<Person role={role} person={person.node} />
+						</Col>
 				})
 			}
 		</Row>

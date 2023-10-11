@@ -45,7 +45,7 @@ const Person = ({person, role, teaser, invert}) => {
 			</Heading>
 			<ul className={styles.metaInformation}>
 			{role === "staff" ? 
-				rolesPerYear?.filter((rolePerYear => rolePerYear.year === "2022"))
+				rolesPerYear?.filter((rolePerYear => rolePerYear.year === "2023"))
 				.map((rolePerYear, index) => {
 					return <li key={index}><span className={styles.job}>{rolePerYear.title}</span></li>
 				})
