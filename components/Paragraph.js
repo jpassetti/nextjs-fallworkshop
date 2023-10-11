@@ -5,8 +5,10 @@ let cx = classNames.bind(styles);
 
 const Paragraph = ({
 	type, 
+	caps,
 	children, 
 	className,
+	condensed,
 	color,
 	diminish,
 	marginBottom, 
@@ -23,7 +25,9 @@ const Paragraph = ({
 		diminish : diminish,
 		[`text-align-${textAlign}`] : textAlign,
 		[`font-weight-${fontWeight}`] : fontWeight,
-		[`font-color-${color}`] : color
+		[`font-color-${color}`] : color,
+		[`condensed`]: condensed,
+		[`caps`]: caps
 	});
 	return <p className={`${paragraphClasses} ${className}`}>{children}</p>
 }

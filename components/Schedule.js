@@ -126,8 +126,8 @@ const Item = ({event}) => {
 				</div>
 			})}
 			</Col>
-		<Col textAlign="center" xs="12" sm="4" td flexOrder="xs:3 sm:3" paddingTop="2">{name ? name : ''}<br />
-		{number ? number : ''} {building ? building : ''}</Col>
+		<Col textAlign="center" xs="12" sm="4" td flexOrder="xs:3 sm:3" paddingTop="2"><Paragraph condensed caps>{name ? name : ''}<br />
+		{number ? number : ''} {building ? building : ''}</Paragraph></Col>
 	</Row>
 		
 }

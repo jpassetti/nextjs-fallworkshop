@@ -34,6 +34,12 @@
 	&.diminish {
 		opacity: 0.7;
 	}
+	&.condensed {
+		font-family: variables.$font__roboto_condensed;
+	}
+	&.caps {
+		text-transform: uppercase;
+	}
 
 	@include mixins.marginAndPadding();
 	@include mixins.textAlign();

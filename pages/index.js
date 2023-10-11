@@ -9,7 +9,9 @@ import Staff from '../components/Staff'
 import Stories from '../components/Stories'
 import WorkshopSpotlight from '../components/WorkshopSpotlight'
 
-import { getPeopleByYear, getSponsorsByYear, getScheduleDays, getStoriesByYear, filterWorkshopsFromSchedule } from "../lib/api";
+import { getPeopleByYear, getSponsorsByYear, getScheduleDays, getStoriesByYear } from "../lib/api";
+
+import {filterWorkshopsFromSchedule, findAndMergeDuplicates } from "../lib/utilities";
 
 export async function getStaticProps() {
   // Get external data from the file system, API, DB, etc.
@@ -28,6 +30,8 @@ export async function getStaticProps() {
 
 const Home = ({people, sponsors, schedule, stories }) => {
 	const workshops = filterWorkshopsFromSchedule(schedule);
+	const mergedWorkshops = findAndMergeDuplicates(workshops);
+	//console.log({mergedWorkshops});
 	return <Layout>
 		<About />
 		{stories.length > 0 && 
@@ -37,7 +41,7 @@ const Home = ({people, sponsors, schedule, stories }) => {
 			<Schedule schedule={schedule} />
 		}
 		{workshops &&
-			<WorkshopSpotlight workshops={workshops} />
+			<WorkshopSpotlight workshops={mergedWorkshops} />
 		}
 		{people && 
 			<PeopleByRole role="coach" plural="Coaches" people={people} />

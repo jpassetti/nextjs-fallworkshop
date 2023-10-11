@@ -16,14 +16,9 @@ const WorkshopSpotlight = ({ workshops }) => {
     return <Section backgroundColor="blue" title="Workshops" id="workshops">
         <Container content>
         {workshops?.map((workshop, index)=> {
-            const {workshop:workshopProp, dayDate} = workshop;
-            //console.log({dayDate});
-            const formattedDate = getFormattedDate(dayDate);
-            //console.log({formattedDate});
-           	const {title, eventType, description, date, location, speakers} = workshopProp;
-               const formattedRoom = getFormattedLocation(location);
-               const {name, number, building} = formattedRoom;
-               //console.log({date});
+            //console.log({workshop});
+            const {title, eventType, description, dates, location, speakers} = workshop;
+         
                const { 
                 speakerCompany, 
                 speakerCompanyUrl, 
@@ -32,7 +27,7 @@ const WorkshopSpotlight = ({ workshops }) => {
                 speakerName
             } = speakers[0];
                //const formattedDate = getFormattedDate(date);
-               const formattedTimeDuration = formatTimeDuration(date);
+               
                return <Fragment key={`workshop${index}`}>
                <Row marginBottom="3" key={`workshop${index}`} borderBottom="1">  
                
@@ -43,18 +38,28 @@ const WorkshopSpotlight = ({ workshops }) => {
                 
                 </Col>
                </Row>
-               <Row marginBottom="0">
-                            <Col xs="12" sm="6">
-                                <Paragraph color="white" marginBottom="1">
-                                    <strong>{formattedDate}<br />
-                                {date ? formattedTimeDuration : ''}</strong></Paragraph>
-                                </Col>
-                                <Col xs="12" sm="6">
-                                <Paragraph color="white" marginBottom="1">
-                                {name ? name : ''}<br />
-                                {number ? number : ''} {building ? building : ''}</Paragraph>
-                                </Col>
-                        </Row>
+               {dates.map((dateObj, index) => {
+                const {dayDate, date} = dateObj;
+                const formattedDate = getFormattedDate(dayDate);
+                //console.log({formattedDate});
+                const formattedTimeDuration = formatTimeDuration(date);
+                   const formattedRoom = getFormattedLocation(location);
+                   const {name, number, building} = formattedRoom;
+                return  <Row marginBottom="0" key={`workshop${index}`}>
+                    <Col xs="1" sm="1"><Paragraph color="orange">{index + 1}.</Paragraph></Col>
+                <Col xs="12" sm="5">
+                    <Paragraph color="white" marginBottom="1">
+                        <strong>{formattedDate}<br />
+                    {date ? formattedTimeDuration : ''}</strong></Paragraph>
+                    </Col>
+                    <Col xs="12" sm="6">
+                    <Paragraph color="white" marginBottom="1" condensed caps>
+                    {name ? name : ''}<br />
+                    {number ? number : ''} {building ? building : ''}</Paragraph>
+                    </Col>
+                </Row>
+               })}
+              
                     <Paragraph color="white" marginBottom="2">{description}</Paragraph>
                        
                    
