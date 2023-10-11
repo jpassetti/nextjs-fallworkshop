@@ -33,11 +33,11 @@ const Home = ({people, sponsors, schedule, stories }) => {
 		{stories.length > 0 && 
 			<Stories stories={stories} />
 		}
-		{workshops &&
-			<WorkshopSpotlight workshops={workshops} />
-		}
 		{schedule &&
 			<Schedule schedule={schedule} />
+		}
+		{workshops &&
+			<WorkshopSpotlight workshops={workshops} />
 		}
 		{people && 
 			<PeopleByRole role="coach" plural="Coaches" people={people} />
