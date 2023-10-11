@@ -38,6 +38,7 @@ const WorkshopSpotlight = ({ workshops }) => {
                 
                 </Col>
                </Row>
+               <Row>
                {dates.map((dateObj, index) => {
                 const {dayDate, date} = dateObj;
                 const formattedDate = getFormattedDate(dayDate);
@@ -45,20 +46,20 @@ const WorkshopSpotlight = ({ workshops }) => {
                 const formattedTimeDuration = formatTimeDuration(date);
                    const formattedRoom = getFormattedLocation(location);
                    const {name, number, building} = formattedRoom;
-                return  <Row marginBottom="0" key={`workshop${index}`}>
+                return   <Col xs="12" sm="6"><Row marginBottom="0" key={`workshop${index}`}>
                     <Col xs="1" sm="1"><Paragraph color="orange">{index + 1}.</Paragraph></Col>
-                <Col xs="12" sm="5">
-                    <Paragraph color="white" marginBottom="1">
-                        <strong>{formattedDate}<br />
-                    {date ? formattedTimeDuration : ''}</strong></Paragraph>
+                    <Col xs="11" sm="11">
+                        <Paragraph color="white" marginBottom="1">
+                            <strong>{formattedDate}<br />
+                        {date ? formattedTimeDuration : ''}</strong></Paragraph>
+                        <Paragraph color="white" marginBottom="1" condensed caps>
+                        {name ? name : ''}<br />
+                        {number ? number : ''} {building ? building : ''}</Paragraph>
                     </Col>
-                    <Col xs="12" sm="6">
-                    <Paragraph color="white" marginBottom="1" condensed caps>
-                    {name ? name : ''}<br />
-                    {number ? number : ''} {building ? building : ''}</Paragraph>
-                    </Col>
-                </Row>
+                </Row></Col>
                })}
+              
+               </Row>
               
                     <Paragraph color="white" marginBottom="2">{description}</Paragraph>
                        
