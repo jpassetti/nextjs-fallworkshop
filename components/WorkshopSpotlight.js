@@ -46,7 +46,7 @@ const WorkshopSpotlight = ({ workshops }) => {
                 const formattedTimeDuration = formatTimeDuration(date);
                    const formattedRoom = getFormattedLocation(location);
                    const {name, number, building} = formattedRoom;
-                return   <Col xs="12" sm="6"><Row marginBottom="0" key={`workshop${index}`}>
+                return <Col xs="12" sm="6" key={`workshop${index}`}><Row marginBottom="0">
                     <Col xs="1" sm="1"><Paragraph color="orange">{index + 1}.</Paragraph></Col>
                     <Col xs="11" sm="11">
                         <Paragraph color="white" marginBottom="1">

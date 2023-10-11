@@ -24,11 +24,13 @@ const MobileNav = ({ inside = false }) => {
 				<ul>
 			{navLinks.map((navLink, index) => {
 				const { label, id} = navLink;
-				console.log({inside});
+				//console.log({inside});
 				return inside ? 
 					<li key={index}>
 						<Link href={`/#${id}`}>
-						<a>
+						<a onClick={() => {
+							setMenuActive(false);
+						}}>
 							{label}
 						</a>
 						</Link></li>
