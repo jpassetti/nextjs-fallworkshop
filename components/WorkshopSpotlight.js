@@ -17,7 +17,9 @@ const WorkshopSpotlight = ({ workshops }) => {
         <Container content>
         {workshops?.map((workshop, index)=> {
             const {workshop:workshopProp, dayDate} = workshop;
+            //console.log({dayDate});
             const formattedDate = getFormattedDate(dayDate);
+            //console.log({formattedDate});
            	const {title, eventType, description, date, location, speakers} = workshopProp;
                const formattedRoom = getFormattedLocation(location);
                const {name, number, building} = formattedRoom;
