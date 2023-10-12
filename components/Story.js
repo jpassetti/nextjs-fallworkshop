@@ -2,17 +2,13 @@ import Image from "next/image";
 import Heading from "./Heading"
 import ImageWrapper from "./ImageWrapper";
 import Link from 'next/link';
-import { formatArrayToStringWithCommas, getFormattedStoryType } from '../lib/utilities'
-import Paragraph from "./Paragraph"
-import Person from './Person'
+import { getFormattedStoryType } from '../lib/utilities';
 
 const Story = ({story}) => {
 	
-	const {title, slug, excerpt, featuredImage, storyInformation} = story.node;
+	const {title, slug, featuredImage, storyInformation} = story.node;
 	const {storyType, coaches, students} = storyInformation;
 
-	const formattedStudents = formatArrayToStringWithCommas(students);
-	const formattedCoaches = formatArrayToStringWithCommas(coaches);
 	const formattedStoryType = getFormattedStoryType(storyType);
 
 	return <article>

@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import Heading from './Heading'
 import Link from 'next/link'
 import SpanifyAuthorsList from './SpanifyAuthorsList';
-import { getFormattedStoryType, formatArrayToStringWithCommas } from '../lib/utilities'
+import { getFormattedStoryType } from '../lib/utilities'
 import styles from './maxgrid.module.scss'
 
 let cx = classNames.bind(styles);

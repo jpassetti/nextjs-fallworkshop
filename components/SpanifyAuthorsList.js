@@ -1,9 +1,8 @@
-import { formatArrayToStringWithCommas } from "../lib/utilities";
 import Heading from "./Heading";
 import Span from "./Span";
 
 const SpanifyAuthorsList = ({students}) => {
-    //const formattedStudents = formatArrayToStringWithCommas(students);
+
     const formattedStudents = students.map((node, index) => {
         const {firstName, lastName} = node.personInformation;
         return <Span key={index}>{firstName} {lastName}</Span>
