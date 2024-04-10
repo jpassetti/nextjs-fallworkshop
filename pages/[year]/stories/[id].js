@@ -152,21 +152,24 @@ const SingleStory = ({ storyData }) => {
                 })}
               </Group>
             )}
-            <Heading
-              level="4"
-              textTransform="uppercase"
-              color="orange"
-              marginBottom="1"
-              marginTop="2"
-            >
-              Coached by
-            </Heading>
+
             {coaches && coaches.length > 0 && (
-              <Group>
-                {coaches?.map((coach, index) => {
-                  return <Person person={coach} teaser key={index} />;
-                })}
-              </Group>
+              <>
+                <Heading
+                  level="4"
+                  textTransform="uppercase"
+                  color="orange"
+                  marginBottom="1"
+                  marginTop="2"
+                >
+                  Coached by
+                </Heading>
+                <Group>
+                  {coaches?.map((coach, index) => {
+                    return <Person person={coach} teaser key={index} />;
+                  })}
+                </Group>
+              </>
             )}
           </Col>
         </Row>
