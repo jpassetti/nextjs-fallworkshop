@@ -89,7 +89,7 @@ const SingleStory = ({ storyData }) => {
                     height={node.stillImage.mediaDetails.height}
                   />
                   {node.stillImage.caption && (
-                    <Paragraph marginTop="1" marginBottom="2">
+                    <Paragraph marginTop="1" marginBottom="2" type="caption">
                       {node.stillImage.caption}
                     </Paragraph>
                   )}
