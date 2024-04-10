@@ -19,7 +19,7 @@ const WorkshopSpotlight = ({ workshops }) => {
             //console.log({workshop});
             const {title, eventType, description, dates, location, speakers} = workshop;
          
-               const { 
+            const { 
                 speakerCompany, 
                 speakerCompanyUrl, 
                 speakerImage, 
