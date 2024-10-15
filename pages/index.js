@@ -42,9 +42,10 @@ const Home = ({ people, sponsors, schedule, stories }) => {
  //console.log({mergedWorkshops});
  return (
   <Layout>
-   <About />
-   {stories.length > 0 && <Stories stories={stories} activeYear={activeYear} />}
    {schedule && <Schedule schedule={schedule} />}
+   {/* <About /> */}
+   {stories.length > 0 && <Stories stories={stories} activeYear={activeYear} />}
+
    {/* {workshops && <WorkshopSpotlight workshops={mergedWorkshops} />} */}
    {people && <PeopleByRole role="coach" plural="Coaches" people={people} />}
    {people && <PeopleByRole role="staff" plural="Staff" people={people} />}
