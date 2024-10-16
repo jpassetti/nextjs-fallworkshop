@@ -48,7 +48,7 @@ const Home = ({ people, sponsors, schedule, stories }) => {
 
    {/* {workshops && <WorkshopSpotlight workshops={mergedWorkshops} />} */}
    {people && <PeopleByRole role="coach" plural="Coaches" people={people} />}
-   {people && <PeopleByRole role="staff" plural="Staff" people={people} />}
+   {people && <PeopleByRole role="staff" plural="Faculty" people={people} />}
    {sponsors && <Sponsors sponsors={sponsors} />}
   </Layout>
  );
