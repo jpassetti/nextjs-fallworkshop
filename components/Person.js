@@ -58,17 +58,7 @@ const Person = ({ person, role, teaser, invert }) => {
      {lastName && <Span lastName>{lastName}</Span>}
     </Heading>
     <ul className={styles.metaInformation}>
-     {role === "staff"
-      ? rolesPerYear
-         ?.filter((rolePerYear) => rolePerYear.year === "2024")
-         .map((rolePerYear, index) => {
-          return (
-           <li key={index}>
-            <span className={styles.job}>{rolePerYear.title}</span>
-           </li>
-          );
-         })
-      : jobs?.length > 0
+     {jobs?.length > 0
       ? jobs.map((job, index) => {
          return (
           <li key={index}>
@@ -91,6 +81,17 @@ const Person = ({ person, role, teaser, invert }) => {
           </li>
          );
         })
+      : ""}
+     {role === "staff"
+      ? rolesPerYear
+         ?.filter((rolePerYear) => rolePerYear.year === "2024")
+         .map((rolePerYear, index) => {
+          return (
+           <li key={index}>
+            <span className={styles.job}>{rolePerYear.title}</span>
+           </li>
+          );
+         })
       : ""}
     </ul>
     {linksInformation && linksInformation.links.length > 0 && (
