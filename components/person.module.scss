@@ -1,55 +1,69 @@
-@use '../styles/variables';
-@use '../styles/mixins';
+@use "../styles/variables";
+@use "../styles/mixins";
 
 .person {
-	//background-color: pink;
-	margin-bottom: 1rem;
+ //background-color: pink;
+ margin-bottom: 1rem;
 }
 .personContent {
-	//padding: 1rem;
+ //padding: 1rem;
+}
+.personImageWrapper {
+ position: relative;
+ width: 100%;
+ margin-top: 2rem;
+ margin-bottom: 1rem;
+ &::after {
+  content: "";
+  background-color: rgba(0, 0, 0, 0.35);
+  z-index: 1;
+  padding-bottom: 100%;
+  display: block;
+  opacity: 1;
+  transition: all 0.35s;
+ }
 }
 .personImage {
-	width: 4rem;
-	height: 4rem;
-	background-color: lightgray;
-	margin-right: 1rem;
+ width: 4rem;
+ height: 4rem;
+ background-color: lightgray;
+ margin-right: 1rem;
 }
 .person_teaser_row {
-	//background-color: pink;
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	margin-bottom: .5rem;
-	& > span {
-		width: 4rem !important;
-		height: auto !important;
-		margin-right: 1rem !important;
-	}
+ //background-color: pink;
+ display: flex;
+ flex-wrap: wrap;
+ align-items: center;
+ margin-bottom: 0.5rem;
+ & > span {
+  width: 4rem !important;
+  height: auto !important;
+  margin-right: 1rem !important;
+ }
 }
 .metaInformation {
-	text-align: center;
-	color: variables.$color__blue;
-	margin-bottom: 1rem;
-	li {
-		margin-bottom: 1rem;
-	}
+ text-align: center;
+ color: variables.$color__blue;
+ margin-bottom: 1rem;
+ li {
+  margin-bottom: 1rem;
+ }
 }
 .job {
-	font-family: variables.$font__sherman_sans;
-	font-size: 1rem;
-	display: block;
-	margin-bottom: 0.5rem;
+ font-family: variables.$font__sherman_sans;
+ font-size: 1rem;
+ display: block;
+ margin-bottom: 0.5rem;
 }
 
 .company {
-	font-family: variables.$font__sherman_sans;
-	font-size: 0.9rem;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	display: block;
+ font-family: variables.$font__sherman_sans;
+ font-size: 0.9rem;
+ text-transform: uppercase;
+ letter-spacing: 1px;
+ display: block;
 
-	a {
-		color: variables.$color__blue;
-	}
+ a {
+  color: variables.$color__blue;
+ }
 }
-

@@ -42,7 +42,7 @@ const Home = ({ people, sponsors, schedule, stories }) => {
  //console.log({mergedWorkshops});
  return (
   <Layout>
-   {schedule && <Schedule schedule={schedule} />}
+   {/* {schedule && <Schedule schedule={schedule} />} */}
    {/* <About /> */}
    {stories.length > 0 && <Stories stories={stories} activeYear={activeYear} />}
 

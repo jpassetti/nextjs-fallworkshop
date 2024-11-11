@@ -11,7 +11,7 @@ export async function getStaticPaths() {
 		return {
 			params: {
 				id: slug,
-				year : "2022"
+				year : "2024"
 			}
 		}
 	})
@@ -23,7 +23,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   // Get external data from the file system, API, DB, etc.
-	const stories = await getStoriesByYear("2022");
+	const stories = await getStoriesByYear({params.year});
   // The value of the `props` key will be
   //  passed to the `Home` component
   return {

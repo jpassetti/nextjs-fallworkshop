@@ -31,7 +31,7 @@ const Person = ({ person, role, teaser, invert }) => {
   </div>
  ) : (
   <article className={styles.person}>
-   {featuredImage && (
+   {featuredImage ? (
     <ImageWrapper>
      <Image
       src={featuredImage.node.sourceUrl}
@@ -41,6 +41,8 @@ const Person = ({ person, role, teaser, invert }) => {
       className={styles.personImage}
      />
     </ImageWrapper>
+   ) : (
+    <div className={styles.personImageWrapper} />
    )}
    <div className={styles.personContent}>
     <Heading
