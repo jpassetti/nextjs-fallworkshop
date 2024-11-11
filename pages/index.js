@@ -1,5 +1,6 @@
 import About from "../components/About";
 import Head from "next/head";
+import Event from "../components/Event";
 import Layout from "../components/Layout";
 import Section from "../components/Section";
 import Schedule from "../components/Schedule";
@@ -44,6 +45,7 @@ const Home = ({ people, sponsors, schedule, stories }) => {
   <Layout>
    {/* {schedule && <Schedule schedule={schedule} />} */}
    {/* <About /> */}
+   <Event />
    {stories.length > 0 && <Stories stories={stories} activeYear={activeYear} />}
 
    {/* {workshops && <WorkshopSpotlight workshops={mergedWorkshops} />} */}
