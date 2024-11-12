@@ -1,6 +1,5 @@
 import { Fragment } from "react";
 import { useRouter } from "next/router";
-
 import Col from "../../../components/Col";
 import Container from "../../../components/Container";
 import Group from "../../../components/Group";
@@ -23,21 +22,19 @@ import {
 import SEO from "../../../components/SEO";
 
 export async function getStaticPaths() {
- // Example years array, replace this with dynamic fetching if necessary
  const years = await getAllYearSlugs();
-
  let paths = [];
 
  for (const year of years) {
   const { slug: yearSlug } = year.node;
-  const storySlugs = await getStorySlugsByYear(yearSlug); // Fetch story slugs for the year
+  const storySlugs = await getStorySlugsByYear(yearSlug);
 
-  const yearPaths = storySlugs.map((edge) => {
+  const yearPaths = storySlugs?.map((edge) => {
    const { slug } = edge.node;
    return {
     params: {
      id: slug,
-     year: yearSlug, // Dynamically set the year here
+     year: yearSlug,
     },
    };
   });
@@ -52,7 +49,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
- //console.log({ params });
  const storyData = await getStoryBySlug(params.id);
  return {
   props: {
@@ -67,11 +63,11 @@ const BackToStoriesLink = ({ activeYear }) => {
 
  const handleClick = (e) => {
   e.preventDefault();
-  router.push(`/#stories`, undefined, { shallow: true });
+  router.push(`/${activeYear}/#stories`, undefined, { shallow: true });
  };
 
  return (
-  <a href={`/#stories`} onClick={handleClick}>
+  <a href={`/${activeYear}/#stories`} onClick={handleClick}>
    &laquo; Back to Stories
   </a>
  );
@@ -81,55 +77,50 @@ const SingleStory = ({ storyData, activeYear }) => {
  const { title, slug, storyInformation, content, excerpt, featuredImage } =
   storyData;
  const { storyType, stillImages, photoGalleries, videos, students, coaches } =
-  storyInformation;
+  storyInformation || {};
+
  return (
   <Layout inside>
    <SEO
-    title={title ? title : null}
-    description={excerpt ? excerpt : null}
+    title={title || ""}
+    description={excerpt || ""}
     image={{
-     src: featuredImage ? featuredImage.node.sourceUrl : null,
-     alt: featuredImage ? featuredImage.node.altText : null,
-     width: featuredImage ? featuredImage.node.mediaDetails.width : null,
-     height: featuredImage ? featuredImage.node.mediaDetails.height : null,
+     src: featuredImage?.node.sourceUrl || "",
+     alt: featuredImage?.node.altText || "",
+     width: featuredImage?.node.mediaDetails?.width || 800,
+     height: featuredImage?.node.mediaDetails?.height || 600,
     }}
     url={`https://fallworkshop.newhouse.syr.edu/${activeYear}/stories/${slug}`}
    />
    <Container>
     {storyType === "still"
-     ? stillImages?.map((node, index) => {
-        return (
-         <ImageWrapper key={index}>
-          <Image
-           src={node.stillImage.sourceUrl}
-           alt={node.stillImage.altText}
-           width={node.stillImage.mediaDetails.width}
-           height={node.stillImage.mediaDetails.height}
-          />
-          {node.stillImage.caption && (
-           <Paragraph marginTop="1" marginBottom="2" type="caption">
-            {node.stillImage.caption}
-           </Paragraph>
-          )}
-         </ImageWrapper>
-        );
-       })
-     : storyType === "video"
-     ? videos?.map((video, index) => {
-        return <Vimeo key={index} src={video.vimeoUrl} />;
-       })
-     : storyType === "photo_gallery"
-     ? photoGalleries?.map((photoGallery, index) => {
-        return (
-         <PhotoGallery
-          title={title}
-          coverImage={featuredImage?.node}
-          photoGallery={photoGallery}
-          key={index}
+     ? stillImages?.map((node, index) => (
+        <ImageWrapper key={index}>
+         <Image
+          src={node.stillImage.sourceUrl}
+          alt={node.stillImage.altText}
+          width={node.stillImage.mediaDetails.width}
+          height={node.stillImage.mediaDetails.height}
          />
-        );
-       })
-     : ""}
+         {node.stillImage.caption && (
+          <Paragraph marginTop="1" marginBottom="2" type="caption">
+           {node.stillImage.caption}
+          </Paragraph>
+         )}
+        </ImageWrapper>
+       ))
+     : storyType === "video"
+     ? videos?.map((video, index) => <Vimeo key={index} src={video.vimeoUrl} />)
+     : storyType === "photo_gallery"
+     ? photoGalleries?.map((photoGallery, index) => (
+        <PhotoGallery
+         title={title}
+         coverImage={featuredImage?.node}
+         photoGallery={photoGallery}
+         key={index}
+        />
+       ))
+     : null}
     <Row justifyContent="center" marginTop="6" marginBottom="4">
      <Col md="6" textAlign="left">
       <Heading
@@ -138,7 +129,7 @@ const SingleStory = ({ storyData, activeYear }) => {
        color="orange"
        marginBottom="2"
       >
-       {<BackToStoriesLink activeYear={activeYear} />}
+       <BackToStoriesLink activeYear={activeYear} />
       </Heading>
       {title && (
        <Heading level="1" marginBottom="2" size="small">
@@ -152,7 +143,7 @@ const SingleStory = ({ storyData, activeYear }) => {
        ></div>
       )}
      </Col>
-     <Col md="3" te xtAlign="left" paddingLeft="3" borderLeft="1">
+     <Col md="3" textAlign="left" paddingLeft="3" borderLeft="1">
       <Heading
        level="4"
        textTransform="uppercase"
@@ -161,15 +152,15 @@ const SingleStory = ({ storyData, activeYear }) => {
       >
        Produced by
       </Heading>
-      {students && students.length > 0 && (
+      {students?.length > 0 && (
        <Group>
-        {students?.map((student, index) => {
-         return <Person person={student} teaser key={index} />;
-        })}
+        {students.map((student, index) => (
+         <Person person={student} teaser key={index} />
+        ))}
        </Group>
       )}
 
-      {coaches && coaches.length > 0 && (
+      {coaches?.length > 0 && (
        <>
         <Heading
          level="4"
@@ -181,9 +172,9 @@ const SingleStory = ({ storyData, activeYear }) => {
          Coached by
         </Heading>
         <Group>
-         {coaches?.map((coach, index) => {
-          return <Person person={coach} teaser key={index} />;
-         })}
+         {coaches.map((coach, index) => (
+          <Person person={coach} teaser key={index} />
+         ))}
         </Group>
        </>
       )}
@@ -193,4 +184,5 @@ const SingleStory = ({ storyData, activeYear }) => {
   </Layout>
  );
 };
+
 export default SingleStory;

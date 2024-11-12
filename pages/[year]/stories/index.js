@@ -1,39 +1,53 @@
 import Stories from "../../../components/Stories";
-import Layout from '../../../components/Layout';
-
-import { getAllStorySlugs, getStoriesByYear } from "../../../lib/api";
+import Layout from "../../../components/Layout";
+import {
+ getAllYears,
+ getStorySlugsByYear,
+ getStoriesByYear,
+} from "../../../lib/api";
 
 export async function getStaticPaths() {
-	const storySlugs = await getAllStorySlugs();
+ const years = await getAllYears();
+ //console.log({ years });
+ const paths = [];
 
-	const paths = storySlugs.map(edge => {
-		const { slug } = edge.node
-		return {
-			params: {
-				id: slug,
-				year : "2024"
-			}
-		}
-	})
-	return {
-		paths,
-		fallback: false,
-	}
+ for (const year of years) {
+  const storySlugs = await getStorySlugsByYear(year.node.name);
+
+  storySlugs.forEach((edge) => {
+   const { slug } = edge.node;
+   const yearName = edge.node.years.edges?.[0]?.node?.name;
+
+   paths.push({
+    params: {
+     id: slug,
+     year: yearName,
+    },
+   });
+  });
+ }
+
+ return {
+  paths,
+  fallback: false, // Set to 'blocking' to support dynamic routes post-build
+ };
 }
 
 export async function getStaticProps({ params }) {
-  // Get external data from the file system, API, DB, etc.
-	const stories = await getStoriesByYear({params.year});
-  // The value of the `props` key will be
-  //  passed to the `Home` component
-  return {
-    props: { stories }
-  }
+ //console.log({ params });
+ const stories = await getStoriesByYear(params.year);
+
+ return {
+  props: { stories, activeYear: params.year },
+ };
 }
 
-const StoriesLandingPage = ({stories}) => {
-	return <Layout>
-		<Stories stories={stories} />
-	</Layout>
-}
+const StoriesLandingPage = ({ stories, activeYear }) => {
+ return (
+  <Layout>
+   <Stories stories={stories} activeYear={activeYear} />
+  </Layout>
+ );
+};
+
 export default StoriesLandingPage;

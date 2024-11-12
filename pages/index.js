@@ -32,7 +32,12 @@ export async function getStaticProps() {
  // The value of the `props` key will be
  //  passed to the `Home` component
  return {
-  props: { people, sponsors, schedule, stories },
+  props: {
+   people,
+   sponsors,
+   schedule,
+   stories,
+  },
  };
 }
 
@@ -49,9 +54,23 @@ const Home = ({ people, sponsors, schedule, stories }) => {
    {stories.length > 0 && <Stories stories={stories} activeYear={activeYear} />}
 
    {/* {workshops && <WorkshopSpotlight workshops={mergedWorkshops} />} */}
-   {people && <PeopleByRole role="coach" plural="Coaches" people={people} />}
-   {people && <PeopleByRole role="staff" plural="Faculty" people={people} />}
-   {sponsors && <Sponsors sponsors={sponsors} />}
+   {people && (
+    <PeopleByRole
+     role="coach"
+     plural="Coaches"
+     people={people}
+     activeYear={activeYear}
+    />
+   )}
+   {people && (
+    <PeopleByRole
+     role="staff"
+     plural="Faculty"
+     people={people}
+     activeYear={activeYear}
+    />
+   )}
+   {sponsors && <Sponsors sponsors={sponsors} activeYear={activeYear} />}
   </Layout>
  );
 };
