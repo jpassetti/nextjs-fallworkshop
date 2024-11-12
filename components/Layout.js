@@ -21,11 +21,9 @@ const Layout = ({ children, inside = false }) => {
     }}
     url="https://fallworkshop.newhouse.syr.edu"
    />
-   {/* <Header inside={inside ? true : false} />
-		<Main>
-			{children}
-		</Main>
-		<Footer /> */}
+   <Header inside={inside ? true : false} />
+   <Main>{children}</Main>
+   <Footer />
   </Fragment>
  );
 };
