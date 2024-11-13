@@ -79,6 +79,8 @@ const SingleStory = ({ storyData, activeYear }) => {
  const { storyType, stillImages, photoGalleries, videos, students, coaches } =
   storyInformation || {};
 
+ //console.log({ videos });
+
  return (
   <Layout inside>
    <SEO
