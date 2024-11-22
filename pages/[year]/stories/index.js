@@ -15,8 +15,8 @@ export async function getStaticPaths() {
   const storySlugs = await getStorySlugsByYear(year.node.name);
 
   storySlugs.forEach((edge) => {
-   const { slug } = edge.node;
-   const yearName = edge.node.years.edges?.[0]?.node?.name;
+   const { slug } = edge;
+   const yearName = edge.years.edges?.[0]?.node?.name;
 
    paths.push({
     params: {
@@ -34,7 +34,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
- //console.log({ params });
  const stories = await getStoriesByYear(params.year);
 
  return {

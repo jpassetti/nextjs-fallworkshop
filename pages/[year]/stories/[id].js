@@ -22,29 +22,33 @@ import {
 import SEO from "../../../components/SEO";
 
 export async function getStaticPaths() {
+ // Fetch all year slugs
  const years = await getAllYearSlugs();
  let paths = [];
 
  for (const year of years) {
   const { slug: yearSlug } = year.node;
+
+  // Fetch all story slugs for the current year
   const storySlugs = await getStorySlugsByYear(yearSlug);
 
-  const yearPaths = storySlugs?.map((edge) => {
-   const { slug } = edge.node;
+  // Generate paths for the current year
+  const yearPaths = storySlugs?.map((story) => {
    return {
     params: {
-     id: slug,
-     year: yearSlug,
+     id: story.slug, // Use the slug directly from the node
+     year: yearSlug, // Include the year slug in the path
     },
    };
   });
 
+  // Concatenate the generated paths with the overall paths array
   paths = paths.concat(yearPaths);
  }
 
  return {
   paths,
-  fallback: false,
+  fallback: false, // Adjust based on your requirements (true, 'blocking', or false)
  };
 }
 

@@ -9,7 +9,6 @@ import {
  getPeopleByYear,
  getSponsorsByYear,
 } from "../../lib/api";
-import { useRouter } from "next/router";
 
 export async function getStaticPaths() {
  const years = await getAllYears();

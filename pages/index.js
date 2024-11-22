@@ -43,6 +43,7 @@ export async function getStaticProps() {
 
 const Home = ({ people, sponsors, schedule, stories }) => {
  const activeYear = "2024";
+ //  console.log({ stories });
  //  const workshops = schedule ? filterWorkshopsFromSchedule(schedule) : null;
  //  const mergedWorkshops = workshops ? findAndMergeDuplicates(workshops) : null;
  //console.log({mergedWorkshops});
@@ -50,7 +51,7 @@ const Home = ({ people, sponsors, schedule, stories }) => {
   <Layout>
    {/* {schedule && <Schedule schedule={schedule} />} */}
    {/* <About /> */}
-   <Event />
+   {/* <Event /> */}
    {stories.length > 0 && <Stories stories={stories} activeYear={activeYear} />}
 
    {/* {workshops && <WorkshopSpotlight workshops={mergedWorkshops} />} */}

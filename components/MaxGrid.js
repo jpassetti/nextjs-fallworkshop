@@ -15,7 +15,7 @@ const MaxGrid = ({ activeYear, stories }) => {
  return (
   <div className={styles.maxgrid}>
    {stories.map((story, index) => {
-    const { slug } = story.node;
+    const { slug } = story;
     return (
      <MaxGrid.Item
       key={index}
@@ -33,7 +33,7 @@ const MaxGrid = ({ activeYear, stories }) => {
 };
 export default MaxGrid;
 const Item = ({ activeYear, story, clickHandler }) => {
- const { title, featuredImage, slug, storyInformation } = story.node;
+ const { title, featuredImage, slug, storyInformation } = story;
  const { storyType, students } = storyInformation;
  const formattedStoryType = getFormattedStoryType(storyType);
 
