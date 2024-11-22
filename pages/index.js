@@ -1,4 +1,5 @@
 import About from "../components/About";
+import Container from "../components/Container";
 import Head from "next/head";
 import Event from "../components/Event";
 import Layout from "../components/Layout";
@@ -21,6 +22,8 @@ import {
  filterWorkshopsFromSchedule,
  findAndMergeDuplicates,
 } from "../lib/utilities";
+import Vimeo from "../components/Vimeo";
+import Paragraph from "../components/Paragraph";
 
 export async function getStaticProps() {
  // Get external data from the file system, API, DB, etc.
@@ -49,6 +52,17 @@ const Home = ({ people, sponsors, schedule, stories }) => {
  //console.log({mergedWorkshops});
  return (
   <Layout>
+   <Container>
+    <Vimeo src="https://vimeo.com/1028882555" />
+   </Container>
+   <Container content>
+    <Paragraph>
+     Go behind the scenes with photojournalists at the Alexia Fall Workshop as
+     they capture the spirit of Baldwinsville, showcasing its people, places,
+     and stories through their lenses.
+    </Paragraph>
+   </Container>
+
    {/* {schedule && <Schedule schedule={schedule} />} */}
    {/* <About /> */}
    {/* <Event /> */}
