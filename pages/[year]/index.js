@@ -37,7 +37,7 @@ export async function getStaticProps({ params }) {
 const YearLandingPage = ({ activeYear, people, sponsors, stories }) => {
  return (
   <Layout>
-   <Event />
+   {/* <Event /> */}
    {stories.length > 0 && <Stories stories={stories} activeYear={activeYear} />}
    {people && (
     <PeopleByRole
