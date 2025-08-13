@@ -12,12 +12,12 @@ import styles from './sponsor.module.scss'
 let cx = classNames.bind(styles);
 
 
-const Sponsors = ({sponsors}) => {
+const Sponsors = ({sponsors, activeYear }) => {
 	let nikonClasses = cx({
 		sponsor : true,
 		nikon : true
 	});
-	return <Section id="sponsors" title="Sponsors" backgroundColor="orange_10">
+	return <Section id="sponsors" title={`${activeYear} Sponsors`} backgroundColor="orange_10">
 		<Container size="sm">
 			{/* NIKON 458.6 400 */ }
 			<Row justifyContent="center">

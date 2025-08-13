@@ -5,7 +5,7 @@ import styles from './mobilenav.module.scss'
 import { getNavLinks } from '../lib/api'
 import Link from 'next/link'
 
-const MobileNav = ({ inside = false }) => {
+const MobileNav = ({ inside = false, year }) => {
 	const [isMenuActive, setMenuActive] = useState(false);
 	const navLinks = getNavLinks();
 	return <>
@@ -27,7 +27,7 @@ const MobileNav = ({ inside = false }) => {
 				//console.log({inside});
 				return inside ? 
 					<li key={index}>
-						<Link href={`/#${id}`}>
+						<Link href={`/${year ? year : '2024'}#${id}`}>
 						<a onClick={() => {
 							setMenuActive(false);
 						}}>

@@ -8,9 +8,9 @@ const Footer = () => {
  return (
   <footer className={styles.footer}>
    <Container>
-    <a href="https://newhouse.syr.edu" target="_blank">
+    
      <Logo invert />
-    </a>
+   
     <Paragraph color="white" marginBottom="4">
      Copyright {new Date().getFullYear()}
      <br />

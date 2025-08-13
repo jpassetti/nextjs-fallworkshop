@@ -11,7 +11,7 @@ const Stories = ({ activeYear, stories }) => {
  return (
   <Section
    id="stories"
-   title="Stories"
+   title={`${activeYear} Stories`}
    backgroundColor="white"
    paddingBottom={stories.length > 0 ? "0" : "4"}
   >

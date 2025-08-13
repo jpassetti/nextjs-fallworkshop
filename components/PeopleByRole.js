@@ -26,7 +26,7 @@ const PeopleByRole = ({ role, plural, people, activeYear }) => {
  //console.log(alphabetizedPeople);
  //const coaches = people.filter(person => person.peopleType === "coach")
  return (
-  <Section id={plural.toLowerCase()} title={plural}>
+  <Section id={plural.toLowerCase()} title={`${activeYear} ${plural}`}>
    <Container>
     <Row justifyContent="center">
      {alphabetizedPeople.length > 0 ? (
