@@ -39,7 +39,7 @@ const Home = () => {
                     <Heading level={3} textAlign="center" marginBottom={2}>2024 Workshop: Baldwinsville, NY</Heading>
                     <Vimeo src="https://vimeo.com/1028882555" />
                     <Paragraph marginBottom={4}>
-                        Watch the video above to go behind the scenes at the 2024 Alexia Fall Workshop in Baldwinsville, NY. This documentary captures the spirit of Baldwinsville, highlighting its people, places, and stories through the creative lenses of our student storytellers and coaches.
+                        Go behind the scenes at the 2024 Alexia Fall Workshop in Baldwinsville, NY. This documentary captures the spirit of Baldwinsville, highlighting its people, places, and stories through the creative lenses of our student storytellers and coaches.
                     </Paragraph>
                     <Heading level={3} textAlign="center" marginBottom={2}>Select a Year to Explore</Heading>
                     <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
@@ -53,9 +53,7 @@ const Home = () => {
                                         </Paragraph>
                                     </Col>
                                     <Col xs={12} sm={4}>
-                                        <Button.CTA label={`View ${year} Workshop`} onClick={() => {
-                                            window.location.href = `/${year}`;
-                                        }} />
+                                        <Button.CTA label={`View ${year} Workshop`} href={`/${year}`} />
                                     </Col>
                                 </Row>
                             </li>
@@ -94,9 +92,7 @@ const Home = () => {
                                 <Button.CTA
                                     label="Learn More"
                                     aria-label="Learn more about the Visual Communications Undergraduate Program"
-                                    onClick={() => {
-                                        window.location.href = "https://newhouse.syracuse.edu/academics/visual-communications/bachelors/";
-                                    }}
+                                    href="https://newhouse.syracuse.edu/academics/visual-communications/bachelors/"
                                 />
                             </div>
                         </Col>
@@ -119,9 +115,7 @@ const Home = () => {
                                 <Button.CTA
                                     label="Learn More"
                                     aria-label="Learn more about the Multimedia, Photography and Design Graduate Program"
-                                    onClick={() => {
-                                        window.location.href = "https://newhouse.syracuse.edu/academics/multimedia-photography-and-design/masters/";
-                                    }}
+                                    href="https://newhouse.syracuse.edu/academics/multimedia-photography-and-design/masters/"
                                 />
                             </div>
                         </Col>
