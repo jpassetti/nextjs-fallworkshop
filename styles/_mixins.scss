@@ -327,3 +327,36 @@
 		}
 	}
 }
+
+@mixin borders() {
+	$positions: top, right, bottom, left;
+	$sizes: 1, 2, 3, 4, 5;
+	$colors: (
+		"orange": variables.$color__orange,
+		"orange_10": variables.$color__orange_10,
+		"blue": variables.$color__blue,
+		"blue_10": variables.$color__blue_10,
+		"black": #000,
+		"white": #fff
+	);
+
+	@each $position in $positions {
+		@each $size in $sizes {
+			@each $colorName, $colorValue in $colors {
+				&.border-#{$position}-#{$size}-#{$colorName} {
+					border-#{$position}: #{$size}px solid #{$colorValue};
+				}
+			}
+		}
+	}
+}
+
+@mixin gap() {
+	$sizes: 1, 2, 3, 4, 5;
+
+	@each $size in $sizes {
+		&.gap-#{$size} {
+			gap: #{$size * 0.5}rem;
+		}
+	}
+}

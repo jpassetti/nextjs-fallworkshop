@@ -1,7 +1,7 @@
-import Icon from './Icon'
+import Icon from '../Icon'
 
 import classNames from 'classnames/bind';
-import * as styles from './buttonui.module.scss';
+import * as styles from './button.module.scss';
 
 let cx = classNames.bind(styles);
 
@@ -9,8 +9,8 @@ let cx = classNames.bind(styles);
 
 const ButtonUI = ({icon, clickHandler, color, id}) => {
 	let btnuiClasses = cx({
-		btnui : true,
-		[`btnui--close`] : id === "closeBtn"
+		btn__ui : true,
+		[`btn__ui--close`] : id === "closeBtn"
 	});
 	return <button className={btnuiClasses} onClick={clickHandler} id={id}>
 		<Icon icon={icon} color={color} />

@@ -6,7 +6,10 @@
   line-height: 1.4;
   font-family: variables.$font__sherman_sans;
   color: variables.$color__blue;
-
+ a {
+  color: variables.$color__orange__medium;
+  font-weight: bold;
+ }
   &.intro {
     font-size: 1.3rem;
     font-family: variables.$font__sherman_serif;

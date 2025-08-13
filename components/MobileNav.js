@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { scroller, Events } from 'react-scroll'
-import ButtonUI from './ButtonUI'
+import Button from './Button'
 import styles from './mobilenav.module.scss'
 import { getNavLinks } from '../lib/api'
 import Link from 'next/link'
@@ -10,17 +10,17 @@ const MobileNav = ({ inside = false }) => {
 	const navLinks = getNavLinks();
 	return <>
 	<nav className={styles.mobileNav}>
-		<ButtonUI icon="menu" color="white" clickHandler={(e) => {
+		<Button.UI icon="menu" color="white" clickHandler={(e) => {
 			e.preventDefault();
 			setMenuActive(true)
-		}}>Open</ButtonUI>
+		}}>Open</Button.UI>
 	</nav>
 	{isMenuActive && 
 		<div className={styles.overlay}>
-			<ButtonUI icon="close" color="white" id="closeBtn" clickHandler={(e) => {
+			<Button.UI icon="close" color="white" id="closeBtn" clickHandler={(e) => {
 				e.preventDefault();
 				setMenuActive(false);
-			}}>Close</ButtonUI>
+			}}>Close</Button.UI>
 				<ul>
 			{navLinks.map((navLink, index) => {
 				const { label, id} = navLink;

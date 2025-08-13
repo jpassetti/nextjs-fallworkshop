@@ -53,6 +53,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
+  
  const storyData = await getStoryBySlug(params.id);
  return {
   props: {
@@ -86,7 +87,7 @@ const SingleStory = ({ storyData, activeYear }) => {
  //console.log({ videos });
 
  return (
-  <Layout inside>
+  <Layout inside year={activeYear}>
    <SEO
     title={title || ""}
     description={excerpt || ""}

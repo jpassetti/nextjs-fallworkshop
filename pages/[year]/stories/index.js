@@ -43,7 +43,7 @@ export async function getStaticProps({ params }) {
 
 const StoriesLandingPage = ({ stories, activeYear }) => {
  return (
-  <Layout>
+  <Layout year={activeYear}>
    <Stories stories={stories} activeYear={activeYear} />
   </Layout>
  );

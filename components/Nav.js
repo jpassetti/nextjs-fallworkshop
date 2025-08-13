@@ -5,23 +5,24 @@ import styles from "./nav.module.scss";
 
 import { getNavLinks } from "../lib/api";
 
-const Nav = ({ inside }) => {
+const Nav = ({ inside, year }) => {
   const router = useRouter();
   const navLinks = getNavLinks();
 
-  const handleNavClick = (e, id) => {
-    e.preventDefault();
+  // Determine if we're on the year landing page (e.g., /2024)
+  const isOnYearPage = router.pathname === "/[year]" || router.asPath === `/${year}`;
 
-    if (router.pathname === "/") {
-      // User is on the homepage, scroll to the section
+  const handleNavClick = (e, id, href) => {
+    // If on the year page, scroll to section
+    if (isOnYearPage) {
+      e.preventDefault();
       const element = document.getElementById(id);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
       }
-    } else {
-      // User is on another page, navigate back to the homepage and include the section id as a hash
-      router.push(`/#${id}`);
     }
+    // If not on the year page, let the link navigate to the year page and anchor
+    // (default browser behavior)
   };
 
   return (
@@ -29,15 +30,18 @@ const Nav = ({ inside }) => {
       <ul className={styles.navList}>
         {navLinks.map((navLink, index) => {
           const { label, id } = navLink;
+          // If on year page, use anchor link; else, link to /year#id
+          const href = isOnYearPage ? `#${id}` : `/${year}#${id}`;
           return (
             <li key={index} className={styles.navItem}>
-              <a
-                href={`/#${id}`}
-                className={styles.navItemAnchor}
-                onClick={(e) => handleNavClick(e, id)}
-              >
-                {label}
-              </a>
+              <Link href={href} passHref legacyBehavior>
+                <a
+                  className={styles.navItemAnchor}
+                  onClick={(e) => handleNavClick(e, id, href)}
+                >
+                  {label}
+                </a>
+              </Link>
             </li>
           );
         })}

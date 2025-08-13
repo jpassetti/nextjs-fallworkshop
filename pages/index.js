@@ -1,92 +1,69 @@
-import About from "../components/About";
+// components
+import Button from "../components/Button";
+import Col from '../components/Col';
 import Container from "../components/Container";
-import Head from "next/head";
-import Event from "../components/Event";
+import Heading from "../components/Heading";
 import Layout from "../components/Layout";
-import Section from "../components/Section";
-import Schedule from "../components/Schedule";
-import PeopleByRole from "../components/PeopleByRole";
-import Sponsors from "../components/Sponsors";
-import Staff from "../components/Staff";
-import Stories from "../components/Stories";
-import WorkshopSpotlight from "../components/WorkshopSpotlight";
-
-import {
- getPeopleByYear,
- getSponsorsByYear,
- getScheduleDays,
- getStoriesByYear,
-} from "../lib/api";
-
-import {
- filterWorkshopsFromSchedule,
- findAndMergeDuplicates,
-} from "../lib/utilities";
-import Vimeo from "../components/Vimeo";
 import Paragraph from "../components/Paragraph";
+import Row from "../components/Row";
+import Section from "../components/Section";
+import Vimeo from "../components/Vimeo";
 
-export async function getStaticProps() {
- // Get external data from the file system, API, DB, etc.
- const activeYear = "2024";
- const people = await getPeopleByYear(activeYear);
- const sponsors = await getSponsorsByYear(activeYear);
- const schedule = await getScheduleDays(activeYear);
- const stories = await getStoriesByYear(activeYear);
- // The value of the `props` key will be
- //  passed to the `Home` component
- return {
-  props: {
-   people,
-   sponsors,
-   schedule,
-   stories,
-  },
- };
-}
+// data
+import WORKSHOP_DATES from "../lib/workshopDates";
 
-const Home = ({ people, sponsors, schedule, stories }) => {
- const activeYear = "2024";
- //  console.log({ stories });
- //  const workshops = schedule ? filterWorkshopsFromSchedule(schedule) : null;
- //  const mergedWorkshops = workshops ? findAndMergeDuplicates(workshops) : null;
- //console.log({mergedWorkshops});
- return (
-  <Layout>
-   <Container>
-    <Vimeo src="https://vimeo.com/1028882555" />
-   </Container>
-   <Container content>
-    <Paragraph>
-     Go behind the scenes with photojournalists at the Alexia Fall Workshop as
-     they capture the spirit of Baldwinsville, showcasing its people, places,
-     and stories through their lenses.
-    </Paragraph>
-   </Container>
+const Home = () => {
+    return (
+        <Layout>
+            <Container content>
+                <Heading level={2} textAlign="center" marginBottom={2} marginTop={6}>About The Alexia Fall Workshop</Heading>
 
-   {/* {schedule && <Schedule schedule={schedule} />} */}
-   {/* <About /> */}
-   {/* <Event /> */}
-   {stories.length > 0 && <Stories stories={stories} activeYear={activeYear} />}
+                <Paragraph marginBottom={2}>The Fall Workshop was founded in 1999 by the faculty of the Visual Communications department of the <a href="https://newhouse.syracuse.edu" target="_blank">S.I. Newhouse School of Public Communications</a> at <a href="https://www.syracuse.edu" target="_blank">Syracuse University</a>. In 2023, the name was changed to The Alexia Fall Workshop to more closely connect the workshop to <a href="https://newhouse.syracuse.edu/centers/the-alexia/" target="_blank">The Alexia</a>, a granting organization at Newhouse that supports professional and student visual storytellers worldwide who produce projects that inform, foster cultural understanding and inspire meaningful change.</Paragraph>
 
-   {/* {workshops && <WorkshopSpotlight workshops={mergedWorkshops} />} */}
-   {people && (
-    <PeopleByRole
-     role="coach"
-     plural="Coaches"
-     people={people}
-     activeYear={activeYear}
-    />
-   )}
-   {people && (
-    <PeopleByRole
-     role="staff"
-     plural="Faculty"
-     people={people}
-     activeYear={activeYear}
-    />
-   )}
-   {sponsors && <Sponsors sponsors={sponsors} activeYear={activeYear} />}
-  </Layout>
- );
+                <Paragraph marginBottom={2}>The workshop takes place over four days each fall and brings top visual professionals from around the world to join Newhouse professors as they push students to identify, observe and artfully communicate the core of who we are. Students use photography, video, audio and words to hone their craft of exceptional storytelling while engaging in the community and the world around them. The workshop has existed in various iterations, from holding the entire event on-site at a nearby community, to holding it completely on campus, to, more recently, employing a hybrid approach.</Paragraph>
+
+                <Paragraph marginBottom={2}>The program kicks off on a Thursday evening as coaches and their student teams get to know one another. All day Friday, students work on their projects in the community, and Saturday is a production day with an early evening presentation by a professional visual storyteller courtesy of the workshop’s sponsor, <a href="https://www.nikonusa.com" target="_blank">Nikon</a>.The event wraps on Sunday with a public viewing and awards.</Paragraph>
+
+                <Paragraph marginBottom={6}>The Alexia and now The Alexia Fall Workshop are named in memory of photojournalism student Alexia Tsairis, one of 35 Syracuse University students who died in the 1988 terrorist bombing of Pan Am Flight 103 over Lockerbie, Scotland, while on their way home from a semester abroad.</Paragraph>
+
+            </Container>
+            <Container content>
+
+            </Container>
+            <Section backgroundColor="orange_10">
+                <Container content>
+                    <Heading level={2} textAlign="center" marginBottom={2}>Previous Alexia Fall Workshops</Heading>
+                    <Paragraph marginBottom={4} textAlign="center">
+                        Discover the history of The Alexia Fall Workshop. Browse student work, meet coaches and faculty, and explore each year’s unique stories and achievements.
+                    </Paragraph>
+                    <Heading level={3} textAlign="center" marginBottom={2}>2024 Workshop: Baldwinsville, NY</Heading>
+                    <Vimeo src="https://vimeo.com/1028882555" />
+                    <Paragraph marginBottom={4}>
+                        Watch the video above to go behind the scenes at the 2024 Alexia Fall Workshop in Baldwinsville, NY. This documentary captures the spirit of Baldwinsville, highlighting its people, places, and stories through the creative lenses of our student storytellers and coaches.
+                    </Paragraph>
+                    <Heading level={3} textAlign="center" marginBottom={2}>Select a Year to Explore</Heading>
+                    <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                            {WORKSHOP_DATES.filter(({ year }) => year !== "2025").map(({ year, dates }) => (
+                            <li key={year} style={{ marginBottom: "2rem" }}>
+                                <Row alignItems="center" justifyContent="space-between" borderPosition="top" borderColor="blue" borderSize={1} paddingTop={2}>
+                                    <Col xs={12} sm={8}>
+                                        <Heading level={4} marginBottom={1}>{`Alexia Fall Workshop ${year}`}</Heading>
+                                        <Paragraph marginBottom={1}>
+                                           {dates}
+                                        </Paragraph>
+                                    </Col>
+                                    <Col xs={12} sm={4}>
+                                        <Button.CTA label={`View ${year} Workshop`} onClick={() => {
+                                            window.location.href = `/${year}`;
+                                        }} />
+                                    </Col>
+                                </Row>
+                            </li>
+                        ))}
+                    </ul>
+                </Container>
+            </Section>
+        </Layout>
+    );
 };
 export default Home;

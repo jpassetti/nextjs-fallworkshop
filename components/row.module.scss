@@ -5,13 +5,12 @@
 	display: flex;
 	flex-wrap: wrap;
 	margin: 0 -.5rem;
-	&.border-bottom-1 {
-		border-bottom: 1px solid variables.$color__orange;
-	}
 	@include mixins.marginAndPadding();
 	@include mixins.alignItems();
 	@include mixins.justifyContent();
 	@include mixins.flexDirection();
+	@include mixins.borders();
+	@include mixins.gap();
 }
 .table-header {
 	padding-top: 1rem;

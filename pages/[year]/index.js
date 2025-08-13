@@ -35,29 +35,29 @@ export async function getStaticProps({ params }) {
 }
 
 const YearLandingPage = ({ activeYear, people, sponsors, stories }) => {
- return (
-  <Layout>
-   {/* <Event /> */}
-   {stories.length > 0 && <Stories stories={stories} activeYear={activeYear} />}
-   {people && (
-    <PeopleByRole
-     role="coach"
-     plural="Coaches"
-     people={people}
-     activeYear={activeYear}
-    />
-   )}
-   {people && (
-    <PeopleByRole
-     role="staff"
-     plural="Faculty"
-     people={people}
-     activeYear={activeYear}
-    />
-   )}
-   {sponsors && <Sponsors sponsors={sponsors} activeYear={activeYear} />}
-  </Layout>
- );
+    return (
+        <Layout year={activeYear}>
+            {/* <Event /> */}
+            {stories.length > 0 && <Stories stories={stories} activeYear={activeYear} />}
+            {people && (
+                <PeopleByRole
+                    role="coach"
+                    plural="Coaches"
+                    people={people}
+                    activeYear={activeYear}
+                />
+            )}
+            {people && (
+                <PeopleByRole
+                    role="staff"
+                    plural="Faculty"
+                    people={people}
+                    activeYear={activeYear}
+                />
+            )}
+            {sponsors && <Sponsors sponsors={sponsors} activeYear={activeYear} />}
+        </Layout>
+    );
 };
 
 export default YearLandingPage;
