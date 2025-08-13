@@ -43,13 +43,13 @@ const Home = () => {
                     </Paragraph>
                     <Heading level={3} textAlign="center" marginBottom={2}>Select a Year to Explore</Heading>
                     <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                            {WORKSHOP_DATES.filter(({ year }) => year !== "2025").map(({ year, dates }) => (
+                        {WORKSHOP_DATES.filter(({ year }) => year !== "2025").map(({ year, dates }) => (
                             <li key={year} style={{ marginBottom: "2rem" }}>
                                 <Row alignItems="center" justifyContent="space-between" borderPosition="top" borderColor="blue" borderSize={1} paddingTop={2}>
                                     <Col xs={12} sm={8}>
                                         <Heading level={4} marginBottom={1}>{`Alexia Fall Workshop ${year}`}</Heading>
                                         <Paragraph marginBottom={1}>
-                                           {dates}
+                                            {dates}
                                         </Paragraph>
                                     </Col>
                                     <Col xs={12} sm={4}>
@@ -61,6 +61,71 @@ const Home = () => {
                             </li>
                         ))}
                     </ul>
+
+                </Container>
+            </Section>
+            <Section backgroundColor="blue_10">
+                <Container content>
+                    <Heading level={2} textAlign="center" marginBottom={2}>
+                        Explore Academic Programs
+                    </Heading>
+                    <Paragraph marginBottom={4} textAlign="center">
+                        Learn more about our undergraduate and graduate programs in Visual Communications.
+                    </Paragraph>
+                    </Container>
+                    <Container>
+                    <Row justifyContent="center">
+                        <Col xs={12} sm={6}>
+                            <div style={{
+                                border: "1px solid #e0e0e0",
+                                borderRadius: "1rem",
+                                boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
+                                padding: "2rem",
+                                background: "#fff",
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "flex-start",
+                                height: "100%"
+                            }}>
+                                <Heading level={3} marginBottom={1}>Visual Communications Undergraduate Program</Heading>
+                                <Paragraph marginBottom={2}>
+                                    Prepare for a career in visual storytelling, design, and communications. Our bachelor’s program offers hands-on experience and industry connections.
+                                </Paragraph>
+                                <Button.CTA
+                                    label="Learn More"
+                                    aria-label="Learn more about the Visual Communications Undergraduate Program"
+                                    onClick={() => {
+                                        window.location.href = "https://newhouse.syracuse.edu/academics/visual-communications/bachelors/";
+                                    }}
+                                />
+                            </div>
+                        </Col>
+                        <Col xs={12} sm={6}>
+                            <div style={{
+                                border: "1px solid #e0e0e0",
+                                borderRadius: "1rem",
+                                boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
+                                padding: "2rem",
+                                background: "#fff",
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "flex-start",
+                                height: "100%"
+                            }}>
+                                <Heading level={3} marginBottom={1}>Multimedia, Photography and Design Graduate Program</Heading>
+                                <Paragraph marginBottom={2}>
+                                    Advance your skills in multimedia, photography, and design. Our master’s program is designed for creative professionals seeking leadership roles.
+                                </Paragraph>
+                                <Button.CTA
+                                    label="Learn More"
+                                    aria-label="Learn more about the Multimedia, Photography and Design Graduate Program"
+                                    onClick={() => {
+                                        window.location.href = "https://newhouse.syracuse.edu/academics/multimedia-photography-and-design/masters/";
+                                    }}
+                                />
+                            </div>
+                        </Col>
+                    </Row>
                 </Container>
             </Section>
         </Layout>
