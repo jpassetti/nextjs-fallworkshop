@@ -4,7 +4,7 @@ import styles from './logo.module.scss';
 let cx = classNames.bind(styles);
 
 
-const Logo = ({invert, allWhite}) => {
+const Logo = ({invert, allWhite, withLink}) => {
 	let blockSClasses = cx({
 		[`block-s`] : true,
 		[`block-s-white`] : allWhite,
@@ -13,7 +13,13 @@ const Logo = ({invert, allWhite}) => {
 		[`wordmark`] : true,
 		[`wordmark-white`] : invert,
 	});
-	return <a href="https://newhouse.syracuse.edu" target="_blank"><svg version="1.1" className={styles.logo} id="Artwork" x="0px" y="0px"
+
+	const linkUrl = "https://newhouse.syracuse.edu";
+
+	const linkAriaLabel = "S.I. Newhouse School of Public Communications";
+
+	const logoSVG = () => {
+	return <svg version="1.1" className={styles.logo} id="Artwork" x="0px" y="0px"
 	 viewBox="0 0 257.4 125.1" style={{enableBackground: "new 0 0 257.4 125.1"}}>
 <g>
 	<path className={wordmarkClasses} d="M36,95.8h-1.3L21.8,81v13l1.5,0.3v1.3h-5v-1.3l1.5-0.3V78.8c-0.5-0.6-0.8-0.9-1.5-1v-1.3h3.2L34,90.8V78.1
@@ -114,6 +120,8 @@ const Logo = ({invert, allWhite}) => {
 		c-0.2-0.2-7.7-7.8-8-8.1h-20.8V12.5h13.8V19.1z"/>
 </g>
 </svg>
-</a>
+	}
+
+	return withLink ? <a href={linkUrl} aria-label={linkAriaLabel} target="_blank">{logoSVG()}</a> : logoSVG()
 }
 export default Logo;

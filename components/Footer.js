@@ -9,7 +9,7 @@ const Footer = () => {
   <footer className={styles.footer}>
    <Container>
     
-     <Logo invert />
+     <Logo invert withLink />
    
     <Paragraph color="white" marginBottom="4">
      Copyright {new Date().getFullYear()}
