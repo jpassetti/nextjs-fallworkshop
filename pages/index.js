@@ -123,3 +123,19 @@ const Home = () => {
     );
 };
 export default Home;
+
+// Conditional server-side redirect: set HOME_REDIRECT_TO_YEAR to a year (e.g. '2025')
+// to forward visitors from '/' to '/2025'. Remove or unset the env var to show
+// the homepage content again.
+export async function getServerSideProps(context) {
+    const redirectYear = process.env.HOME_REDIRECT_TO_YEAR;
+    if (redirectYear) {
+        return {
+            redirect: {
+                destination: `/${redirectYear}`,
+                permanent: false,
+            },
+        };
+    }
+    return { props: {} };
+}

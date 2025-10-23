@@ -8,16 +8,19 @@ import Wordmark from './Wordmark'
 
 import styles from './header.module.scss'
 
-const Header = ({ inside, year }) => {
-	return <header className={styles.header}>
-		<MobileNav inside year={year} />
-		<Container>
-			<Row alignItems="center" justifyContent="center" flexDirection="column">
-				<Logo />
-				<Wordmark year={year} />
-				{year && <Nav year={year} inside={inside} />}
-			</Row>
-		</Container>
-	</header>
-}
+const Header = ({ inside, year, navItems = [] }) => {
+	return (
+		<header className={styles.header}>
+			<MobileNav inside year={year} />
+			<Container>
+				<Row alignItems="center" justifyContent="center" flexDirection="column">
+					<Logo />
+					<Wordmark year={year} />
+					{year && <Nav year={year} inside={inside} navItems={navItems} />}
+				</Row>
+			</Container>
+		</header>
+	);
+};
+
 export default Header;

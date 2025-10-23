@@ -5,9 +5,9 @@ import styles from "./nav.module.scss";
 
 import { getNavLinks } from "../lib/api";
 
-const Nav = ({ inside, year }) => {
+const Nav = ({ inside, year, navItems = null }) => {
   const router = useRouter();
-  const navLinks = getNavLinks();
+  const navLinks = Array.isArray(navItems) && navItems.length > 0 ? navItems : getNavLinks();
 
   // Determine if we're on the year landing page (e.g., /2024)
   const isOnYearPage = router.pathname === "/[year]" || router.asPath === `/${year}`;

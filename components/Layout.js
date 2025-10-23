@@ -6,7 +6,7 @@ import Header from "./Header";
 import Main from "./Main";
 import SEO from "./SEO";
 
-const Layout = ({ children, inside = false, year }) => {
+const Layout = ({ children, inside = false, year, navItems = [] }) => {
     return (
         <Fragment>
             <SEO
@@ -21,7 +21,7 @@ const Layout = ({ children, inside = false, year }) => {
                 }}
                 url="https://fallworkshop.newhouse.syr.edu"
             />
-            <Header inside={inside ? true : false} year={year} />
+            <Header inside={inside ? true : false} year={year} navItems={navItems} />
             <Main>{children}</Main>
             <Footer />
         </Fragment>

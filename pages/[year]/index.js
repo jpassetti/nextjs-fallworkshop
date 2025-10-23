@@ -4,11 +4,15 @@ import Stories from "../../components/Stories";
 import PeopleByRole from "../../components/PeopleByRole";
 import Sponsors from "../../components/Sponsors";
 import {
- getAllYears,
- getStoriesByYear,
- getPeopleByYear,
- getSponsorsByYear,
+    getAllYears,
+    getStoriesByYear,
+    getPeopleByYear,
+    getSponsorsByYear,
+    getScheduleByYear,
+    getNavLinksByYear,
 } from "../../lib/api";
+import NAV_CONFIG from "../../lib/navConfig";
+import Schedule from "../../components/Schedule";
 
 export async function getStaticPaths() {
  const years = await getAllYears();
@@ -28,18 +32,31 @@ export async function getStaticProps({ params }) {
  const people = await getPeopleByYear(activeYear);
  const sponsors = await getSponsorsByYear(activeYear);
  const stories = await getStoriesByYear(activeYear);
+ const schedule = await getScheduleByYear(activeYear);
 
  return {
-  props: { people, sponsors, stories, activeYear },
+  props: { people, schedule, sponsors, stories, activeYear },
  };
 }
 
-const YearLandingPage = ({ activeYear, people, sponsors, stories }) => {
+const YearLandingPage = ({ activeYear, people, sponsors, stories, schedule }) => {
+    const config = NAV_CONFIG.find((c) => String(c.year) === String(activeYear));
+    // Use getNavLinksByYear with the object form so it returns [{ year, nav }]
+    const navResult = config ? getNavLinksByYear([{ year: config.year, links: config.links }]) : [];
+    const navItems = (navResult[0] && navResult[0].nav) || [];
+
+    const hasNav = (id) => navItems.some((n) => n.id === id);
+
     return (
-        <Layout year={activeYear}>
-            {/* <Event /> */}
-            {stories.length > 0 && <Stories stories={stories} activeYear={activeYear} />}
-            {people && (
+        <Layout year={activeYear} navItems={navItems}>
+            {/* Render sections only if they're present in the per-year nav config */}
+            {hasNav("schedule") && <Schedule schedule={schedule} />}
+
+            {hasNav("stories") && stories.length > 0 && (
+                <Stories stories={stories} activeYear={activeYear} />
+            )}
+
+            {hasNav("coaches") && people && (
                 <PeopleByRole
                     role="coach"
                     plural="Coaches"
@@ -47,7 +64,8 @@ const YearLandingPage = ({ activeYear, people, sponsors, stories }) => {
                     activeYear={activeYear}
                 />
             )}
-            {people && (
+
+            {hasNav("faculty") && people && (
                 <PeopleByRole
                     role="staff"
                     plural="Faculty"
@@ -55,7 +73,10 @@ const YearLandingPage = ({ activeYear, people, sponsors, stories }) => {
                     activeYear={activeYear}
                 />
             )}
-            {sponsors && <Sponsors sponsors={sponsors} activeYear={activeYear} />}
+
+            {hasNav("sponsors") && sponsors && (
+                <Sponsors sponsors={sponsors} activeYear={activeYear} />
+            )}
         </Layout>
     );
 };
