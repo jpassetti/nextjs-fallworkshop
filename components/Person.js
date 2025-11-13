@@ -8,7 +8,7 @@ import Row from "./Row";
 import Span from "./Span";
 import SocialMediaLinks from "./SocialMediaLinks";
 
-const Person = ({ person, role, teaser, invert }) => {
+const Person = ({ person, role, teaser, invert, activeYear }) => {
  const { title, slug, featuredImage, personInformation } = person;
  const { firstName, lastName, jobs, linksInformation, rolesPerYear } =
   personInformation;
@@ -86,7 +86,7 @@ const Person = ({ person, role, teaser, invert }) => {
       : ""}
      {role === "staff"
       ? rolesPerYear
-         ?.filter((rolePerYear) => rolePerYear.year === "2024")
+         ?.filter((rolePerYear) => rolePerYear.year === activeYear)
          .map((rolePerYear, index) => {
           return (
            <li key={index}>

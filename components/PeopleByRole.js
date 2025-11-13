@@ -34,7 +34,7 @@ const PeopleByRole = ({ role, plural, people, activeYear }) => {
        //console.log(person.node.personInformation);
        return (
         <Col xs="6" sm="6" md="4" lg="3" key={index}>
-         <Person role={role} person={person.node} />
+         <Person role={role} person={person.node} activeYear={activeYear} />
         </Col>
        );
       })
