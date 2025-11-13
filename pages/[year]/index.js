@@ -1,5 +1,6 @@
 import Layout from "../../components/Layout";
 import About from "../../components/About";
+import Credits from "../../components/Credits";
 import Event from "../../components/Event";
 import Stories from "../../components/Stories";
 import PeopleByRole from "../../components/PeopleByRole";
@@ -61,11 +62,9 @@ const YearLandingPage = ({
    {/* Render sections only if they're present in the per-year nav config */}
    {hasNav("about") && <About />}
    {hasNav("schedule") && <Schedule schedule={schedule} />}
-
    {hasNav("stories") && stories.length > 0 && (
     <Stories stories={stories} activeYear={activeYear} />
    )}
-
    {hasNav("coaches") && people && (
     <PeopleByRole
      role="coach"
@@ -74,7 +73,6 @@ const YearLandingPage = ({
      activeYear={activeYear}
     />
    )}
-
    {hasNav("faculty") && people && (
     <PeopleByRole
      role="staff"
@@ -83,7 +81,7 @@ const YearLandingPage = ({
      activeYear={activeYear}
     />
    )}
-
+   {activeYear === "2025" && <Credits />}
    {hasNav("sponsors") && sponsors && (
     <Sponsors sponsors={sponsors} activeYear={activeYear} />
    )}
