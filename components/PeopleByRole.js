@@ -6,7 +6,7 @@ import Person from "./Person";
 import Section from "./Section";
 
 const PeopleByRole = ({ role, plural, people, activeYear }) => {
- //console.log({ role, plural, people });
+ console.log({ role, plural, people });
  const hasRoleAndYear = (roleToFilter) =>
   roleToFilter.role === role && roleToFilter.year === activeYear;
 
