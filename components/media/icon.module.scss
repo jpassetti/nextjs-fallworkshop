@@ -1,0 +1,19 @@
+@use '../../styles/variables';
+@use '../../styles/mixins';
+
+.icon {
+	width: 1.1rem;
+	height: auto;
+	@include mixins.breakpoint(sm) {
+		width: 1.6rem;
+	}
+}
+.color-white {
+	fill: white;
+}
+.color-blue {
+	fill: variables.$color__blue;
+}
+.color-orange {
+	fill: variables.$color__orange;
+}

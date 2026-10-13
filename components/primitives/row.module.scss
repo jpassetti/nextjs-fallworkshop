@@ -1,0 +1,28 @@
+@use '../../styles/mixins';
+@use '../../styles/variables';
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -.5rem;
+	@include mixins.marginAndPadding();
+	@include mixins.alignItems();
+	@include mixins.justifyContent();
+	@include mixins.flexDirection();
+	@include mixins.borders();
+	@include mixins.gap();
+}
+.table-header {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	border-bottom: 2px solid variables.$color__blue;
+	@include mixins.breakpoint(xs) {
+			display: none;
+		}
+}
+.table-row {
+	padding-top: 1.5rem;
+	padding-bottom: 1.5rem;
+	border-bottom: 1px dotted variables.$color__blue;
+	margin-bottom: 0;
+}

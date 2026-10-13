@@ -1,0 +1,30 @@
+.logo {
+    .block_s {
+        fill: #F76900;
+    }
+    .wordmark_syracuse_university {
+        fill: #F76900;
+    }
+    .wordmark_newhouse_school {
+        fill: #000E54;
+    }
+    &.inverted {
+        .wordmark_newhouse_school {
+            fill: white;
+        }
+    }
+    &--large {
+        width: 18rem;
+        height: auto;
+    }
+
+    &--medium {
+        width: 12rem;
+        height: auto;
+    }
+
+    &--small {
+        width: 6rem;
+        height: auto;
+    }
+}

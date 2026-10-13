@@ -1,0 +1,72 @@
+@use '../../styles/variables';
+
+.wordmark {
+	font-family: variables.$font__sherman_sans;
+	font-weight: bold;
+	font-size: 2rem;
+	line-height: 0.95;
+	text-transform: uppercase;
+	color: variables.$color__blue;
+	text-align: center;
+	margin-bottom: 1rem;
+	a {
+		color: variables.$color__blue;
+		text-decoration: none;
+		&:hover, &:focus {
+			color: variables.$color__blue;
+		}
+	}
+}
+
+.wordmarkInvert {
+	color: white;
+	a {
+		color: white;
+		&:hover, &:focus {
+			color: white;
+		}
+	}
+}
+
+.wordmarkContainer {
+	margin-bottom: 2rem;
+	position: relative;
+	padding-bottom: 2.5rem;
+	&:after {
+			content: '';
+			display: block;
+			position: absolute;
+			bottom: 0px;
+			left: 50%;
+			transform: translate(-50%, 0);
+			width: 5rem;
+			height: .5rem;
+			background-color: variables.$color__orange;
+		}
+}
+
+.wordmarkContainerInvert {
+	&:after {
+		background-color: rgba(255, 255, 255, 0.82);
+	}
+}
+
+.wordmarkCompact {
+	font-size: 1.15rem;
+	letter-spacing: 0.02em;
+	margin-bottom: 0;
+	line-height: 1;
+	text-align: left;
+}
+
+.wordmarkDatesInvert {
+	opacity: 0.95;
+}
+
+.wordmarkContainerCompact {
+	margin-bottom: 0;
+	padding-bottom: 0;
+	&:after {
+		display: none;
+	}
+}

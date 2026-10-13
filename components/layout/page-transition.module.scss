@@ -1,0 +1,36 @@
+.scene {
+  position: relative;
+  isolation: isolate;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.overlayPrimary,
+.overlayAccent {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  transform-origin: left center;
+}
+
+.overlayPrimary {
+  background:
+    linear-gradient(120deg, rgba(11, 28, 43, 0.92) 0%, rgba(20, 55, 90, 0.86) 48%, rgba(222, 111, 74, 0.7) 100%);
+  mix-blend-mode: multiply;
+}
+
+.overlayAccent {
+  z-index: 3;
+  background:
+    linear-gradient(
+      96deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.18) 35%,
+      rgba(255, 255, 255, 0) 72%
+    );
+  mix-blend-mode: screen;
+}

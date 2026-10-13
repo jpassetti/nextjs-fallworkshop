@@ -1,0 +1,44 @@
+@use '../../styles/variables';
+@use '../../styles/mixins';
+
+.nav {
+	display: none;
+	@include mixins.breakpoint(md) {
+		display: block;
+	}
+}
+
+.navForceVisible {
+	display: block;
+}
+.navList {
+	display: flex;
+}
+
+.navListNoWrap {
+	width: max-content;
+}
+.navItemAnchor {
+	font-weight: bold;
+	font-size: 1.25rem;
+	font-family: variables.$font__sherman_sans;
+	text-decoration: none;
+	padding: 1rem;
+	color: variables.$color__blue;
+}
+
+.navInverse {
+	.navItemAnchor {
+		color: white;
+		font-size: 1.02rem;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		transition: opacity 140ms ease;
+		padding: 0.5rem 0.85rem;
+	}
+
+	.navItemAnchor:hover,
+	.navItemAnchor:focus-visible {
+		opacity: 0.78;
+	}
+}

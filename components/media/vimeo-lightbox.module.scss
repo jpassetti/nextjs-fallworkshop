@@ -1,0 +1,116 @@
+.videoTrigger {
+ position: relative;
+ display: block;
+ width: 100%;
+ padding: 0;
+ border: 0;
+ background: transparent;
+ cursor: pointer;
+ overflow: hidden;
+}
+
+.videoThumbnail {
+ display: block;
+ width: 100%;
+ height: auto;
+}
+
+.videoOverlay {
+ position: absolute;
+ inset: 0;
+ background: linear-gradient(
+  180deg,
+  rgba(0, 0, 0, 0.08) 0%,
+  rgba(0, 0, 0, 0.16) 52%,
+  rgba(0, 0, 0, 0.28) 100%
+ );
+ transition: opacity 180ms ease;
+}
+
+.playButton {
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ width: clamp(3.25rem, 6.4vw, 4.7rem);
+ height: clamp(3.25rem, 6.4vw, 4.7rem);
+ border-radius: 999px;
+ border: 1px solid rgba(255, 255, 255, 0.72);
+ background: rgba(0, 0, 0, 0.42);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.playTriangle {
+ width: 0;
+ height: 0;
+ border-top: 0.56rem solid transparent;
+ border-bottom: 0.56rem solid transparent;
+ border-left: 0.96rem solid #fff;
+ margin-left: 0.13rem;
+}
+
+.videoTrigger:hover .playButton,
+.videoTrigger:focus-visible .playButton {
+ transform: translate(-50%, -50%) scale(1.04);
+ background: rgba(0, 0, 0, 0.58);
+}
+
+.videoTrigger:hover .videoOverlay,
+.videoTrigger:focus-visible .videoOverlay {
+ opacity: 0.88;
+}
+
+.lightboxBackdrop {
+ position: fixed;
+ inset: 0;
+ z-index: 10000;
+ background: rgba(2, 5, 14, 0.84);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ padding: 1rem;
+ isolation: isolate;
+}
+
+.lightboxFrame {
+ width: min(72rem, 100%);
+ position: relative;
+}
+
+.closeButton {
+ position: absolute;
+ top: -2.7rem;
+ right: 0;
+ width: 2.2rem;
+ height: 2.2rem;
+ border: 0;
+ border-radius: 999px;
+ background: rgba(255, 255, 255, 0.14);
+ color: #fff;
+ font-size: 1.55rem;
+ line-height: 1;
+ cursor: pointer;
+}
+
+.lightboxVideo {
+ position: relative;
+ width: 100%;
+ overflow: hidden;
+}
+
+.lightboxVideo::before {
+ content: "";
+ display: block;
+ padding-top: 56.25%;
+}
+
+.lightboxVideo iframe {
+ position: absolute;
+ inset: 0;
+ width: 100%;
+ height: 100%;
+ border: 0;
+}

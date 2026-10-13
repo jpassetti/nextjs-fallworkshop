@@ -1,0 +1,7 @@
+@use '../../styles/variables';
+@use '../../styles/mixins';
+
+.tabs {
+	display: flex;
+	justify-content: center;
+}

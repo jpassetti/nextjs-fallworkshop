@@ -3,18 +3,34 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "next typegen && tsc --noEmit",
+    "health": "npm run lint && npm run typecheck && npm run build && npm audit --omit=dev --audit-level=high",
+    "health:full": "npm run health && npm audit --audit-level=high && npm outdated"
   },
   "dependencies": {
-    "classnames": "^2.3.2",
-    "html-entities": "^2.3.3",
-    "moment": "^2.29.4",
-    "next": "latest",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-moment": "^1.1.2",
-    "react-scroll": "^1.8.7",
-    "sass": "^1.56.1",
-    "yet-another-react-lightbox": "^2.2.0"
+    "classnames": "^2.5.1",
+    "framer-motion": "^14.2.0",
+    "html-entities": "^2.6.0",
+    "moment": "^2.31.0",
+    "next": "^16.4.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-moment": "^2.0.2",
+    "react-scroll": "^1.9.3",
+    "sass": "^1.105.1",
+    "yet-another-react-lightbox": "^3.32.2"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "^19.2.2",
+    "eslint": "^9.37.0",
+    "eslint-config-next": "^16.4.0",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=20.9.0"
   }
 }

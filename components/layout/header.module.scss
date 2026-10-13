@@ -1,0 +1,188 @@
+.header {
+	padding: 2rem 0;
+	display: flex;
+	align-items: center;
+}
+
+.headerHome {
+	padding: 1.2rem 0 1rem 0;
+	background: linear-gradient(118deg, rgb(0, 14, 84) 30.08%, rgb(32, 50, 153) 98.9%);
+	color: white;
+}
+
+.homeHeader {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.homeLogoTop {
+	width: min(12.5rem, 75vw);
+}
+
+.homeTitle {
+	margin: 0;
+	font-family: "Sherman Sans", Arial, sans-serif;
+	font-size: clamp(1.18rem, 2.2vw, 1.85rem);
+	line-height: 0.95;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+	font-weight: 700;
+	text-align: center;
+
+	a {
+		color: #ffffff;
+		text-decoration: none;
+	}
+
+	a:visited,
+	a:hover,
+	a:focus-visible {
+		color: #ffffff;
+	}
+}
+
+.homeDates {
+	color: rgba(255, 255, 255, 0.86);
+	font-family: "Sherman Sans", Arial, sans-serif;
+	font-size: 0.88rem;
+	font-weight: 700;
+	letter-spacing: 0.03em;
+	text-align: center;
+}
+
+.homeDivider {
+	width: 100%;
+	height: 1px;
+	background: rgba(255, 255, 255, 0.3);
+	margin: 0.2rem 0 0.1rem 0;
+}
+
+.homeBottomRow {
+	width: 100%;
+	display: grid;
+	gap: 0.8rem;
+	padding-top: 0.35rem;
+	padding-bottom: 0.35rem;
+}
+
+.homeNavWrap {
+	width: 100%;
+	min-width: 0;
+}
+
+.homeUtilitiesWrap {
+	width: 100%;
+}
+
+.headerStory {
+	padding: 0.9rem 0 0.85rem 0;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.26);
+	background: #001168;
+	color: #ffffff;
+}
+
+.storyHeader {
+	display: flex;
+	flex-direction: column;
+	gap: 0.85rem;
+}
+
+.storyBrand {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.storyLogoTop {
+	width: min(9.25rem, 52vw);
+}
+
+.storyMastheadActions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.65rem 1rem;
+	align-items: center;
+}
+
+.storyMastheadLink,
+.storyMastheadLinkPrimary {
+	font-family: "Sherman Sans", Arial, sans-serif;
+	font-size: 0.78rem;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+.storyMastheadLink {
+	color: rgba(255, 255, 255, 0.86);
+	transition: color 120ms ease;
+}
+
+.storyMastheadLinkPrimary {
+	color: #ffffff;
+	font-weight: 700;
+	transition: color 120ms ease;
+}
+
+.storyMastheadLink:hover,
+.storyMastheadLink:focus-visible {
+	color: #ffffff;
+}
+
+.storyMastheadLinkPrimary:hover,
+.storyMastheadLinkPrimary:focus-visible {
+	color: #d9e5ff;
+}
+
+@media (min-width: 980px) {
+	.homeBottomRow {
+		display: grid;
+		grid-template-columns: minmax(22rem, 1fr) auto;
+		align-items: center;
+		gap: 1.25rem;
+		min-height: 3.4rem;
+	}
+
+	.homeNavWrap {
+		min-width: 22rem;
+		overflow-x: auto;
+		scrollbar-width: thin;
+	}
+
+	.homeNavWrap::-webkit-scrollbar {
+		height: 6px;
+	}
+
+	.homeNavWrap::-webkit-scrollbar-thumb {
+		background: rgba(255, 255, 255, 0.35);
+		border-radius: 999px;
+	}
+
+	.homeUtilitiesWrap {
+		justify-self: end;
+	}
+
+	.storyHeader {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: flex-end;
+		gap: 1rem;
+	}
+
+	.storyMastheadActions {
+		justify-content: flex-end;
+	}
+}
+
+@media (min-width: 980px) and (max-width: 1260px) {
+	.homeBottomRow {
+		grid-template-columns: 1fr;
+		align-items: start;
+	}
+
+	.homeUtilitiesWrap {
+		justify-self: start;
+	}
+}

@@ -1,0 +1,71 @@
+@use "../../styles/variables";
+@use "../../styles/mixins";
+
+.aboutLayout {
+ max-width: 44rem;
+ margin-left: auto;
+ margin-right: auto;
+ margin-top: 0.5rem;
+ margin-bottom: 2rem;
+
+ @include mixins.breakpoint(md) {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+ }
+}
+
+.aboutBody {
+ width: 100%;
+}
+
+.aboutProse {
+ :global(p) {
+  margin-bottom: 1.6rem;
+  line-height: 1.8;
+  font-size: 1.06rem;
+ }
+
+ :global(p:first-of-type) {
+  font-family: variables.$font__sherman_serif;
+  font-size: clamp(1.22rem, 2.3vw, 1.58rem);
+  line-height: 1.58;
+  margin-bottom: 1.4rem;
+ }
+
+ :global(p:last-child) {
+  margin-bottom: 0;
+ }
+
+ :global(a) {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.14em;
+ }
+}
+
+.aboutFallback {
+ line-height: 1.8;
+ font-size: 1.08rem;
+ margin-bottom: 0;
+}
+
+.aboutMedia {
+ width: min(100vw - 2rem, 60rem);
+ margin-left: 50%;
+ transform: translateX(-50%);
+ margin-top: 0.25rem;
+ margin-bottom: 2.1rem;
+
+ @include mixins.breakpoint(md) {
+  width: min(100vw - 4rem, 62rem);
+  margin-bottom: 2.5rem;
+ }
+}
+
+.aboutMedia :global(.embed-responsive) {
+ margin-bottom: 0;
+ border-radius: 0;
+ box-shadow: none;
+ border: 0;
+ overflow: hidden;
+}

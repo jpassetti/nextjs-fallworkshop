@@ -1,0 +1,195 @@
+@use '../../styles/variables';
+
+.hero {
+  position: relative;
+  min-height: clamp(30rem, 86vh, 54rem);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background-color: #071726;
+}
+
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  transform-origin: center center;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(2, 8, 14, 0.56) 0%,
+      rgba(4, 14, 24, 0.7) 34%,
+      rgba(4, 15, 25, 0.86) 68%,
+      rgba(3, 11, 19, 0.96) 100%
+    );
+}
+
+.heroTexture {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.24;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.24) 0.5px, transparent 0.5px);
+  background-size: 2px 2px;
+}
+
+.heroVignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 36%),
+    radial-gradient(circle at center, rgba(0, 0, 0, 0) 48%, rgba(0, 0, 0, 0.42) 100%);
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  color: white;
+  max-width: 44rem;
+  padding: 4.2rem 0 3.3rem 0;
+}
+
+.heroInner a,
+.heroInner a:visited,
+.heroInner a:hover,
+.heroInner a:focus-visible {
+  color: #ffffff;
+}
+
+.kicker {
+  margin-bottom: 0.85rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  opacity: 0.96;
+}
+
+.heroTitle {
+  color: white;
+  font-family: variables.$font__sherman_serif;
+  font-size: clamp(2.3rem, 5.8vw, 4.9rem);
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+  margin-bottom: 1.15rem;
+  text-shadow: 0 18px 40px rgba(0, 0, 0, 0.42);
+}
+
+.heroDek {
+  color: rgba(255, 255, 255, 0.97);
+  font-family: variables.$font__sherman_serif;
+  font-size: clamp(1.08rem, 1.9vw, 1.42rem);
+  line-height: 1.65;
+  max-width: 36rem;
+  margin-bottom: 1.15rem;
+  text-shadow: 0 10px 22px rgba(0, 0, 0, 0.34);
+}
+
+.heroByline {
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  opacity: 0.92;
+  margin-bottom: 1.2rem;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.76rem 0.9rem;
+}
+
+.ctaPrimary,
+.ctaSecondary {
+  font-family: "Sherman Sans", Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.72rem 1rem;
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.ctaPrimary {
+  color: #ffffff;
+  background-color: #de6f4a;
+  border: 1px solid #de6f4a;
+}
+
+.ctaPrimary:hover,
+.ctaPrimary:focus-visible {
+  background-color: #bf5736;
+  border-color: #bf5736;
+  transform: translateY(-1px);
+}
+
+.ctaSecondary {
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.ctaSecondary:hover,
+.ctaSecondary:focus-visible {
+  border-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.14);
+  transform: translateY(-1px);
+}
+
+.pager {
+  display: flex;
+  align-items: center;
+  gap: 0.46rem;
+  margin-top: 1.5rem;
+}
+
+.pagerDot {
+  width: 0.68rem;
+  height: 0.68rem;
+  border: 0;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.42);
+  cursor: pointer;
+  padding: 0;
+}
+
+.pagerDotActive {
+  width: 1.85rem;
+  background-color: #ffffff;
+}
+
+.progressTrack {
+  position: relative;
+  z-index: 1;
+  width: min(16rem, 38vw);
+  height: 2px;
+  margin-top: 0.9rem;
+  background-color: rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+}
+
+.progressFill {
+  width: 100%;
+  height: 100%;
+  transform-origin: left center;
+  background-color: rgba(255, 255, 255, 0.96);
+}
+
+@media (max-width: 767px) {
+  .hero {
+    min-height: 32rem;
+  }
+
+  .heroInner {
+    padding-top: 4.8rem;
+    padding-bottom: 2.3rem;
+  }
+}

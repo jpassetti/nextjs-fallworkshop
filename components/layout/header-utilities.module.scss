@@ -1,0 +1,112 @@
+@use "../../styles/variables";
+
+.utilities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 0.9rem;
+  align-items: flex-end;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-family: variables.$font__roboto_condensed;
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #173653;
+}
+
+.select,
+.input,
+.button {
+  border-radius: 0.4rem;
+  border: 1px solid #bbcad7;
+  font-family: "Sherman Sans", Arial, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1;
+  min-height: 2.3rem;
+}
+
+.select,
+.input {
+  padding: 0.52rem 0.68rem;
+  color: #133451;
+  background: #ffffff;
+}
+
+.select {
+  min-width: 6.2rem;
+}
+
+.input {
+  min-width: 11rem;
+}
+
+.search {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.55rem;
+}
+
+.button {
+  padding: 0.58rem 0.78rem;
+  background: #133451;
+  color: #ffffff;
+  border-color: #133451;
+  cursor: pointer;
+}
+
+.utilitiesInverse {
+  .label {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .select,
+  .input {
+    background: rgba(7, 23, 37, 0.65);
+    border-color: rgba(255, 255, 255, 0.35);
+    color: #ffffff;
+  }
+
+  .button {
+    background: #de6f4a;
+    border-color: #de6f4a;
+    color: #ffffff;
+  }
+}
+
+.utilitiesCompact {
+  flex-wrap: nowrap;
+  gap: 0.55rem 0.65rem;
+}
+
+.utilitiesCompact .search {
+  gap: 0.45rem;
+}
+
+.utilitiesCompact .input {
+  min-width: 0;
+  width: clamp(7.5rem, 14vw, 10.5rem);
+}
+
+.utilitiesCompact .label span {
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .utilities {
+    width: 100%;
+  }
+
+  .input {
+    min-width: 10rem;
+  }
+}
+
+@media (min-width: 980px) {
+  .utilities {
+    justify-content: flex-end;
+  }
+}
