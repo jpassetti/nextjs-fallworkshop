@@ -105,45 +105,6 @@
   gap: 0.76rem 0.9rem;
 }
 
-.ctaPrimary,
-.ctaSecondary {
-  font-family: "Sherman Sans", Arial, sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  border-radius: 999px;
-  font-size: 0.82rem;
-  font-weight: 700;
-  padding: 0.72rem 1rem;
-  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease;
-}
-
-.ctaPrimary {
-  color: #ffffff;
-  background-color: #de6f4a;
-  border: 1px solid #de6f4a;
-}
-
-.ctaPrimary:hover,
-.ctaPrimary:focus-visible {
-  background-color: #bf5736;
-  border-color: #bf5736;
-  transform: translateY(-1px);
-}
-
-.ctaSecondary {
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  background-color: rgba(255, 255, 255, 0.08);
-}
-
-.ctaSecondary:hover,
-.ctaSecondary:focus-visible {
-  border-color: rgba(255, 255, 255, 0.8);
-  background-color: rgba(255, 255, 255, 0.14);
-  transform: translateY(-1px);
-}
-
 .pager {
   display: flex;
   align-items: center;

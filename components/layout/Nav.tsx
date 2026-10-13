@@ -20,6 +20,7 @@ type NavProps = {
   tone?: "default" | "inverse";
   noWrap?: boolean;
   forceVisible?: boolean;
+  centered?: boolean;
 };
 
 const Nav = ({
@@ -29,6 +30,7 @@ const Nav = ({
   tone = "default",
   noWrap = false,
   forceVisible = false,
+  centered = false,
 }: NavProps) => {
   const pathname = usePathname();
   const availableLinks = getNavLinks();
@@ -81,7 +83,9 @@ const Nav = ({
     <nav
       className={`${styles.nav} ${
         tone === "inverse" ? styles.navInverse : ""
-      } ${forceVisible ? styles.navForceVisible : ""}`}
+      } ${forceVisible ? styles.navForceVisible : ""} ${
+        centered ? styles.navCentered : ""
+      }`}
     >
       <ul className={`${styles.navList} ${noWrap ? styles.navListNoWrap : ""}`}>
         {navLinks.map((navLink, index) => {

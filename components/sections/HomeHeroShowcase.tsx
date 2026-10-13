@@ -4,7 +4,6 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Button from "@/components/Button";
 import Container from "@/components/primitives/Container";
 import Heading from "@/components/primitives/Heading";
-import Link from "next/link";
 import Paragraph from "@/components/primitives/Paragraph";
 import styles from "./home-hero-showcase.module.scss";
 import { useEffect, useMemo, useState } from "react";
@@ -176,10 +175,17 @@ const HomeHeroShowcase = ({
             )}
 
             <div className={styles.heroActions}>
-              <Button.CTA label="View Story" href={`/${activeYear}/stories/${activeSlug}`} />
-              <Link href={`/${activeYear}#stories`} className={styles.ctaSecondary}>
-                View all stories
-              </Link>
+              <Button.CTA
+                label="View Story"
+                href={`/${activeYear}/stories/${activeSlug}`}
+                hero
+              />
+              <Button.CTA
+                label="View all stories"
+                href={`/${activeYear}#stories`}
+                variant="inverse"
+                hero
+              />
             </div>
 
             {showcaseStories.length > 1 && (

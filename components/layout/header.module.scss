@@ -65,15 +65,20 @@
 	gap: 0.8rem;
 	padding-top: 0.35rem;
 	padding-bottom: 0.35rem;
+	justify-items: center;
 }
 
 .homeNavWrap {
 	width: 100%;
 	min-width: 0;
+	display: flex;
+	justify-content: center;
 }
 
 .homeUtilitiesWrap {
 	width: 100%;
+	display: flex;
+	justify-content: center;
 }
 
 .headerStory {
@@ -162,6 +167,7 @@
 
 	.homeUtilitiesWrap {
 		justify-self: end;
+		display: block;
 	}
 
 	.storyHeader {

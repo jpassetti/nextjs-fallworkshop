@@ -18,6 +18,12 @@
 .navListNoWrap {
 	width: max-content;
 }
+
+.navCentered {
+	.navList {
+		justify-content: center;
+	}
+}
 .navItemAnchor {
 	font-weight: bold;
 	font-size: 1.25rem;
@@ -40,5 +46,21 @@
 	.navItemAnchor:hover,
 	.navItemAnchor:focus-visible {
 		opacity: 0.78;
+	}
+}
+
+@media (max-width: 979px) {
+	.navCentered {
+		width: 100%;
+
+		.navList {
+			flex-wrap: wrap;
+			row-gap: 0.35rem;
+		}
+
+		.navListNoWrap {
+			width: auto;
+			max-width: 100%;
+		}
 	}
 }

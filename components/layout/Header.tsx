@@ -87,6 +87,7 @@ const Header = ({ inside, home, year, navItems = [], workshopDates }: HeaderProp
                   tone="inverse"
                   noWrap
                   forceVisible
+                  centered
                 />
               </div>
               <div className={styles.homeUtilitiesWrap}>

@@ -19,6 +19,42 @@
             background-color: variables.$color__orange__medium;
         }
     }
+
+    &__ctaInverse {
+        background-color: rgba(255, 255, 255, 0.08);
+        border: 1px solid #ffffff;
+        color: #ffffff;
+
+        &:hover,
+        &:focus-visible {
+            background-color: rgba(255, 255, 255, 0.14);
+            border-color: #ffffff;
+            color: #ffffff;
+        }
+    }
+
+    &__ctaInverse#{&}__ctaHero {
+        border-color: #ffffff;
+    }
+
+    &__ctaHero {
+        border: 1px solid variables.$color__orange;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        font-size: 0.82rem;
+        padding: 0.72rem 1rem;
+        transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+
+        &:hover,
+        &:focus-visible {
+            transform: translateY(-1px);
+        }
+    }
     &__group {
         display: flex;
         align-items: center;
