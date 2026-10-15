@@ -13,6 +13,7 @@ const SocialMediaLinks = ({ linksInformation, color }: any) => {
   twitterUrl,
   websiteUrl,
   facultyBioUrl,
+  imdbUrl,
   links,
  } = linksInformation;
  let socialLinksAnchorClasses = cx({
@@ -24,6 +25,9 @@ const SocialMediaLinks = ({ linksInformation, color }: any) => {
    case "linkedin":
     return linkedinUrl;
     break;
+    case "imdb":
+     return imdbUrl;
+     break;
    case "instagram":
     return instagramUrl;
     break;
