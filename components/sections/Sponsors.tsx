@@ -23,20 +23,6 @@ const Sponsors = ({ sponsors, activeYear }: any) => {
   >
    <Container size="sm">
     <Row justifyContent="center">
-     <Col xs="6" sm="6" md="4">
-      <div className={nikonClasses}>
-       <a href="https://www.nikonusa.com/" target="_blank" rel="noopener noreferrer">
-        <Image
-         src="/sponsors/38mm_NikonBSgrad_4c_bk.png"
-         alt="Nikon USA logo"
-         width={458.6}
-         height={400}
-         sizes="(max-width: 768px) 50vw, 33vw"
-         style={{ width: "100%", height: "auto" }}
-        />
-       </a>
-      </div>
-     </Col>
      {sponsors.map((sponsor, index) => {
       return (
        <Col key={index} xs="6" sm="6" md="4">
