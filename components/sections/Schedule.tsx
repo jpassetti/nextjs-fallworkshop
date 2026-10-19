@@ -1,5 +1,6 @@
 import moment from "moment";
 import { useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 import Col from "@/components/primitives/Col";
 import Container from "@/components/primitives/Container";
@@ -46,6 +47,11 @@ const Schedule = ({ schedule }: any) => {
  };
 
  const [activeTab, setActiveTab] = useState(getInitialActiveTab);
+ const prefersReducedMotion = useReducedMotion();
+ const itemVariants = {
+  hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 12 },
+  visible: { opacity: 1, y: 0, transition: { duration: prefersReducedMotion ? 0 : 0.25 } },
+ };
 
  return (
   <Section id="schedule" title="Schedule" backgroundColor="orange_10">
@@ -84,17 +90,43 @@ const Schedule = ({ schedule }: any) => {
       Location
      </Col>
     </Row>
+    <AnimatePresence mode="wait" initial={false}>
+     <motion.div
+      key={days[activeTab].dayDate}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      variants={{
+       hidden: { opacity: 0 },
+       visible: {
+        opacity: 1,
+        transition: {
+         duration: prefersReducedMotion ? 0 : 0.15,
+         staggerChildren: prefersReducedMotion ? 0 : 0.06,
+        },
+       },
+       exit: { opacity: 0, transition: { duration: prefersReducedMotion ? 0 : 0.12 } },
+      }}
+     >
     {days[activeTab].events ? (
      days[activeTab].events.map((event, index) => {
-      return <Schedule.Item key={index} event={event} />;
+      return (
+       <motion.div key={index} variants={itemVariants}>
+        <Schedule.Item event={event} />
+       </motion.div>
+      );
      })
     ) : (
+     <motion.div variants={itemVariants}>
      <Row>
       <Col paddingTop="2" textAlign="center" xs="12" sm="12" td>
        No events scheduled yet.
       </Col>
      </Row>
+     </motion.div>
     )}
+     </motion.div>
+    </AnimatePresence>
    </Container>
   </Section>
  );

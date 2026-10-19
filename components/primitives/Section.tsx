@@ -1,4 +1,5 @@
 import Heading from "@/components/primitives/Heading"
+import Reveal from "@/components/primitives/Reveal";
 import type { ReactNode } from "react";
 
 import classNames from "classnames/bind";
@@ -21,7 +22,7 @@ const Section = ({children, id, title, backgroundColor, paddingBottom}: SectionP
 		[`padding-bottom-${paddingBottom}`] : paddingBottom
 	})
 	return <section id={id} className={sectionClasses}>
-		<Heading level="2" textAlign="center" marginBottom="4" color={backgroundColor === "blue" ? "white" : ''}>{title}</Heading>
+		{title && <Reveal><Heading level="2" textAlign="center" marginBottom="4" color={backgroundColor === "blue" ? "white" : ''}>{title}</Heading></Reveal>}
 		{children}
 	</section>
 }

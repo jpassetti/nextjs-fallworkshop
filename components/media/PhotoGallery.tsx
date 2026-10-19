@@ -1,8 +1,9 @@
 import {useState} from "react"
-import {decode} from "html-entities";
 import Image from "next/image"
 import Icon from "@/components/media/Icon"
 import styles from "./photogallery.module.scss";
+import PhotoCaption from "@/components/media/PhotoCaption";
+import { plainText } from "@/lib/seo";
 
 import Lightbox from "yet-another-react-lightbox";
 
@@ -35,7 +36,7 @@ const PhotoGallery = ({coverImage, photoGallery, title}: any) => {
 			title: title,
 			width: mediaDetails.width,
 			height: mediaDetails.height,
-			description: decode(caption)
+			description: [plainText(caption), image.creditText ? `Photo: ${image.creditText}` : "", image.copyrightNotice].filter(Boolean).join(" — ")
 		}
 	} else {
 		return null;
@@ -57,6 +58,7 @@ const PhotoGallery = ({coverImage, photoGallery, title}: any) => {
 				descriptionMaxLines: 3 
 			}}
       	/>
+		<figure style={{ margin: 0 }}>
 	 	<div className={styles.photoGalleryCover} onClick={() => setAdvancedExampleOpen(true)} >
 			{coverImage && <Image 
 				src={coverImage.sourceUrl}
@@ -66,8 +68,10 @@ const PhotoGallery = ({coverImage, photoGallery, title}: any) => {
 				className={styles.photoGalleryCoverImage}
 			/>
 			}
-			<button className={styles.photoGalleryIcon} tabIndex={0}><Icon icon="images" color="white" /></button>
+			<button className={styles.photoGalleryIcon} aria-label={`Open photo gallery: ${title || "Workshop photographs"}`} onClick={() => setAdvancedExampleOpen(true)}><Icon icon="images" color="white" /></button>
 		</div>
+		{coverImage && <PhotoCaption image={coverImage} />}
+		</figure>
 	</div>
 }
 export default PhotoGallery

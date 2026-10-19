@@ -35,16 +35,6 @@ type HomeHeroShowcaseProps = {
   stories: Array<Record<string, unknown>>;
 };
 
-const cleanText = (html?: string) =>
-  (html || "")
-    .replace(/\[\s*&hellip;\s*\]/gi, "…")
-    .replace(/&hellip;/gi, "…")
-    .replace(/<[^>]*>/g, " ")
-    .replace(/\s+…/g, "…")
-    .replace(/&nbsp;/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-
 const getByline = (story: StoryTeaser) => {
   const students = Array.isArray(story.storyInformation?.students)
     ? story.storyInformation?.students
@@ -95,7 +85,7 @@ const HomeHeroShowcase = ({
   const activeSlug = activeStory.slug || "";
   const activeTitle = activeStory.title || `${activeYear} Stories`;
   const imageUrl = activeStory.featuredImage?.node?.sourceUrl || "";
-  const excerpt = cleanText(activeStory.excerpt);
+  const excerpt = activeStory.excerpt?.trim();
   const description = excerpt || "Visual storytelling from The Alexia Fall Workshop.";
   const byline = getByline(activeStory);
 
@@ -164,9 +154,10 @@ const HomeHeroShowcase = ({
               {activeTitle}
             </Heading>
 
-            <Paragraph className={styles.heroDek} color="white">
-              {description}
-            </Paragraph>
+            <div
+              className={styles.heroDek}
+              dangerouslySetInnerHTML={{ __html: description }}
+            />
 
             {byline && (
               <Paragraph className={styles.heroByline} color="white" condensed>

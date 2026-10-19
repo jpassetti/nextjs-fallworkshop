@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://fallworkshop.newhouse.syr.edu"),
   title: "The Alexia Fall Workshop | Newhouse School at Syracuse University",
   description:
-    "Founded by Visual Communications faculty in 1999, the workshop brings top professionals from around the world to join Newhouse professors and students in visual storytelling.",
+    "Explore student photojournalism, photography, documentary films, and visual storytelling from The Alexia Fall Workshop at Syracuse University's Newhouse School.",
   keywords: [
     "photojournalism",
     "photography",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "The Alexia Fall Workshop | Newhouse School at Syracuse University",
     description:
-      "Founded by Visual Communications faculty in 1999, the workshop brings top professionals from around the world to join Newhouse professors and students in visual storytelling.",
+      "Explore student photojournalism, photography, documentary films, and visual storytelling from The Alexia Fall Workshop at Syracuse University's Newhouse School.",
     url: "https://fallworkshop.newhouse.syr.edu",
     siteName: "The Alexia Fall Workshop",
     locale: "en_US",
@@ -31,11 +31,11 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     site: "@thefallworkshop",
     title: "The Alexia Fall Workshop | Newhouse School at Syracuse University",
     description:
-      "Founded by Visual Communications faculty in 1999, the workshop brings top professionals from around the world to join Newhouse professors and students in visual storytelling.",
+      "Explore student photojournalism, photography, documentary films, and visual storytelling from The Alexia Fall Workshop at Syracuse University's Newhouse School.",
     images: ["/images/the-alexia-fall-workshop-1200x630px.jpg"],
   },
 };

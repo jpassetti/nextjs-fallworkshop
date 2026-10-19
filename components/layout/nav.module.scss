@@ -25,6 +25,8 @@
 	}
 }
 .navItemAnchor {
+	display: block;
+	line-height: 1.4;
 	font-weight: bold;
 	font-size: 1.25rem;
 	font-family: variables.$font__sherman_sans;

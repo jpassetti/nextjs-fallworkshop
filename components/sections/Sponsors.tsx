@@ -4,6 +4,7 @@ import Image from "next/image";
 import Row from "@/components/primitives/Row";
 import Section from "@/components/primitives/Section";
 import Sponsor from "@/components/sections/Sponsor";
+import Reveal from "@/components/primitives/Reveal";
 
 import classNames from "classnames/bind";
 import styles from "./sponsor.module.scss";
@@ -26,7 +27,9 @@ const Sponsors = ({ sponsors, activeYear }: any) => {
      {sponsors.map((sponsor, index) => {
       return (
        <Col key={index} xs="6" sm="6" md="4">
-        <Sponsor sponsor={sponsor.node} size="sm" />
+        <Reveal delay={(index % 3) * 0.1}>
+         <Sponsor sponsor={sponsor.node} size="sm" />
+        </Reveal>
        </Col>
       );
      })}

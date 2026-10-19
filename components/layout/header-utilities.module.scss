@@ -97,8 +97,32 @@
 
 @media (max-width: 979px) {
   .utilitiesCompact {
-    flex-direction: column;
-    align-items: center;
+    width: 100%;
+    max-width: 30rem;
+    align-items: flex-end;
+  }
+
+  .utilitiesCompact .select {
+    min-width: 5rem;
+  }
+
+  .utilitiesCompact .search {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .utilitiesCompact .search .label {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .utilitiesCompact .input {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .utilitiesCompact .button {
+    flex-shrink: 0;
   }
 }
 

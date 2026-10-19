@@ -15,6 +15,8 @@ import Vimeo from "@/components/media/Vimeo";
 import Link from "next/link";
 import type { StoryPageViewProps } from "@/app/_views/types";
 import styles from "@/app/_views/story-page.module.scss";
+import PhotoCaption from "@/components/media/PhotoCaption";
+import { isoDate, storyAuthors } from "@/lib/seo";
 
 const StoryPageClient = ({
   storyData,
@@ -27,6 +29,8 @@ const StoryPageClient = ({
     storyInformation || {};
   const studentList = Array.isArray(students) ? students : [];
   const coachList = Array.isArray(coaches) ? coaches : [];
+  const authors = storyAuthors(storyData);
+  const published = isoDate(storyData.dateGmt ? `${storyData.dateGmt.replace(/Z$/, "")}Z` : undefined);
 
   return (
     <Layout
@@ -65,19 +69,17 @@ const StoryPageClient = ({
       <Container>
         {storyType === "still"
           ? stillImages?.map((node, index: number) => (
-              <ImageWrapper key={index} marginTop="0">
+              <figure key={index} style={{ margin: 0 }}>
+              <ImageWrapper marginTop="0">
                 <Image
                   src={node.stillImage.sourceUrl}
                   alt={node.stillImage.altText || ""}
                   width={node.stillImage.mediaDetails.width}
                   height={node.stillImage.mediaDetails.height}
                 />
-                {node.stillImage.caption && (
-                  <Paragraph marginTop="1" marginBottom="2" type="caption">
-                    {node.stillImage.caption}
-                  </Paragraph>
-                )}
               </ImageWrapper>
+              <PhotoCaption image={node.stillImage} />
+              </figure>
             ))
           : storyType === "video"
           ? videos?.map((video, index: number) => (
@@ -104,6 +106,13 @@ const StoryPageClient = ({
             <Heading level={1} className={styles.storyTitle}>
               {title}
             </Heading>
+          )}
+
+          {authors.length > 0 && <Paragraph marginBottom="1">By {authors.join(", ")}</Paragraph>}
+          {published && (
+            <Paragraph marginBottom="2">
+              Published <time dateTime={published}>{new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "America/New_York" }).format(new Date(published))}</time>
+            </Paragraph>
           )}
 
           {content && (

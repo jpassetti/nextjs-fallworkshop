@@ -26,6 +26,11 @@ export type StoriesPageViewProps = {
 };
 
 export type StoryImageNode = {
+  caption?: string;
+  creditText?: string;
+  copyrightNotice?: string;
+  license?: string;
+  acquireLicensePage?: string;
   sourceUrl: string;
   altText?: string;
   mediaDetails: {
@@ -35,6 +40,8 @@ export type StoryImageNode = {
 };
 
 export type StoryData = {
+  dateGmt?: string;
+  modifiedGmt?: string;
   title?: string;
   slug?: string;
   excerpt?: string;

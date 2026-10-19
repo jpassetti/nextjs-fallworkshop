@@ -4,9 +4,24 @@ import { getAllYears, getAllStories, getStoriesByYear, getYearBySlug, getNavLink
 import NAV_CONFIG from "@/lib/navConfig";
 import { mergeYearContent } from "@/lib/yearContent";
 import type { NavItem } from "@/app/_views/types";
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
 type YearEdge = { node: { name: string } };
 type NavConfigItem = { year: string | number; links: string[] };
+
+export async function generateMetadata({ params, searchParams }: {
+  params: Promise<{ year: string }>;
+  searchParams: Promise<{ q?: string }>;
+}): Promise<Metadata> {
+  const { year } = await params;
+  const { q } = await searchParams;
+  return {
+    ...pageMetadata(`${year} Student Stories | The Alexia Fall Workshop`,
+      `Explore student photojournalism, photography, films, and visual storytelling from the ${year} Alexia Fall Workshop at Syracuse University.`, `/${year}/stories`),
+    ...(q?.trim() ? { robots: { index: false, follow: true } } : {}),
+  };
+}
 
 export async function generateStaticParams() {
   const years = (await getAllYears()) as YearEdge[] | undefined;

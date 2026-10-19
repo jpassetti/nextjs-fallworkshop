@@ -58,6 +58,7 @@ const VimeoLightbox = ({ src, title = "Workshop video" }: VimeoLightboxProps) =>
      alt={title}
      width={1280}
      height={720}
+     loading="eager"
      sizes="(max-width: 980px) 100vw, 44rem"
      className={styles.videoThumbnail}
     />

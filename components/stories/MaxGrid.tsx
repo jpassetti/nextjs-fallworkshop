@@ -4,6 +4,7 @@ import classNames from "classnames/bind";
 
 import { useRouter } from "next/navigation";
 import Heading from "@/components/primitives/Heading";
+import Reveal from "@/components/primitives/Reveal";
 import Link from "next/link";
 import SpanifyAuthorsList from "@/components/stories/SpanifyAuthorsList";
 import { getFormattedStoryType } from "@/lib/utilities";
@@ -30,6 +31,7 @@ const MaxGrid = ({ activeYear, stories, centerSingle = false }: MaxGridProps) =>
       story={story}
       activeYear={activeYear}
       singleLayout={singleLayout}
+      revealDelay={(index % 3) * 0.1}
       clickHandler={(e) => {
        e.preventDefault();
        router.push(`/${activeYear}/stories/${slug}`);
@@ -41,7 +43,7 @@ const MaxGrid = ({ activeYear, stories, centerSingle = false }: MaxGridProps) =>
  );
 };
 export default MaxGrid;
-const Item = ({ activeYear, story, clickHandler, singleLayout = false }: any) => {
+const Item = ({ activeYear, story, clickHandler, singleLayout = false, revealDelay = 0 }: any) => {
  const { title, featuredImage, slug, storyInformation } = story;
  const { storyType, students } = storyInformation;
  const formattedStoryType = getFormattedStoryType(storyType);
@@ -55,7 +57,9 @@ const Item = ({ activeYear, story, clickHandler, singleLayout = false }: any) =>
     featuredImage.node.mediaDetails.width,
  });
  return (
-  <article
+  <Reveal
+   as="article"
+   delay={revealDelay}
    className={gridItemClasses}
    onClick={clickHandler}
    style={{
@@ -87,7 +91,7 @@ const Item = ({ activeYear, story, clickHandler, singleLayout = false }: any) =>
     )}
     {students && <SpanifyAuthorsList students={students} className={styles.storyByline} />}
    </div>
-  </article>
+  </Reveal>
  );
 };
 MaxGrid.Item = Item;

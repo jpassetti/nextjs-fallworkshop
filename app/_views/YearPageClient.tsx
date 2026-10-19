@@ -87,10 +87,10 @@ const YearPageClient = ({
       {hasNav("faculty") && (
         <PeopleByRole
           role="staff"
-          plural="Faculty"
+          plural="Faculty/Staff"
           people={peopleList}
           activeYear={activeYear}
-          emptyMessage={`The ${activeYear} faculty are ${comingSoonLead}.`}
+          emptyMessage={`The ${activeYear} faculty/staff are ${comingSoonLead}.`}
         />
       )}
       {activeYear === "2025" && <Credits />}

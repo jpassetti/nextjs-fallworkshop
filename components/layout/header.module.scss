@@ -81,6 +81,18 @@
 	justify-content: center;
 }
 
+@media (max-width: 979px) {
+	.headerHome {
+		// Extend the gradient into the body's reserved space for the fixed bar.
+		margin-top: -4rem;
+		padding-top: 5.2rem;
+	}
+
+	.homeNavWrap {
+		display: none;
+	}
+}
+
 .headerStory {
 	padding: 0.9rem 0 0.85rem 0;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.26);
@@ -152,8 +164,13 @@
 
 	.homeNavWrap {
 		min-width: 22rem;
+		justify-content: flex-start;
 		overflow-x: auto;
 		scrollbar-width: thin;
+
+		li:first-child > a {
+			padding-left: 0;
+		}
 	}
 
 	.homeNavWrap::-webkit-scrollbar {
@@ -182,13 +199,34 @@
 	}
 }
 
-@media (min-width: 980px) and (max-width: 1260px) {
+@media (min-width: 700px) and (max-width: 1260px) {
 	.homeBottomRow {
 		grid-template-columns: 1fr;
-		align-items: start;
+		align-items: center;
+	}
+
+	.homeNavWrap {
+		display: flex;
+		justify-content: center;
+
+		nav {
+			display: block;
+		}
+
+		li:first-child > a {
+			padding-left: 0.85rem;
+		}
 	}
 
 	.homeUtilitiesWrap {
-		justify-self: start;
+		justify-self: center;
+		display: flex;
+		justify-content: center;
+	}
+}
+
+@media (min-width: 700px) and (max-width: 979px) {
+	.headerHome {
+		padding-top: 1.2rem;
 	}
 }

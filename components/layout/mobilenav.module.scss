@@ -21,6 +21,10 @@
 .mobileNavInverse {
 	background-color: rgba(7, 20, 31, 0.72);
 	backdrop-filter: blur(7px);
+
+	@include mixins.breakpoint(sm) {
+		display: none;
+	}
 }
 
 .storyMobileNav {

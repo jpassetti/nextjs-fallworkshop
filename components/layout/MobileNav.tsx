@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { scroller, Events } from "react-scroll"
 import Button from "@/components/Button"
 import styles from "./mobilenav.module.scss"
@@ -19,6 +20,11 @@ type MobileNavProps = {
 
 const MobileNav = ({ inside = false, year, tone = "default" }: MobileNavProps) => {
 	const [isMenuActive, setMenuActive] = useState(false);
+	const prefersReducedMotion = useReducedMotion();
+	const linkVariants = {
+		hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 16 },
+		visible: { opacity: 1, y: 0, transition: { duration: prefersReducedMotion ? 0 : 0.25 } },
+	};
 	const navLinks: NavLink[] = getNavLinks();
 
 	if (inside) {
@@ -38,8 +44,32 @@ const MobileNav = ({ inside = false, year, tone = "default" }: MobileNavProps) =
 			setMenuActive(true)
 		}}>Open</Button.UI>
 	</nav>
+	<AnimatePresence>
 	{isMenuActive && 
-		<div className={styles.overlay}>
+		<motion.div
+			key="mobile-menu"
+			className={styles.overlay}
+			initial="hidden"
+			animate="visible"
+			exit="exit"
+			variants={{
+				hidden: { opacity: 0, y: prefersReducedMotion ? 0 : "-100%" },
+				visible: {
+					opacity: 1,
+					y: 0,
+					transition: {
+						duration: prefersReducedMotion ? 0 : 0.3,
+						when: "beforeChildren",
+						staggerChildren: prefersReducedMotion ? 0 : 0.05,
+					},
+				},
+				exit: {
+					opacity: 0,
+					y: prefersReducedMotion ? 0 : "-100%",
+					transition: { duration: prefersReducedMotion ? 0 : 0.2 },
+				},
+			}}
+		>
 			<Button.UI icon="close" color="white" id="closeBtn" clickHandler={(e: MouseEvent<HTMLButtonElement>) => {
 				e.preventDefault();
 				setMenuActive(false);
@@ -49,13 +79,13 @@ const MobileNav = ({ inside = false, year, tone = "default" }: MobileNavProps) =
 				const { label, id} = navLink;
 				//console.log({inside});
 				return inside ? 
-					<li key={index}>
+					<motion.li key={index} variants={linkVariants}>
 						<Link href={`/${year ? year : '2024'}#${id}`} onClick={() => {
 							setMenuActive(false);
 						}}>
 							{label}
-						</Link></li>
-				: <li key={index}>
+						</Link></motion.li>
+				: <motion.li key={index} variants={linkVariants}>
 					<a 
 					href=""
 					onClick={(e: MouseEvent<HTMLAnchorElement>) => {
@@ -74,11 +104,12 @@ const MobileNav = ({ inside = false, year, tone = "default" }: MobileNavProps) =
 					>
 					{label}
 					</a>
-				</li>
+				</motion.li>
 			})}
 		</ul>
-		</div>
+		</motion.div>
 	}
+	</AnimatePresence>
 	</>
 }
 export default MobileNav;

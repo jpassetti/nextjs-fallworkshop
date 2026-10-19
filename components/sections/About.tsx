@@ -3,6 +3,8 @@ import Paragraph from "@/components/primitives/Paragraph";
 import Section from "@/components/primitives/Section";
 import VimeoLightbox from "@/components/media/VimeoLightbox";
 import styles from "./about.module.scss";
+import Reveal from "@/components/primitives/Reveal";
+import { withParagraphs } from "@/lib/richText";
 
 type AboutProps = {
  videoUrl?: string | null;
@@ -16,14 +18,16 @@ const About = ({ videoUrl, contentHtml }: AboutProps) => {
     <div className={styles.aboutLayout}>
      {videoUrl && (
       <div className={styles.aboutMedia}>
-       <VimeoLightbox src={videoUrl} title="The Alexia Fall Workshop video" />
+       <Reveal>
+        <VimeoLightbox src={videoUrl} title="The Alexia Fall Workshop video" />
+       </Reveal>
       </div>
      )}
-     <div className={styles.aboutBody}>
+     <Reveal className={styles.aboutBody} delay={0.08}>
       {contentHtml ? (
        <div
         className={styles.aboutProse}
-        dangerouslySetInnerHTML={{ __html: contentHtml }}
+        dangerouslySetInnerHTML={{ __html: withParagraphs(contentHtml) }}
        />
       ) : (
        <Paragraph marginBottom="2" className={styles.aboutFallback}>
@@ -36,7 +40,7 @@ const About = ({ videoUrl, contentHtml }: AboutProps) => {
         engage the community.
        </Paragraph>
       )}
-     </div>
+     </Reveal>
     </div>
    </Container>
   </Section>

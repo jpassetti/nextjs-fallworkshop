@@ -4,6 +4,7 @@ import Paragraph from "@/components/primitives/Paragraph";
 import Row from "@/components/primitives/Row";
 import Person from "@/components/people/Person";
 import Section from "@/components/primitives/Section";
+import Reveal from "@/components/primitives/Reveal";
 
 type PeopleByRoleProps = {
  role: string;
@@ -40,7 +41,7 @@ const PeopleByRole = ({
  //console.log(alphabetizedPeople);
  //const coaches = people.filter(person => person.peopleType === "coach")
  return (
-  <Section id={plural.toLowerCase()} title={`${activeYear} ${plural}`}>
+  <Section id={role === "staff" ? "faculty" : plural.toLowerCase()} title={`${activeYear} ${plural}`}>
    <Container>
     <Row justifyContent="center">
      {alphabetizedPeople.length > 0 ? (
@@ -48,7 +49,9 @@ const PeopleByRole = ({
        //console.log(person.node.personInformation);
        return (
         <Col xs="6" sm="6" md="4" lg="3" key={index}>
-         <Person role={role} person={person.node} activeYear={activeYear} />
+         <Reveal delay={(index % 4) * 0.1}>
+          <Person role={role} person={person.node} activeYear={activeYear} />
+         </Reveal>
         </Col>
        );
       })

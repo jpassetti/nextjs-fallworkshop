@@ -23,11 +23,34 @@
   transition: all 0.35s;
  }
 }
+.personPhotoFrame {
+ width: 100%;
+ overflow: hidden;
+}
 .personImage {
  width: 100%;
  height: auto;
  display: block;
  background-color: lightgray;
+ transition: transform 180ms ease-out;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+ .person:hover .personImage {
+  transform: scale(1.05);
+ }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+ .person:focus-within .personImage {
+  transform: scale(1.05);
+ }
+}
+
+@media (prefers-reduced-motion: reduce) {
+ .personImage {
+  transition: none;
+ }
 }
 .personTeaserImage {
  width: 4rem;

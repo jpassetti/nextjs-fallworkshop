@@ -33,6 +33,7 @@ const Person = ({ person, role, teaser, invert, activeYear }: any) => {
   <article className={styles.person}>
    {featuredImage ? (
     <ImageWrapper>
+     <div className={styles.personPhotoFrame}>
      <Image
       src={featuredImage.node.sourceUrl}
       alt={featuredImage.node.altText}
@@ -40,6 +41,7 @@ const Person = ({ person, role, teaser, invert, activeYear }: any) => {
       height={featuredImage.node.mediaDetails.height}
       className={styles.personImage}
      />
+     </div>
     </ImageWrapper>
    ) : (
     <div className={styles.personImageWrapper} />

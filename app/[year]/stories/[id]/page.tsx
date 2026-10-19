@@ -11,6 +11,8 @@ import {
 import NAV_CONFIG from "@/lib/navConfig";
 import { mergeYearContent } from "@/lib/yearContent";
 import type { NavItem, StoryData } from "@/app/_views/types";
+import JsonLd from "@/components/JsonLd";
+import { articleSchema, isoDate, pageMetadata, plainText, storyAuthors } from "@/lib/seo";
 
 type YearSlugEdge = { node: { slug: string } };
 type StorySlug = { slug: string };
@@ -49,15 +51,20 @@ export async function generateMetadata({
     return {};
   }
 
-  const title = storyData.title || "Story";
-  const description = storyData.excerpt || "";
+  const title = plainText(storyData.title) || "Story";
+  const description = plainText(storyData.excerpt) || `Student visual storytelling from the ${year} Alexia Fall Workshop.`;
+  const authors = storyAuthors(storyData);
   const image = storyData.featuredImage?.node;
   const url = `https://fallworkshop.newhouse.syr.edu/${year}/stories/${storyData.slug}`;
 
   return {
-    title,
-    description,
+    ...pageMetadata(title, description, `/${year}/stories/${storyData.slug}`),
+    authors: authors.map((name) => ({ name })),
     openGraph: {
+      type: "article",
+      authors,
+      publishedTime: isoDate(storyData.dateGmt ? `${storyData.dateGmt.replace(/Z$/, "")}Z` : undefined),
+      modifiedTime: isoDate(storyData.modifiedGmt ? `${storyData.modifiedGmt.replace(/Z$/, "")}Z` : undefined),
       title,
       description,
       url,
@@ -73,6 +80,7 @@ export async function generateMetadata({
         : undefined,
     },
     twitter: {
+      card: "summary_large_image",
       title,
       description,
       images: image ? [image.sourceUrl] : undefined,
@@ -105,11 +113,14 @@ export default async function StoryPage({
   const yearContent = mergeYearContent(year, yearData);
 
   return (
+    <>
+    <JsonLd data={articleSchema(storyData, year)} />
     <StoryPageClient
       storyData={storyData}
       activeYear={year}
       navItems={navItems}
       workshopDates={yearContent.workshopDates}
     />
+    </>
   );
 }
