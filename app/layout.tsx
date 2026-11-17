@@ -3,6 +3,9 @@ import "@/styles/global.scss";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://fallworkshop.newhouse.syr.edu"),
+  icons: {
+    icon: { url: "/favicon.ico", type: "image/x-icon" },
+  },
   title: "The Alexia Fall Workshop | Newhouse School at Syracuse University",
   description:
     "Explore student photojournalism, photography, documentary films, and visual storytelling from The Alexia Fall Workshop at Syracuse University's Newhouse School.",

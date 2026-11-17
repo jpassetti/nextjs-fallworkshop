@@ -206,3 +206,115 @@
   line-height: 1.45;
   font-family: "Sherman Sans", Arial, sans-serif;
 }
+
+.authorsByline {
+  font-family: "Oswald", "Sherman Sans Condensed", "Sherman Sans", Arial, sans-serif;
+  font-weight: 400;
+}
+
+.authorName {
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: 700;
+}
+
+.authorAnd {
+  text-transform: lowercase;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.publishedMeta {
+  font-family: "Oswald", "Sherman Sans Condensed", "Sherman Sans", Arial, sans-serif;
+  font-size: 0.92rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #4b6277;
+}
+
+.publishedDate {
+  font-weight: 400;
+}
+
+.storyMetaRow {
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.metaRowItem {
+  margin: 0;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid #d9e4ef;
+}
+
+.dateMetaRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.shareLinks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: "Oswald", "Sherman Sans Condensed", "Sherman Sans", Arial, sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.shareLabel {
+  color: #4b6277;
+  margin-right: 0.15rem;
+}
+
+.shareLinks a {
+  color: #0f4c81;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(75, 98, 119, 0.35);
+  background: transparent;
+  line-height: 1;
+  transition:
+    border-color 120ms ease,
+    background-color 120ms ease,
+    transform 120ms ease;
+}
+
+.shareLinks a :global(svg) {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+.shareLinks a:hover,
+.shareLinks a:focus {
+  color: #0b3b64;
+  border-color: rgba(15, 76, 129, 0.55);
+  background-color: rgba(15, 76, 129, 0.08);
+  text-decoration: none;
+}
+
+.shareLinks a:hover {
+  transform: translateY(-1px);
+}
+
+.shareLinks a:focus-visible {
+  outline: 2px solid rgba(15, 76, 129, 0.5);
+  outline-offset: 2px;
+}
+
+@media (min-width: 720px) {
+  .dateMetaRow {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+}

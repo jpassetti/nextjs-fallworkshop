@@ -13,10 +13,17 @@ import Row from "@/components/primitives/Row";
 import Section from "@/components/primitives/Section";
 import Vimeo from "@/components/media/Vimeo";
 import Link from "next/link";
+import Icon from "@/components/media/Icon";
 import type { StoryPageViewProps } from "@/app/_views/types";
 import styles from "@/app/_views/story-page.module.scss";
 import PhotoCaption from "@/components/media/PhotoCaption";
-import { isoDate, storyAuthors } from "@/lib/seo";
+import {
+  SITE_URL,
+  apStyleDate,
+  isoDate,
+  storyAuthors,
+  formatAuthorsForDisplay,
+} from "@/lib/seo";
 
 const StoryPageClient = ({
   storyData,
@@ -30,7 +37,13 @@ const StoryPageClient = ({
   const studentList = Array.isArray(students) ? students : [];
   const coachList = Array.isArray(coaches) ? coaches : [];
   const authors = storyAuthors(storyData);
+  const formattedAuthors = formatAuthorsForDisplay(authors);
   const published = isoDate(storyData.dateGmt ? `${storyData.dateGmt.replace(/Z$/, "")}Z` : undefined);
+  const storyUrl = storyData.slug ? `${SITE_URL}/${activeYear}/stories/${storyData.slug}` : "";
+  const shareText = title || "Story";
+  const xShareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(storyUrl)}&text=${encodeURIComponent(shareText)}`;
+  const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(storyUrl)}`;
+  const emailShareUrl = `mailto:?subject=${encodeURIComponent(shareText)}&body=${encodeURIComponent(storyUrl)}`;
 
   return (
     <Layout
@@ -108,11 +121,45 @@ const StoryPageClient = ({
             </Heading>
           )}
 
-          {authors.length > 0 && <Paragraph marginBottom="1">By {authors.join(", ")}</Paragraph>}
-          {published && (
-            <Paragraph marginBottom="2">
-              Published <time dateTime={published}>{new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "America/New_York" }).format(new Date(published))}</time>
-            </Paragraph>
+          {(authors.length > 0 || published) && (
+            <div className={styles.storyMetaRow}>
+              {authors.length > 0 && (
+                <Paragraph marginBottom="0" className={`${styles.authorsByline} ${styles.metaRowItem}`}>
+                  By{" "}
+                  {formattedAuthors.map((item, index) => (
+                    <span key={index} className={item.isAnd ? styles.authorAnd : styles.authorName}>
+                      {item.isAnd ? ` ${item.text} ` : <span style={{ whiteSpace: "nowrap" }}>{item.text}</span>}
+                      {index < formattedAuthors.length - 1 && !item.isAnd && ", "}
+                    </span>
+                  ))}
+                </Paragraph>
+              )}
+
+              {published && (
+                <div className={`${styles.metaRowItem} ${styles.dateMetaRow}`}>
+                  <Paragraph marginBottom="0" className={styles.publishedMeta}>
+                    Published{" "}
+                    <time className={styles.publishedDate} dateTime={published}>
+                      {apStyleDate(published)}
+                    </time>
+                  </Paragraph>
+                  {storyUrl && (
+                    <div className={styles.shareLinks} aria-label="Share story">
+                      <span className={styles.shareLabel}>Share</span>
+                      <a href={xShareUrl} target="_blank" rel="noreferrer" aria-label="Share on X" title="Share on X">
+                        <Icon icon="twitter" color="blue" />
+                      </a>
+                      <a href={linkedInShareUrl} target="_blank" rel="noreferrer" aria-label="Share on LinkedIn" title="Share on LinkedIn">
+                        <Icon icon="linkedin" color="blue" />
+                      </a>
+                      <a href={emailShareUrl} aria-label="Share by email" title="Share by email">
+                        <Icon icon="email" color="blue" />
+                      </a>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
           )}
 
           {content && (

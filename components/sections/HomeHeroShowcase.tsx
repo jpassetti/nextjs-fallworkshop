@@ -7,6 +7,7 @@ import Heading from "@/components/primitives/Heading";
 import Paragraph from "@/components/primitives/Paragraph";
 import styles from "./home-hero-showcase.module.scss";
 import { useEffect, useMemo, useState } from "react";
+import { formatAuthorsForDisplay } from "@/lib/seo";
 
 type StoryStudent = {
   personInformation?: {
@@ -35,22 +36,17 @@ type HomeHeroShowcaseProps = {
   stories: Array<Record<string, unknown>>;
 };
 
-const getByline = (story: StoryTeaser) => {
+const getAuthorNames = (story: StoryTeaser) => {
   const students = Array.isArray(story.storyInformation?.students)
     ? story.storyInformation?.students
     : [];
-  const names = students
+  return students
     .map((student) => {
       const first = student.personInformation?.firstName || "";
       const last = student.personInformation?.lastName || "";
       return `${first} ${last}`.trim();
     })
     .filter(Boolean);
-
-  if (names.length === 0) return "";
-  if (names.length === 1) return names[0];
-  if (names.length === 2) return `${names[0]} and ${names[1]}`;
-  return `${names.slice(0, -1).join(", ")}, and ${names[names.length - 1]}`;
 };
 
 const HomeHeroShowcase = ({
@@ -87,7 +83,8 @@ const HomeHeroShowcase = ({
   const imageUrl = activeStory.featuredImage?.node?.sourceUrl || "";
   const excerpt = activeStory.excerpt?.trim();
   const description = excerpt || "Visual storytelling from The Alexia Fall Workshop.";
-  const byline = getByline(activeStory);
+  const authorNames = getAuthorNames(activeStory);
+  const formattedByline = formatAuthorsForDisplay(authorNames);
 
   const backgroundInitial = prefersReducedMotion
     ? { opacity: 1, scale: 1 }
@@ -159,9 +156,15 @@ const HomeHeroShowcase = ({
               dangerouslySetInnerHTML={{ __html: description }}
             />
 
-            {byline && (
+            {formattedByline.length > 0 && (
               <Paragraph className={styles.heroByline} color="white" condensed>
-                By {byline}
+                By{" "}
+                {formattedByline.map((item, index) => (
+                  <span key={index} className={item.isAnd ? styles.heroAuthorAnd : styles.heroAuthorName}>
+                    {item.isAnd ? ` ${item.text} ` : <span style={{ whiteSpace: "nowrap" }}>{item.text}</span>}
+                    {index < formattedByline.length - 1 && !item.isAnd && ", "}
+                  </span>
+                ))}
               </Paragraph>
             )}
 

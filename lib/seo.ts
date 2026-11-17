@@ -22,14 +22,59 @@ export function pageMetadata(title: string, description: string, path: string): 
 export function storyAuthors(story: StoryData) {
   return (story.storyInformation?.students || []).map((student) => {
     const person = student as { personInformation?: { firstName?: string; lastName?: string } };
-    return [person.personInformation?.firstName, person.personInformation?.lastName].filter(Boolean).join(" ");
+    return [person.personInformation?.firstName, person.personInformation?.lastName].filter(Boolean).join(" ").trim();
   }).filter(Boolean);
+}
+
+export function formatAuthorsForDisplay(authors: string[]) {
+  if (authors.length === 0) return [];
+  if (authors.length === 1) return [{ text: authors[0].toUpperCase(), isAnd: false }];
+  
+  return [
+    ...authors.slice(0, -1).map((author) => ({
+      text: author.toUpperCase(),
+      isAnd: false,
+    })),
+    { text: "and", isAnd: true },
+    { text: authors[authors.length - 1].toUpperCase(), isAnd: false },
+  ];
 }
 
 export function isoDate(value?: string) {
   if (!value) return undefined;
   const date = new Date(value);
   return Number.isNaN(date.getTime()) ? undefined : date.toISOString();
+}
+
+const AP_MONTHS: Record<string, string> = {
+  January: "Jan.",
+  February: "Feb.",
+  March: "March",
+  April: "April",
+  May: "May",
+  June: "June",
+  July: "July",
+  August: "Aug.",
+  September: "Sept.",
+  October: "Oct.",
+  November: "Nov.",
+  December: "Dec.",
+};
+
+export function apStyleDate(value: string) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+  const parts = new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "America/New_York",
+  }).formatToParts(date);
+  const month = parts.find((part) => part.type === "month")?.value;
+  const day = parts.find((part) => part.type === "day")?.value;
+  const year = parts.find((part) => part.type === "year")?.value;
+  if (!month || !day || !year) return value;
+  return `${AP_MONTHS[month] || month} ${day}, ${year}`;
 }
 
 export function articleSchema(story: StoryData, year: string) {
